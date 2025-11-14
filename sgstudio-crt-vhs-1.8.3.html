@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shahaf — Portfolio — CRT VHS 1.8.3</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      font-family: 'VT323', monospace;
+      color: #7a0d0d;
+      overflow-x: hidden;
+    }
+    .scanlines-overlay {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      animation: scanShift 0.8s linear infinite;
+      opacity: 0.40;
+    }
+    @keyframes scanShift {
+      0%   { background-position: 0 0; }
+      100% { background-position: 0 4px; }
+    }
+    .vhs-bar {
+      pointer-events: none;
+      position: fixed;
+      left: 0;
+      width: 100%;
+      z-index: 3;
+      height: 190px;
+      top: -200vh;
+    }
+    #vhs1 { display: none; }
+    .crt-layer {
+      position: relative;
+      z-index: 4;
+      animation: crtFlicker 2.5s infinite steps(2, end);
+    }
+    @keyframes crtFlicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.97; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+<div id="scanlines" class="scanlines-overlay"></div>
+<div id="vhs1" class="vhs-bar"></div>
+<div id="vhs2" class="vhs-bar"></div>
+<div id="app" class="crt-layer"></div>
+
+<script>
+  // ANSI palettes + cycling (like 1.7.4)
+  const ANSI_PALETTES = [
+    { bright: "#ff4d4d", dark: "#7a0d0d" },
+    { bright: "#00ff5f", dark: "#008743" },
+    { bright: "#00e5ff", dark: "#007788" },
+    { bright: "#ffd447", dark: "#b8860b" },
+    { bright: "#ff4fff", dark: "#7a007a" }
+  ];
+
+  function choosePalette() {
+    let idx = parseInt(localStorage.getItem("ansiPairIndex") || "0");
+    idx = (idx + 1) % ANSI_PALETTES.length;
+    localStorage.setItem("ansiPairIndex", idx);
+    return ANSI_PALETTES[idx];
+  }
+
+  const colors = choosePalette();
+  const bright = colors.bright;
+  const dark = colors.dark;
+  document.body.style.color = dark;
+
+  const scanEl = document.getElementById("scanlines");
+  const vhs2 = document.getElementById("vhs2");
+  const appEl = document.getElementById("app");
+
+  // Scanlines use current bright color
+  scanEl.style.backgroundImage = `repeating-linear-gradient(
+    0deg,
+    ${bright + "55"} 0px,
+    ${bright + "55"} 2px,
+    transparent 2px,
+    transparent 4px
+  )`;
+
+  // VHS gradient for bar 2
+  const centerAlpha = 0.30;
+  const softness = 1.0;
+
+  function alphaToHex(a) {
+    const v = Math.round(a * 255);
+    return v.toString(16).padStart(2, "0");
+  }
+
+  const midHex = alphaToHex(centerAlpha);
+  const edgeAlpha = centerAlpha * (0.3 + 0.4 * (1 - softness));
+  const edgeHex = alphaToHex(edgeAlpha);
+
+  const vhsGradient = `linear-gradient(
+    to bottom,
+    ${bright}00 0%,
+    ${bright + edgeHex} 20%,
+    ${bright + midHex} 50%,
+    ${bright + edgeHex} 80%,
+    ${bright}00 100%
+  )`;
+
+  vhs2.style.background = vhsGradient;
+  vhs2.style.opacity = 0.6;
+
+  // Single slow VHS bar (speed of original bar 2)
+  const totalSpanVh = 320;
+  const durationBarSec = 20;
+  const speedVhPerSec = totalSpanVh / durationBarSec;
+
+  let y2 = -120;
+  let lastTs = null;
+
+  function animate(ts) {
+    if (lastTs === null) {
+      lastTs = ts;
+      requestAnimationFrame(animate);
+      return;
+    }
+    const dt = (ts - lastTs) / 1000;
+    lastTs = ts;
+
+    y2 += speedVhPerSec * dt;
+    vhs2.style.top = y2 + "vh";
+
+    if (y2 > 200) {
+      y2 = -120;
+    }
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+
+  // Layout: sidebar left + Artist Statement on right
+  appEl.innerHTML = `
+    <div class="min-h-screen grid grid-cols-12">
+      <aside class="col-span-12 md:col-span-4 xl:col-span-3 p-6 md:p-8 sticky top-0 h-full md:min-h-screen">
+        <h1 class="text-3xl font-bold tracking-wider" style="color:${bright}">Shahaf Galil_</h1>
+        <p class="text-sm opacity-80" style="color:${dark}">Photography ▓ 2025</p>
+        <p class="text-xs leading-6 mt-3 opacity-80" style="color:${dark}">
+          Jerusalem-based photographer exploring staged narratives & fractured emotional structures.
+        </p>
+
+        <nav class="space-y-6 mt-10 text-xs md:text-sm">
+          <div>
+            <p class="uppercase tracking-wider text-xs opacity-80" style="color:${bright}">Projects</p>
+            <ul class="mt-2 space-y-1">
+              <!-- Artist Statement – highlighted ">" -->
+              <li class="flex items-center">
+                <a href="#artist-statement" class="flex items-center gap-1">
+                  <span style="color:${bright}; text-shadow:0 0 8px ${bright};">&gt;</span>
+                  <span style="color:${dark};">Artist Statement</span>
+                </a>
+              </li>
+
+              ${["PTSD","Broken Circle","Forbidden Apple","Swan Lake","Lanjeri","12","Hachmi"]
+                .map(t => {
+                  const id = t.replace(/\s+/g, '-').toLowerCase();
+                  return `
+                    <li class="flex items-center">
+                      <a href="#proj-${id}" class="flex items-center gap-1">
+                        <span style="color:${dark};">&gt;</span>
+                        <span style="color:${dark};">${t}</span>
+                      </a>
+                    </li>
+                  `;
+                }).join("")}
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+      <main class="col-span-12 md:col-span-8 xl:col-span-9 p-6 md:p-10 flex items-start justify-center">
+        <section id="artist-statement" class="max-w-3xl text-sm md:text-base leading-relaxed space-y-4 bg-black/40 border border-red-900/40 rounded-xl p-6 md:p-8 shadow-xl">
+          <h2 class="mb-4">
+            <span class="block text-xl md:text-2xl" style="color:${bright};">
+              Artist Statement
+            </span>
+            <span class="block text-[0.7rem] md:text-xs tracking-[0.18em] uppercase mt-1" style="color:${dark};">
+              Staged photography as narrative architecture_
+            </span>
+          </h2>
+
+          <p class="opacity-90" style="color:${dark};">
+            My work moves between staged photography and narrative construction. I begin with a clear,
+            almost self-evident impression — a scene that feels familiar, legible, even comfortable.
+            This initial clarity is intentional: it serves as an entry point, a quiet trap that invites
+            the viewer to believe they understand what they see.
+          </p>
+
+          <p class="opacity-90" style="color:${dark};">
+            But the image is built to fracture. Layer by layer, tension begins to surface: contradictions
+            between gesture and setting, between intimacy and distance, between what the frame reveals
+            and what it withholds. I construct scenes much like theatrical tableaux — meticulously arranged,
+            yet emotionally unstable — where narrative certainty gradually unravels.
+          </p>
+
+          <p class="opacity-90" style="color:${dark};">
+            For the viewer, this creates a shift from recognition to disorientation, and from disorientation
+            to a sharper awareness. The photograph becomes a site of movement: not the movement of bodies,
+            but the movement of perception. As the initial impression breaks open, the viewer is drawn into
+            an internal trajectory — a narrative arc that unfolds through doubt, suspicion, empathy, and
+            eventually a re-reading of the entire scene.
+          </p>
+
+          <p class="opacity-90" style="color:${dark};">
+            I am interested in how images accumulate meaning over time, and how emotional structures can
+            emerge not from action but from stillness. Each photograph is composed as a temporal architecture:
+            a layered moment in which memory, identity, and cultural narratives fold into one another.
+            The work often inhabits liminal spaces — both physical and psychological — where something has
+            ended but nothing fully formed has taken its place.
+          </p>
+
+          <p class="opacity-90" style="color:${dark};">
+            In this space, certainty dissolves. The viewer is asked to reconsider what they think they know,
+            to encounter the instability beneath the surface, and to sit with what remains unresolved.
+            Ultimately, the photographs aim to open a space where narrative, emotion, and perception collide —
+            revealing not a singular truth, but the tension between competing truths that coexist within
+            the same frame.
+          </p>
+        </section>
+      </main>
+    </div>
+  `;
+</script>
+</body>
+</html>
