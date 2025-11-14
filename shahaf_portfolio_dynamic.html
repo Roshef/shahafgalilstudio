@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shahaf — Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: {} } }</script>
+
+  <style>
+    body { margin:0; padding:0; background:#000; font-family:'VT323', monospace; }
+  </style>
+</head>
+
+<body>
+
+<!-- CRT Scanlines -->
+<div style="
+  pointer-events:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  opacity:0.45;
+  background-image:repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,0.22) 0px,
+    rgba(255,255,255,0.22) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+"></div>
+
+<div id="app"></div>
+
+<script>
+  const ANSI_PALETTES = [
+    { bright: "#ff4d4d", dark: "#7a0d0d" },
+    { bright: "#00ff5f", dark: "#008743" },
+    { bright: "#00e5ff", dark: "#007788" },
+    { bright: "#ffd447", dark: "#b8860b" },
+    { bright: "#ff4fff", dark: "#7a007a" }
+  ];
+
+  function getNextPalette() {
+    try {
+      let idx = parseInt(localStorage.getItem("ansiPairIndex") || "0");
+      idx = (idx + 1) % ANSI_PALETTES.length;
+      localStorage.setItem("ansiPairIndex", idx);
+      return ANSI_PALETTES[idx];
+    } catch {
+      return ANSI_PALETTES[0];
+    }
+  }
+
+  const colors = getNextPalette();
+  const bright = colors.bright;
+  const dark = colors.dark;
+
+  document.body.style.color = dark;
+
+  document.getElementById("app").innerHTML = `
+    <div class="min-h-screen grid grid-cols-12">
+      <aside class="col-span-12 md:col-span-4 xl:col-span-3 p-6 md:p-8 sticky top-0 h-full md:min-h-screen">
+        <h1 class="text-3xl font-bold tracking-wider" style="color:${bright}">Shahaf Galil_</h1>
+        <p class="text-sm opacity-80">Photography ▓ 2025</p>
+        <p class="text-xs leading-6 mt-3 opacity-80">
+          Jerusalem-based photographer exploring staged narratives & alternative print processes.
+        </p>
+
+        <nav class="space-y-6 mt-10">
+          <div>
+            <p class="uppercase tracking-wider text-xs opacity-80" style="color:${bright}">Projects</p>
+            <ul class="mt-2 space-y-1">
+              ${["PTSD","Broken Circle","Forbidden Apple","Swan Lake","Lanjeri","12","Hachmi"]
+                .map((t,i)=>`<li><a style="color:${dark}" href="#proj-${i+1}">&gt; ${t}</a></li>`).join("")}
+            </ul>
+          </div>
+
+          <div>
+            <p class="uppercase tracking-wider text-xs opacity-80" style="color:${bright}">Experimental Work</p>
+            <ul class="mt-2 space-y-1">
+              ${["Alternative Print","PtPd","Cyanotype","Vandyke \ Brown","CYM+PTPD","Cyantoype+YMK"]
+                .map((t,i)=>`<li><a style="color:${dark}" href="#exp-${i+1}">&gt; ${t}</a></li>`).join("")}
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+      <main class="col-span-12 md:col-span-8 xl:col-span-9 p-10">
+        <h2 class="text-3xl md:text-5xl font-medium" style="color:${bright}">
+          [Staged narratives > alternative print processes_]
+        </h2>
+        <p class="text-lg mt-3 opacity-80">&gt; From the decisive moment to layered emotional structures</p>
+
+        <section class="mt-14">
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+            ${["PTSD","Broken Circle","Forbidden Apple","Swan Lake","Lanjeri","12","Hachmi"]
+              .map((title,i)=>`
+              <article id="proj-${i+1}">
+                <div class="aspect-[4/3] bg-neutral-900 rounded shadow-md ring-1 ring-red-900/40"></div>
+                <h4 class="text-lg mt-2">&gt; ${title}</h4>
+                <p class="text-sm opacity-80">2023–2025 · Project</p>
+              </article>
+            `).join("")}
+          </div>
+        </section>
+
+        <section class="mt-20">
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+            ${["Alternative Print","PtPd","Cyanotype","Vandyke \ Brown","CYM+PTPD","Cyantoype+YMK"]
+              .map((title,i)=>`
+              <article id="exp-${i+1}">
+                <div class="aspect-[4/3] bg-neutral-900 rounded shadow-md ring-1 ring-red-900/40"></div>
+                <h4 class="text-lg mt-2">&gt; ${title}</h4>
+                <p class="text-sm opacity-80">Experimental · Process Study</p>
+              </article>
+            `).join("")}
+          </div>
+        </section>
+      </main>
+    </div>
+  `;
+</script>
+
+</body>
+</html>
