@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shahaf — Portfolio — CRT VHS Final 1.7.4</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      font-family: 'VT323', monospace;
+      color: #7a0d0d;
+      overflow-x: hidden;
+    }
+    /* Scanlines overlay */
+    .scanlines-overlay {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      animation: scanShift 0.8s linear infinite;
+      opacity: 0.40;
+    }
+    @keyframes scanShift {
+      0%   { background-position: 0 0; }
+      100% { background-position: 0 4px; }
+    }
+    /* VHS bars */
+    .vhs-bar {
+      pointer-events: none;
+      position: fixed;
+      left: 0;
+      width: 100%;
+      z-index: 3;
+      height: 190px; /* thickness */
+      top: -200vh;   /* start far above viewport by default */
+    }
+    /* CRT flicker */
+    .crt-layer {
+      position: relative;
+      z-index: 4;
+      animation: crtFlicker 2.5s infinite steps(2, end);
+    }
+    @keyframes crtFlicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.97; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="scanlines" class="scanlines-overlay"></div>
+<div id="vhs1" class="vhs-bar"></div>
+<div id="vhs2" class="vhs-bar"></div>
+<div id="app" class="crt-layer"></div>
+
+<script>
+  const ANSI_PALETTES = [
+    { bright: "#ff4d4d", dark: "#7a0d0d" },
+    { bright: "#00ff5f", dark: "#008743" },
+    { bright: "#00e5ff", dark: "#007788" },
+    { bright: "#ffd447", dark: "#b8860b" },
+    { bright: "#ff4fff", dark: "#7a007a" }
+  ];
+
+  function choosePalette() {
+    let idx = parseInt(localStorage.getItem("ansiPairIndex") || "0");
+    idx = (idx + 1) % ANSI_PALETTES.length;
+    localStorage.setItem("ansiPairIndex", idx);
+    return ANSI_PALETTES[idx];
+  }
+
+  const colors = choosePalette();
+  const bright = colors.bright;
+  const dark = colors.dark;
+  document.body.style.color = dark;
+
+  const scanEl = document.getElementById("scanlines");
+  const vhs1 = document.getElementById("vhs1");
+  const vhs2 = document.getElementById("vhs2");
+  const appEl = document.getElementById("app");
+
+  // Scanlines
+  scanEl.style.backgroundImage = `repeating-linear-gradient(
+    0deg,
+    ${bright + "55"} 0px,
+    ${bright + "55"} 2px,
+    transparent 2px,
+    transparent 4px
+  )`;
+
+  // VHS gradient
+  const centerAlpha = 0.30;
+  const softness = 1.0;
+
+  function alphaToHex(a) {
+    const v = Math.round(a * 255);
+    return v.toString(16).padStart(2, "0");
+  }
+
+  const midHex = alphaToHex(centerAlpha);
+  const edgeAlpha = centerAlpha * (0.3 + 0.4 * (1 - softness));
+  const edgeHex = alphaToHex(edgeAlpha);
+
+  const vhsGradient = `linear-gradient(
+    to bottom,
+    ${bright}00 0%,
+    ${bright + edgeHex} 20%,
+    ${bright + midHex} 50%,
+    ${bright + edgeHex} 80%,
+    ${bright}00 100%
+  )`;
+
+  vhs1.style.background = vhsGradient;
+  vhs2.style.background = vhsGradient;
+  vhs2.style.opacity = 0.6;
+
+  // Motion parameters
+  const totalSpanVh = 320;            // from -120vh to 200vh
+  const durationBar1Sec = 13;         // full pass duration for bar 1
+  const durationBar2Sec = 20;         // full pass duration for bar 2
+  const speed1VhPerSec = totalSpanVh / durationBar1Sec;
+  const speed2VhPerSec = totalSpanVh / durationBar2Sec;
+  const thicknessPx = 190;
+
+  let y1 = -120;    // top of bar 1 (vh)
+  let y2 = -120;    // top of bar 2 (vh)
+  let distanceVh = 30; // will be set by recomputeDistance()
+
+  // Distance: between 0.5 and 4 bar heights
+  function recomputeDistance() {
+    const h = window.innerHeight || 800;
+
+    const minLines = 0.5;
+    const maxLines = 4;
+
+    const minPx = minLines * thicknessPx;
+    const maxPx = maxLines * thicknessPx;
+
+    const minVh = (minPx / h) * 100;
+    const maxVh = (maxPx / h) * 100;
+
+    distanceVh = minVh + Math.random() * (maxVh - minVh);
+  }
+
+  function resetBars() {
+    // Always start above viewport
+    y1 = -120;
+    recomputeDistance();
+    y2 = y1 + distanceVh; // second bar below first, still above viewport
+    applyPositions();
+  }
+
+  function applyPositions() {
+    vhs1.style.top = y1 + "vh";
+    vhs2.style.top = y2 + "vh";
+  }
+
+  // Initial setup
+  resetBars();
+
+  let lastTs = null;
+
+  function animate(ts) {
+    if (lastTs === null) {
+      lastTs = ts;
+      requestAnimationFrame(animate);
+      return;
+    }
+
+    const dt = (ts - lastTs) / 1000;
+    lastTs = ts;
+
+    // Move each bar with its own speed
+    y1 += speed1VhPerSec * dt;
+    y2 += speed2VhPerSec * dt;
+
+    applyPositions();
+
+    // Only start a new pass when BOTH finished (passed below viewport)
+    if (y1 > 200 && y2 > 200) {
+      resetBars();
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+
+  window.addEventListener("resize", () => {
+    // On resize, keep current vertical positions but recompute spacing for next reset
+    recomputeDistance();
+  });
+
+  // Layout
+  appEl.innerHTML = `
+    <div class="min-h-screen grid grid-cols-12">
+      <aside class="col-span-12 md:col-span-4 xl:col-span-3 p-6 md:p-8 sticky top-0 h-full md:min-h-screen">
+        <h1 class="text-3xl font-bold tracking-wider" style="color:${bright}">Shahaf Galil_</h1>
+        <p class="text-sm opacity-80" style="color:${dark}">Photography ▓ 2025</p>
+        <p class="text-xs leading-6 mt-3 opacity-80" style="color:${dark}">
+          Jerusalem-based photographer exploring staged narratives & alternative print processes.
+        </p>
+
+        <nav class="space-y-6 mt-10 text-xs md:text-sm">
+          <div>
+            <p class="uppercase tracking-wider text-xs opacity-80" style="color:${bright}">Projects</p>
+            <ul class="mt-2 space-y-1">
+              ${["PTSD","Broken Circle","Forbidden Apple","Swan Lake","Lanjeri","12","Hachmi"]
+                .map((t,i)=>`<li><a style="color:${dark}" href="#proj-${i+1}">&gt; ${t}</a></li>`).join("")}
+            </ul>
+          </div>
+
+          <div>
+            <p class="uppercase tracking-wider text-xs opacity-80" style="color:${bright}">Experimental Work</p>
+            <ul class="mt-2 space-y-1">
+              ${["Alternative Print","PtPd","Cyanotype","Vandyke \ Brown","CYM+PTPD","Cyantoype+YMK"]
+                .map((t,i)=>`<li><a style="color:${dark}" href="#exp-${i+1}">&gt; ${t}</a></li>`).join("")}
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+      <main class="col-span-12 md:col-span-8 xl:grid-cols-9 p-6 md:p-10 space-y-10">
+        <section class="max-w-3xl text-sm md:text-base leading-relaxed">
+          <p class="opacity-80" style="color:${dark}">
+            My work moves between staged cinematic tableaux and fragile personal narratives.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl md:text-5xl font-medium" style="color:${bright}">
+            [Staged narratives &gt; alternative print processes_]
+          </h2>
+        </section>
+
+        <section class="mt-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+            ${["PTSD","Broken Circle","Forbidden Apple","Swan Lake","Lanjeri","12","Hachmi"]
+              .map((title,i)=>`
+              <article id="proj-${i+1}">
+                <div class="aspect-[4/3] bg-neutral-900 rounded shadow-md ring-1 ring-red-900/40"></div>
+                <h4 class="text-lg mt-2" style="color:${dark}">&gt; ${title}</h4>
+              </article>
+            `).join("")}
+          </div>
+        </section>
+
+        <section class="mt-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+            ${["Alternative Print","PtPd","Cyanotype","Vandyke \ Brown","CYM+PTPD","Cyantoype+YMK"]
+              .map((title,i)=>`
+              <article id="exp-${i+1}">
+                <div class="aspect-[4/3] bg-neutral-900 rounded shadow-md ring-1 ring-red-900/40"></div>
+                <h4 class="text-lg mt-2" style="color:${dark}">&gt; ${title}</h4>
+              </article>
+            `).join("")}
+          </div>
+        </section>
+      </main>
+    </div>
+  `;
+</script>
+
+</body>
+</html>
