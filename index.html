@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shahaf — Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {} } }
+  </script>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+</head>
+
+<body style="background:#000; margin:0; padding:0;">
+  <div id="root"></div>
+
+  <script>
+    const e = React.createElement;
+
+    function Portfolio() {
+      const brightRed = "#ff4d4d";
+      const darkRed = "#7a0d0d";
+      const mono = "'VT323', monospace";
+
+      return e("div", {
+        style: {
+          backgroundColor: "#000",
+          color: darkRed,
+          fontFamily: mono,
+          minHeight: "100vh",
+          padding: "30px"
+        }
+      },
+        e("h1", { style: { color: brightRed, fontSize: "36px" } }, "Shahaf Galil_"),
+        e("p", null, "This is a fully working standalone HTML version."),
+        e("p", null, "You can upload this file directly to Vercel.")
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(e(Portfolio));
+  </script>
+</body>
+</html>
