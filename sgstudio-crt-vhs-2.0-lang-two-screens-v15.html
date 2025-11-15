@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shahaf — Portfolio — CRT VHS 1.9.0</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      font-family: 'VT323', monospace;
+      color: #7a0d0d;
+      overflow-x: hidden;
+    }
+
+    .scanlines-overlay {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      animation: scanShift 0.8s linear infinite;
+      opacity: 0.40;
+    }
+    @keyframes scanShift {
+      0%   { background-position: 0 0; }
+      100% { background-position: 0 4px; }
+    }
+
+    .vhs-bar {
+      pointer-events: none;
+      position: fixed;
+      left: 0;
+      width: 100%;
+      z-index: 3;
+      height: 190px;
+      top: -200vh;
+    }
+    #vhs1 { display: none; }
+
+    .crt-layer {
+      position: relative;
+      z-index: 4;
+      animation: crtFlicker 2.5s infinite steps(2, end);
+    }
+    @keyframes crtFlicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.97; }
+      100% { opacity: 1; }
+    }
+
+    /* Splash screen */
+    #splash {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .splash-inner {
+      text-align: center;
+    }
+    .splash-line {
+      opacity: 0;
+      transition: opacity 0.15s linear;
+      font-size: 2.2rem;
+    }
+    .splash-sub {
+      opacity: 0;
+      transition: opacity 0.15s linear;
+      margin-top: 0.3rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+/* Rain canvas for intro */
+    #rainCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    #splash .splash-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+        /* glitch states */
+    .gl1 { opacity: 0.2 !important; }
+    .gl2 { opacity: 0.05 !important; }
+    .gl3 { opacity: 1 !important; }
+
+    /* Language selection row */
+    #lang-row.lang-row-single {
+      margin-bottom: 1.6rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      font-size: 14px;
+      color: rgba(245,245,245,0.75);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    #lang-row .lang-option {
+      cursor: pointer;
+      padding: 0.15rem 0.5rem;
+      border-radius: 1,0,0,0.7);
+      transition: color 0.2s ease, text-shadow 0.2s ease, opacity 0.3s ease;
+    }
+    #lang-row .lang-option .lang-text {
+      color: rgba(245,245,245,0.8);
+    }
+    #lang-row .lang-option:hover .lang-text {
+      color: #ffffff;
+      text-shadow: 0 0 8px rgba(255,255,255,0.9);
+    }
+    #lang-row .lang-option.selected .lang-text {
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(255,255,255,1);
+    }
+    #lang-row .lang-option.fade-out {
+      opacity: 0;
+    }
+    #lang-row .lang-option.blink .lang-text {
+      animation: langBlink 0.8s ease-in-out 3;
+    }
+    @keyframes langBlink {
+      0%, 100% {
+        color: #ffffff;
+        text-shadow: 0 0 6px rgba(255,255,255,0.9);
+      }
+      50% {
+        color: rgba(200,200,200,0.4);
+        text-shadow: 0 0 2px rgba(0,0,0,0.6);
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div id="scanlines" class="scanlines-overlay"></div>
+  <div id="vhs1" class="vhs-bar"></div>
+  <div id="vhs2" class="vhs-bar"></div>
+
+  <div id="splash">
+    <canvas id="rainCanvas"></canvas>
+    <div class="splash-inner">
+      <div id="lang-row" class="lang-row-single">
+        <div class="lang-option lang-he" data-lang="he">
+          <span class="lang-text">להמשיך בעברית?</span>
+        </div>
+        <div class="lang-option lang-en" data-lang="en">
+          <span class="lang-text">Continue in English?</span>
+        </div>
+      </div>
+      <div id="splash-name" class="splash-line">Shahaf Galil</div>
+      <div id="splash-sub" class="splash-sub">Studio / סטודיו</div>
+    </div>
+  </div>
+
+  <div id="app" class="crt-layer"></div>
+
+<script>
+  // --- ANSI palettes (16 original + teal/orange + film LUT) ---
+  const ANSI_PALETTES = [
+    { bright:"#808080", dark:"#000000" },
+    { bright:"#ff0000", dark:"#800000" },
+    { bright:"#00ff00", dark:"#008000" },
+    { bright:"#ffff00", dark:"#808000" },
+    { bright:"#0000ff", dark:"#000080" },
+    { bright:"#ff00ff", dark:"#800080" },
+    { bright:"#00ffff", dark:"#008080" },
+    { bright:"#ffffff", dark:"#c0c0c0" },
+    { bright:"#a8a8a8", dark:"#404040" },
+    { bright:"#ff4d4d", dark:"#7a0d0d" },
+    { bright:"#66ff66", dark:"#2a7a2a" },
+    { bright:"#ffff66", dark:"#7a7a2a" },
+    { bright:"#4d4dff", dark:"#0d0d7a" },
+    { bright:"#ff4dff", dark:"#7a0d7a" },
+    { bright:"#4dffff", dark:"#0d7a7a" },
+    { bright:"#ffffff", dark:"#e5e5e5" },
+    // Teal & Orange
+    { bright:"#4deaff", dark:"#ff8c42" },
+    // Film LUT (Kodak-ish)
+    { bright:"#ffd6a5", dark:"#2a3d55" }
+  ];
+
+  function choosePalette() {
+    let idx = parseInt(localStorage.getItem("ansiPairIndex") || "0");
+    idx = (idx + 1) % ANSI_PALETTES.length;
+    localStorage.setItem("ansiPairIndex", idx);
+    return ANSI_PALETTES[idx];
+  }
+
+  const colors = choosePalette();
+  const bright = colors.bright;
+  const dark   = colors.dark;
+
+  document.body.style.color = dark;
+
+  const scanEl   = document.getElementById("scanlines");
+  const vhs2     = document.getElementById("vhs2");
+  const appEl    = document.getElementById("app");
+  const splashEl = document.getElementById("splash");
+  const splashName = document.getElementById("splash-name");
+  const splashSub  = document.getElementById("splash-sub");
+  const langRow    = document.getElementById("lang-row");
+
+  // Apply colors to splash from current palette
+  if (splashName) splashName.style.color = bright;
+  if (splashSub)  splashSub.style.color  = dark;
+
+// --- Rain intro system (splash only) ---
+  const rainCanvas = document.getElementById("rainCanvas");
+  const rainCtx = rainCanvas.getContext("2d");
+
+  const rainMaskCanvas = document.createElement("canvas");
+  const rainMaskCtx = rainMaskCanvas.getContext("2d");
+  let rainMaskData = null;
+
+  let rainDrops = [];
+  let rainSplashes = [];
+  let rainActive = true;
+  let rainShowText = false;
+  let rainMaskMode = "none";
+  let maskLang = false;
+  let maskName = false;
+  let maskSub  = false;
+
+  function hexToRgb(hex) {
+    const h = hex.replace("#", "");
+    return {
+      r: parseInt(h.substring(0, 2), 16),
+      g: parseInt(h.substring(2, 4), 16),
+      b: parseInt(h.substring(4, 6), 16),
+    };
+  }
+  const splashRGB = hexToRgb(bright);
+
+  function resizeRain() {
+    if (!rainCanvas || !rainMaskCanvas || !rainMaskCtx) return;
+
+    rainCanvas.width = window.innerWidth;
+    rainCanvas.height = window.innerHeight;
+
+    rainMaskCanvas.width = rainCanvas.width;
+    rainMaskCanvas.height = rainCanvas.height;
+
+    rainMaskCtx.clearRect(0, 0, rainMaskCanvas.width, rainMaskCanvas.height);
+
+    const canvasRect = rainCanvas.getBoundingClientRect();
+
+    // 1) mask for language row text (if visible)
+    const lr = document.getElementById("lang-row");
+    if (rainMaskMode === "lang" && lr && maskLang) {
+      const lrStyle = window.getComputedStyle(lr);
+      if (true) {
+        const spans = lr.querySelectorAll(".lang-option .lang-text");
+        spans.forEach(span => {
+          const r = span.getBoundingClientRect();
+          const cx = (r.left + r.width / 2) - canvasRect.left;
+          const cy = (r.top + r.height / 2) - canvasRect.top;
+
+          const cs = window.getComputedStyle(span);
+          const fontWeight = cs.fontWeight || "400";
+          const fontSize   = cs.fontSize   || "14px";
+          const fontFamily = cs.fontFamily || "system-ui, -apple-system, sans-serif";
+
+          rainMaskCtx.font = fontWeight + " " + fontSize + " " + fontFamily;
+          rainMaskCtx.textAlign = "center";
+          rainMaskCtx.textBaseline = "middle";
+          rainMaskCtx.fillStyle = "white";
+
+          const text = (span.textContent || "").trim();
+          if (text) {
+            rainMaskCtx.fillText(text, cx, cy);
+          }
+        });
+      }
+    }
+
+    // 2) mask for main name text
+    if (rainMaskMode === "name" && splashName && maskName) {
+      const nameStyle = window.getComputedStyle(splashName);
+      if (true) {
+        const nameRect = splashName.getBoundingClientRect();
+        const nx = (nameRect.left + nameRect.width / 2) - canvasRect.left;
+        const ny = (nameRect.top + nameRect.height / 2) - canvasRect.top;
+
+        const cs = nameStyle;
+        const fontWeight = cs.fontWeight || "700";
+        const fontSize   = cs.fontSize   || cs.fontSize || "2.2rem";
+        const fontFamily = cs.fontFamily || "system-ui, -apple-system, sans-serif";
+
+        rainMaskCtx.font = fontWeight + " " + fontSize + " " + fontFamily;
+        rainMaskCtx.textAlign = "center";
+        rainMaskCtx.textBaseline = "middle";
+        rainMaskCtx.fillStyle = "white";
+
+        const text = (splashName.textContent || "").trim();
+        if (text) {
+          rainMaskCtx.fillText(text, nx, ny);
+        }
+      }
+    }
+
+    // 3) mask for studio sub-line
+    if (rainMaskMode === "name" && splashSub && maskSub) {
+      const subStyle = window.getComputedStyle(splashSub);
+      if (true) {
+        const subRect = splashSub.getBoundingClientRect();
+        const sx = (subRect.left + subRect.width / 2) - canvasRect.left;
+        const sy = (subRect.top + subRect.height / 2) - canvasRect.top;
+
+        const cs = subStyle;
+        const fontWeight = cs.fontWeight || "700";
+        const fontSize   = cs.fontSize   || cs.fontSize || "1.1rem";
+        const fontFamily = cs.fontFamily || "system-ui, -apple-system, sans-serif";
+
+        rainMaskCtx.font = fontWeight + " " + fontSize + " " + fontFamily;
+        rainMaskCtx.textAlign = "center";
+        rainMaskCtx.textBaseline = "middle";
+        rainMaskCtx.fillStyle = "white";
+
+        const text = (splashSub.textContent || "").trim();
+        if (text) {
+          rainMaskCtx.fillText(text, sx, sy);
+        }
+      }
+    }
+
+    const img = rainMaskCtx.getImageData(0, 0, rainMaskCanvas.width, rainMaskCanvas.height);
+    rainMaskData = img.data;
+  }
+
+window.addEventListener("resize", resizeRain);
+
+  function spawnRainDrop() {
+    if (!rainCanvas) return;
+    rainDrops.push({
+      x: Math.random() * rainCanvas.width,
+      y: -150 - Math.random() * 150, // always start above screen
+      vy: 13 + (Math.random() - 0.5) * 2,
+      vx: (Math.random() - 0.5) * 0.2,
+      len: 9, // 3–5px
+      alpha: 0.85, // fairly bright
+    });
+  }
+
+  function isOnText(x, y) {
+    if (!rainShowText || !rainMaskData) return false;
+    const ix = x | 0;
+    const iy = y | 0;
+    if (ix < 0 || iy < 0 || ix >= rainMaskCanvas.width || iy >= rainMaskCanvas.height) return false;
+    const idx = (iy * rainMaskCanvas.width + ix) * 4 + 3;
+    return rainMaskData[idx] > 10;
+  }
+
+  function updateRain() {
+    if (!rainCanvas) return;
+    const target = 1600;
+    while (rainDrops.length < target) spawnRainDrop();
+
+    for (let i = rainDrops.length - 1; i >= 0; i--) {
+      const d = rainDrops[i];
+      const nx = d.x + d.vx;
+      const ny = d.y + d.vy;
+
+      if (isOnText(nx, ny)) {
+        createRainSplash(nx, ny);
+        rainDrops.splice(i, 1);
+        continue;
+      }
+
+      d.x = nx;
+      d.y = ny;
+
+      if (d.y > rainCanvas.height + 50) {
+        rainDrops.splice(i, 1);
+      }
+    }
+  }
+
+  function createRainSplash(x, y) {
+    const count = 3;
+    for (let i = 0; i < count; i++) {
+      const angle = (-Math.PI / 2) + (Math.random() - 0.5) * 1.7;
+      const speed = 6 + Math.random()*6.0;
+      rainSplashes.push({
+        x,
+        y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        radius: 1,
+        life: 5,
+      });
+    }
+  }
+
+  function updateRainSplashes() {
+    for (let i = rainSplashes.length - 1; i >= 0; i--) {
+      const s = rainSplashes[i];
+      s.x += s.vx;
+      s.y += s.vy;
+      s.vy += 0.20;
+      s.life -= 1;
+      if (s.life <= 0 || s.y > rainCanvas.height + 50) {
+        rainSplashes.splice(i, 1);
+      }
+    }
+  }
+
+  function drawRain() {
+    if (!rainCanvas) return;
+    for (const d of rainDrops) {
+      rainCtx.strokeStyle = `rgba(${splashRGB.r},${splashRGB.g},${splashRGB.b},${d.alpha})`;
+      rainCtx.lineWidth = 1;
+      rainCtx.lineCap = "round";
+      rainCtx.beginPath();
+      rainCtx.moveTo(d.x, d.y - d.len);
+      rainCtx.lineTo(d.x + 1, d.y);
+      rainCtx.stroke();
+    }
+  }
+
+  function drawRainSplashes() {
+    if (!rainCanvas) return;
+    rainCtx.fillStyle = `rgba(${splashRGB.r},${splashRGB.g},${splashRGB.b},0.95)`;
+    for (const s of rainSplashes) {
+      rainCtx.beginPath();
+      rainCtx.arc(s.x, s.y, s.radius || 3, 0, Math.PI * 2);
+      rainCtx.fill();
+    }
+  }
+
+  function rainLoop() {
+    if (!rainActive) return;
+    rainCtx.clearRect(0, 0, rainCanvas.width, rainCanvas.height);
+    updateRain();
+    updateRainSplashes();
+    drawRain();
+    drawRainSplashes();
+    requestAnimationFrame(rainLoop);
+  }
+
+  resizeRain();
+  requestAnimationFrame(rainLoop);
+
+
+  
+  // Initially hide CRT layer visuals
+  scanEl.style.display = "none";
+  vhs2.style.display   = "none";
+
+  // Scanlines pattern based on bright color
+  scanEl.style.backgroundImage = "repeating-linear-gradient(0deg," +
+    bright + "55 0px," +
+    bright + "55 2px," +
+    "transparent 2px, transparent 4px)";
+
+  // VHS gradient based on bright color
+  const centerAlpha = 0.30;
+  const softness = 1.0;
+  function alphaToHex(a) {
+    const v = Math.round(a * 255);
+    return v.toString(16).padStart(2, "0");
+  }
+  const midHex   = alphaToHex(centerAlpha);
+  const edgeAlpha= centerAlpha * (0.3 + 0.4 * (1 - softness));
+  const edgeHex  = alphaToHex(edgeAlpha);
+  const vhsGradient = "linear-gradient(to bottom," +
+    bright + "00 0%," +
+    bright + edgeHex + " 20%," +
+    bright + midHex + " 50%," +
+    bright + edgeHex + " 80%," +
+    bright + "00 100%)";
+
+  vhs2.style.background = vhsGradient;
+  vhs2.style.opacity    = 0.6;
+
+  // VHS bar motion (single, slow)
+  const totalSpanVh   = 320;
+  const durationSec   = 20;
+  const speedVhPerSec = totalSpanVh / durationSec;
+  let y2 = -120;
+  let lastTs = null;
+
+  function animate(ts) {
+    if (lastTs === null) {
+      lastTs = ts;
+      requestAnimationFrame(animate);
+      return;
+    }
+    const dt = (ts - lastTs) / 1000;
+    lastTs = ts;
+    y2 += speedVhPerSec * dt;
+    vhs2.style.top = y2 + "vh";
+    if (y2 > 200) y2 = -120;
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
+
+  // --- Glitch helper (like your approved version) ---
+  function glitchBurst(el) {
+    setTimeout(() => { el.classList.add("gl1"); }, 40);
+    setTimeout(() => { el.classList.remove("gl1"); el.classList.add("gl2"); }, 110);
+    setTimeout(() => { el.classList.remove("gl2"); el.classList.add("gl3"); }, 170);
+    setTimeout(() => { el.classList.remove("gl3"); }, 260);
+  }
+
+  // Boot sequence timing with rain intro + language screen:
+  // 0–5s  -> rain only (no text)
+  // 5.0s  -> show language selection row with glitch + enable rain collisions
+  // after click -> hide lang row, show name + studio (second screen), then fade to site
+  setTimeout(() => {
+    if (!langRow) {
+      // Fallback: behave like original sequence (no language selection)
+      rainShowText = true;
+      splashName.style.opacity = "1";
+      glitchBurst(splashName);
+      resizeRain();
+      setTimeout(() => {
+        splashSub.style.opacity = "1";
+        glitchBurst(splashSub);
+        resizeRain();
+        setTimeout(() => {
+          splashEl.style.transition = "opacity 0.7s ease-out";
+          splashEl.style.opacity = "0";
+          setTimeout(() => {
+            rainActive = false;
+            if (rainCanvas) {
+              rainCanvas.style.display = "none";
+            }
+            splashEl.style.display = "none";
+            initMainLayout();
+          }, 900);
+        }, 3000);
+      }, 900);
+      return;
+    }
+
+    // Show language row (screen 1)
+    langRow.style.opacity = "1";
+    langRow.style.pointerEvents = "auto";
+    rainMaskMode = "lang";
+    maskLang = true;
+    rainShowText = true;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        resizeRain();
+      });
+    });
+    glitchBurst(langRow);
+
+    const options = langRow.querySelectorAll(".lang-option");
+    let chosenLang = null;
+
+    options.forEach(opt => {
+      opt.addEventListener("click", () => {
+        if (chosenLang) return;
+        chosenLang = opt.dataset.lang || "en";
+
+        // visual feedback on choice
+        opt.classList.add("selected");
+        options.forEach(o => {
+          if (o !== opt) o.classList.add("fade-out");
+        });
+        opt.classList.add("blink");
+
+        setTimeout(() => {
+          // hide language row
+          langRow.style.opacity = "0";
+          langRow.style.pointerEvents = "none";
+          maskLang = false;
+          rainMaskMode = "none";
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              resizeRain();
+            });
+          });
+
+          // set name + studio based on language choice
+          if (chosenLang === "he") {
+            splashName.textContent = "שחף גליל";
+            splashSub.textContent  = "סטודיו";
+            splashName.style.direction = "rtl";
+            splashSub.style.direction  = "rtl";
+          } else {
+            splashName.textContent = "Shahaf Galil";
+            splashSub.textContent  = "Studio";
+            splashName.style.direction = "ltr";
+            splashSub.style.direction  = "ltr";
+          }
+
+          // Screen 2: show name
+          setTimeout(() => {
+            rainMaskMode = "name";
+            maskName = true;
+            maskSub = false;
+            rainShowText = true;
+            splashName.style.opacity = "1";
+            glitchBurst(splashName);
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                resizeRain();
+              });
+            });
+
+            // Then show sub line
+            setTimeout(() => {
+              splashSub.style.opacity = "1";
+              glitchBurst(splashSub);
+              maskSub = true;
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                  resizeRain();
+                });
+              });
+
+              // After a few seconds, fade out splash and load site
+              setTimeout(() => {
+                splashEl.style.transition = "opacity 0.7s ease-out";
+                splashEl.style.opacity = "0";
+                setTimeout(() => {
+                  rainActive = false;
+                  if (rainCanvas) {
+                    rainCanvas.style.display = "none";
+                  }
+                  splashEl.style.display = "none";
+                  initMainLayout();
+                }, 900);
+              }, 3000);
+            }, 900);
+          }, 900);
+        }, 900);
+      });
+    });
+  }, 5000);
+
+  // --- Main CRT layout w/ full content ---
+  function initMainLayout() {
+    scanEl.style.display = "block";
+    vhs2.style.display   = "block";
+
+    appEl.innerHTML = `
+      <div class="min-h-screen grid grid-cols-12">
+        <!-- Sidebar -->
+        <aside class="col-span-12 md:col-span-4 xl:col-span-3 p-6 md:p-8 sticky top-0 h-full md:min-h-screen">
+          <h1 class="text-3xl font-bold tracking-wider" style="color:${bright}">Shahaf Galil_</h1>
+          <p class="text-sm opacity-80" style="color:${dark}">Photography ▓ 2025</p>
+          <p class="text-xs leading-6 mt-3 opacity-80" style="color:${dark}">
+            Jerusalem-based photographer exploring staged narratives & fractured emotional structures.
+          </p>
+
+          <nav class="space-y-6 mt-10 text-xs md:text-sm">
+            <div>
+              <p class="uppercase tracking-wider text-xs opacity-80" style="color:${bright}">Projects</p>
+              <ul class="mt-2 space-y-1">
+                <!-- Active: Introduction -->
+                <li class="flex items-center">
+                  <a href="#artist-statement" class="flex items-center gap-1">
+                    <span style="color:${bright}; text-shadow:0 0 8px ${bright};">&gt;</span>
+                    <span style="color:${dark};">Introduction</span>
+                  </a>
+                </li>
+                ${["PTSD","Broken Circle","Forbidden Apple","Swan Lake","Lanjeri","12","Hachmi"]
+                  .map(t => {
+                    const id = t.replace(/\\s+/g, '-').toLowerCase();
+                    return `
+                      <li class="flex items-center">
+                        <a href="#proj-${id}" class="flex items-center gap-1">
+                          <span style="color:${dark};">&gt;</span>
+                          <span style="color:${dark};">${t}</span>
+                        </a>
+                      </li>
+                    `;
+                  }).join("")}
+              </ul>
+            </div>
+          </nav>
+        </aside>
+
+        <!-- Main content -->
+        <main class="col-span-12 md:col-span-8 xl:col-span-9 p-6 md:p-10 flex items-start justify-center">
+          <section id="artist-statement" class="max-w-3xl text-sm md:text-base leading-relaxed space-y-4 bg-black/40 border border-red-900/40 rounded-xl p-6 md:p-8 shadow-xl">
+            <h2 class="mb-4">
+              <span class="block text-xl md:text-2xl" style="color:${bright};">
+                Introduction
+              </span>
+              <span class="block text-[0.7rem] md:text-xs tracking-[0.18em] uppercase mt-1" style="color:${dark};">
+                Staged photography as narrative architecture_
+              </span>
+            </h2>
+
+            <p class="opacity-90" style="color:${dark};">
+              My work moves between staged photography and narrative construction. I begin with a clear,
+              almost self-evident impression — a scene that feels familiar, legible, even comfortable.
+              This initial clarity is intentional: it serves as an entry point, a quiet trap that invites
+              the viewer to believe they understand what they see.
+            </p>
+
+            <p class="opacity-90" style="color:${dark};">
+              But the image is built to fracture. Layer by layer, tension begins to surface: contradictions
+              between gesture and setting, between intimacy and distance, between what the frame reveals
+              and what it withholds. I construct scenes much like theatrical tableaux — meticulously arranged,
+              yet emotionally unstable — where narrative certainty gradually unravels.
+            </p>
+
+            <p class="opacity-90" style="color:${dark};">
+              For the viewer, this creates a shift from recognition to disorientation, and from disorientation
+              to a sharper awareness. The photograph becomes a site of movement: not the movement of bodies,
+              but the movement of perception. As the initial impression breaks open, the viewer is drawn into
+              an internal trajectory — a narrative arc that unfolds through doubt, suspicion, empathy, and
+              eventually a re-reading of the entire scene.
+            </p>
+
+            <p class="opacity-90" style="color:${dark};">
+              I am interested in how images accumulate meaning over time, and how emotional structures can
+              emerge not from action but from stillness. Each photograph is composed as a temporal architecture:
+              a layered moment in which memory, identity, and cultural narratives fold into one another.
+              The work often inhabits liminal spaces — both physical and psychological — where something has
+              ended but nothing fully formed has taken its place.
+            </p>
+
+            <p class="opacity-90" style="color:${dark};">
+              In this space, certainty dissolves. The viewer is asked to reconsider what they think they know,
+              to encounter the instability beneath the surface, and to sit with what remains unresolved.
+              Ultimately, the photographs aim to open a space where narrative, emotion, and perception collide —
+              revealing not a singular truth, but the tension between competing truths that coexist within
+              the same frame.
+            </p>
+          </section>
+        </main>
+      </div>
+    `;
+  }
+</script>
+</body>
+</html>
