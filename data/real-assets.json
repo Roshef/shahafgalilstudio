@@ -1,0 +1,225 @@
+{
+ "bicycles": {
+  "A": {
+   "file": "bicycles-real.jpg",
+   "w": 1080,
+   "h": 812
+  }
+ },
+ "suit": {
+  "A": {
+   "file": "suit-real.jpg",
+   "w": 1080,
+   "h": 810
+  }
+ },
+ "swan-lake": {
+  "A": {
+   "file": "swan-lake-hr.jpg",
+   "w": 3000,
+   "h": 1384,
+   "tile": "swan-lake-tile.jpg"
+  }
+ },
+ "broken-circle": {
+  "A": {
+   "file": "broken-circle-hr.jpg",
+   "w": 2200,
+   "h": 1466,
+   "tile": "broken-circle-tile.jpg"
+  }
+ },
+ "forbidden-apple": {
+  "A": {
+   "file": "forbidden-apple-hr.jpg",
+   "w": 2200,
+   "h": 1466,
+   "tile": "forbidden-apple-tile.jpg"
+  }
+ },
+ "necklace": {
+  "A": {
+   "file": "necklace-hr.jpg",
+   "w": 2200,
+   "h": 935,
+   "tile": "necklace-tile.jpg"
+  }
+ },
+ "pitch": {
+  "A": {
+   "file": "pitch-hr.jpg",
+   "w": 2200,
+   "h": 1466,
+   "tile": "pitch-tile.jpg"
+  }
+ },
+ "meetup": {
+  "A": {
+   "file": "meetup-hr.jpg",
+   "w": 2200,
+   "h": 1466,
+   "tile": "meetup-tile.jpg"
+  }
+ },
+ "deal": {
+  "A": {
+   "file": "deal-hr.jpg",
+   "w": 2200,
+   "h": 1466,
+   "tile": "deal-tile.jpg"
+  }
+ },
+ "build": {
+  "A": {
+   "file": "build-hr.jpg",
+   "w": 2200,
+   "h": 1466,
+   "tile": "build-tile.jpg"
+  }
+ },
+ "exit": {
+  "A": {
+   "file": "exit-hr.jpg",
+   "w": 2200,
+   "h": 1466,
+   "tile": "exit-tile.jpg"
+  }
+ },
+ "closing": {
+  "A": {
+   "file": "closing-hr.jpg",
+   "w": 2200,
+   "h": 1466,
+   "tile": "closing-tile.jpg"
+  }
+ },
+ "trails": {
+  "A": {
+   "file": "trails-real.jpg",
+   "w": 1080,
+   "h": 810
+  }
+ },
+ "h1900": {
+  "A": {
+   "file": "h1900-a.jpg",
+   "w": 1280,
+   "h": 853
+  },
+  "B": {
+   "file": "h1900-b.jpg",
+   "w": 1280,
+   "h": 853
+  }
+ },
+ "h2000": {
+  "A": {
+   "file": "h2000-a.jpg",
+   "w": 1280,
+   "h": 853
+  }
+ },
+ "h2100": {
+  "A": {
+   "file": "h2100-a.jpg",
+   "w": 1280,
+   "h": 853
+  },
+  "B": {
+   "file": "h2100-b.jpg",
+   "w": 1280,
+   "h": 853
+  }
+ },
+ "h2200": {
+  "A": {
+   "file": "h2200-a.jpg",
+   "w": 1280,
+   "h": 853
+  },
+  "B": {
+   "file": "h2200-b.jpg",
+   "w": 1280,
+   "h": 853
+  }
+ },
+ "h2300": {
+  "A": {
+   "file": "h2300-a.jpg",
+   "w": 1280,
+   "h": 854
+  },
+  "B": {
+   "file": "h2300-b.jpg",
+   "w": 1280,
+   "h": 853
+  }
+ },
+ "h0000": {
+  "A": {
+   "file": "h0000-a.jpg",
+   "w": 1280,
+   "h": 853
+  },
+  "B": {
+   "file": "h0000-b.jpg",
+   "w": 1280,
+   "h": 853
+  }
+ },
+ "h0100": {
+  "A": {
+   "file": "h0100-a.jpg",
+   "w": 1280,
+   "h": 853
+  },
+  "B": {
+   "file": "h0100-b.jpg",
+   "w": 1280,
+   "h": 853
+  }
+ },
+ "h0200": {
+  "A": {
+   "file": "h0200-a.jpg",
+   "w": 1280,
+   "h": 853
+  },
+  "B": {
+   "file": "h0200-b.jpg",
+   "w": 1280,
+   "h": 853
+  }
+ },
+ "h0300": {
+  "A": {
+   "file": "h0300-a.jpg",
+   "w": 1280,
+   "h": 853
+  },
+  "B": {
+   "file": "h0300-b.jpg",
+   "w": 1280,
+   "h": 853
+  }
+ },
+ "h0500": {
+  "A": {
+   "file": "h0500-a.jpg",
+   "w": 1280,
+   "h": 853
+  },
+  "B": {
+   "file": "h0500-b.jpg",
+   "w": 1280,
+   "h": 853
+  }
+ },
+ "h0700": {
+  "A": {
+   "file": "h0700-a.jpg",
+   "w": 1280,
+   "h": 853
+  }
+ }
+}

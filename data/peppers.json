@@ -1,0 +1,1279 @@
+{
+ "categoryContent": {
+  "description": {
+   "he": {
+    "intro": "תיאור גולמי של מה שיש בדימוי, ללא פרשנות. <em>מה רואים, לפני שיש משמעות.</em>",
+    "items": [
+     {
+      "meta": "חפץ",
+      "title": "הפלפל הסחוט",
+      "text": "מונח על הרצפה. הקליפה קמוטה, בשרו נחשף. נייר עטיפה לידו."
+     },
+     {
+      "meta": "אדם",
+      "title": "האישה",
+      "text": "מבוגרת, חולצה כהה, חצי פנים מוארות. ידה מושטת קדימה ומחזיקה פרי."
+     },
+     {
+      "meta": "אדם",
+      "title": "הילדה",
+      "text": "כבת שש, צמה אסופה, חולצה כהה. עומדת מול האישה, מבט מופנה אליה."
+     },
+     {
+      "meta": "מקום",
+      "title": "פינת המטבח",
+      "text": "ארון בצד, משטח עבודה, אריחי קרמיקה ישנים. אור נכנס מצד שמאל."
+     },
+     {
+      "meta": "אובייקט",
+      "title": "נייר עטיפה",
+      "text": "מקומט, מונח על הרצפה ליד הפלפל. עקבות של מה שכבר נפתח."
+     },
+     {
+      "meta": "אטמוספרה",
+      "title": "גשם בחוץ",
+      "text": "דרך החלון נראה גשם נופל. החלון רטוב. שתיקה פנימית."
+     }
+    ],
+    "hotspots": [
+     {
+      "label": "חפץ · 03",
+      "text": "פלפל סחוט מונח על הרצפה. נייר עטיפה לידו."
+     },
+     {
+      "label": "אדם · 04",
+      "text": "יד של אישה מבוגרת מושטת קדימה ומחזיקה פרי."
+     },
+     {
+      "label": "אדם · 07",
+      "text": "ילדה כבת שש, צמה, חולצה כהה, עומדת מול האישה."
+     },
+     {
+      "label": "מקום · 02",
+      "text": "פינת מטבח. ארון בצד. אור נכנס מצד שמאל."
+     }
+    ]
+   },
+   "en": {
+    "intro": "Raw description of what is in the image, without interpretation. <em>What is seen, before meaning.</em>",
+    "items": [
+     {
+      "meta": "Object",
+      "title": "The Squeezed Pepper",
+      "text": "Resting on the floor. Skin wrinkled, flesh exposed. Wrapping paper beside it."
+     },
+     {
+      "meta": "Person",
+      "title": "The Woman",
+      "text": "Older, dark shirt, half-lit face. Her hand extends forward holding a fruit."
+     },
+     {
+      "meta": "Person",
+      "title": "The Girl",
+      "text": "About six, gathered braid, dark shirt. Stands opposite the woman, gaze toward her."
+     },
+     {
+      "meta": "Place",
+      "title": "Kitchen Corner",
+      "text": "Cabinet on the side, work surface, old ceramic tiles. Light enters from the left."
+     },
+     {
+      "meta": "Object",
+      "title": "Wrapping Paper",
+      "text": "Crumpled, on the floor next to the pepper. Traces of what was already opened."
+     },
+     {
+      "meta": "Atmosphere",
+      "title": "Rain Outside",
+      "text": "Through the window, falling rain. The window is wet. An interior silence."
+     }
+    ],
+    "hotspots": [
+     {
+      "label": "Object · 03",
+      "text": "A squeezed pepper rests on the floor. Wrapping paper beside it."
+     },
+     {
+      "label": "Person · 04",
+      "text": "An older woman's hand extends forward holding a fruit."
+     },
+     {
+      "label": "Person · 07",
+      "text": "A girl about six, braid, dark shirt, stands opposite the woman."
+     },
+     {
+      "label": "Place · 02",
+      "text": "Kitchen corner. Cabinet to the side. Light enters from the left."
+     }
+    ]
+   },
+   "ar": {
+    "intro": "وصف خام لما في الصورة، بلا تفسير. <em>ما يُرى قبل أن يكون له معنى.</em>",
+    "items": [
+     {
+      "meta": "غرض",
+      "title": "الفلفل المعصور",
+      "text": "يرقد على الأرض. القشرة متغضّنة، اللب مكشوف. ورق تغليف بجانبه."
+     },
+     {
+      "meta": "شخص",
+      "title": "المرأة",
+      "text": "أكبر سنّاً، قميص داكن، نصف وجه مضاء. يدها ممتدة للأمام تمسك ثمرة."
+     },
+     {
+      "meta": "شخص",
+      "title": "الطفلة",
+      "text": "في السادسة، ضفيرة مجموعة، قميص داكن. تقف مقابل المرأة، نظرتها إليها."
+     },
+     {
+      "meta": "مكان",
+      "title": "زاوية المطبخ",
+      "text": "خزانة في الجانب، سطح عمل، بلاط سيراميك قديم. الضوء يدخل من اليسار."
+     },
+     {
+      "meta": "غرض",
+      "title": "ورق تغليف",
+      "text": "مكرمش، على الأرض بجانب الفلفل. آثار لما فُتح بالفعل."
+     },
+     {
+      "meta": "أجواء",
+      "title": "مطر في الخارج",
+      "text": "من خلال النافذة، مطر يتساقط. النافذة مبللة. صمت داخلي."
+     }
+    ],
+    "hotspots": [
+     {
+      "label": "غرض · 03",
+      "text": "فلفل معصور يرقد على الأرض. ورق تغليف بجانبه."
+     },
+     {
+      "label": "شخص · 04",
+      "text": "يد امرأة أكبر سنّاً تمتدّ إلى الأمام حاملةً ثمرة."
+     },
+     {
+      "label": "شخص · 07",
+      "text": "طفلة في السادسة، ضفيرة، قميص داكن، تقف مقابل المرأة."
+     },
+     {
+      "label": "مكان · 02",
+      "text": "زاوية مطبخ. خزانة في الجانب. ضوء يدخل من اليسار."
+     }
+    ]
+   }
+  },
+  "light": {
+   "he": {
+    "intro": "סכמת תאורה: מקורות אור, זוויות, גופי תאורה. <em>איך נבנה האור הנואר-רטוב.</em>",
+    "schemas": [
+     {
+      "num": "סכמה · 01",
+      "title": "אור צד יחיד",
+      "text": "מקור עיקרי משמאל ב-45°, soft box גדול עם חצי-CTO. חותך, לא עוטף. הצל נשאר קשה כדי לסמן שאין חזרה."
+     },
+     {
+      "num": "סכמה · 02",
+      "title": "מילוי שלילי",
+      "text": "בצד ימין flag שחור גדול שמוסיף נפח לצללים. אין הקלה. החושך נישאר חושך."
+     },
+     {
+      "num": "סכמה · 03",
+      "title": "אור חלון",
+      "text": "Stradale נמוך מאחורי החלון, סימולציה של אור גשום קר. CTB מלא. נכנס פנימה כמשטח רחב, רטוב."
+     },
+     {
+      "num": "סכמה · 04",
+      "title": "מבטא נקודתי",
+      "text": "Snoot צר מימין-מעל מאיר רק את הפלפל הסחוט על הרצפה. כמו שטף ספוט-לייט. מאפשר לאובייקט להישאר זוהר אחרי שכל השאר נכבה."
+     }
+    ],
+    "hotspots": [
+     {
+      "label": "מקור · 01",
+      "text": "soft box גדול משמאל. אור עיקרי, חותך, ב-45° מעל גובה הפנים."
+     },
+     {
+      "label": "מילוי · 02",
+      "text": "flag שחור מימין שמוסיף עומק לצללים. ללא הקלה."
+     },
+     {
+      "label": "סכמה · 03",
+      "text": "Stradale מאחורי החלון. אור גשום, רחב, רטוב."
+     },
+     {
+      "label": "מבטא · 04",
+      "text": "snoot צר על הפלפל בלבד. שומר אותו זוהר."
+     }
+    ]
+   },
+   "en": {
+    "intro": "Lighting schemas: sources, angles, fixtures. <em>How the noir-rain light was built.</em>",
+    "schemas": [
+     {
+      "num": "Scheme · 01",
+      "title": "Single Side Light",
+      "text": "Primary source from the left at 45°, large soft box with half-CTO. Cutting, not enveloping. Shadow stays hard to mark there is no return."
+     },
+     {
+      "num": "Scheme · 02",
+      "title": "Negative Fill",
+      "text": "Large black flag on the right adds volume to shadows. No relief. Darkness remains darkness."
+     },
+     {
+      "num": "Scheme · 03",
+      "title": "Window Light",
+      "text": "Stradale low behind the window simulates cold rainy light. Full CTB. Enters as a wide, wet plane."
+     },
+     {
+      "num": "Scheme · 04",
+      "title": "Point Accent",
+      "text": "Narrow snoot from upper-right lights only the squeezed pepper on the floor. Lets the object remain glowing after everything else has dimmed."
+     }
+    ],
+    "hotspots": [
+     {
+      "label": "Source · 01",
+      "text": "Large soft box from the left. Primary, cutting, at 45° above face height."
+     },
+     {
+      "label": "Fill · 02",
+      "text": "Black flag on the right adding depth to shadows. No relief."
+     },
+     {
+      "label": "Scheme · 03",
+      "text": "Stradale behind the window. Rainy light, wide, wet."
+     },
+     {
+      "label": "Accent · 04",
+      "text": "Narrow snoot on the pepper only. Keeps it glowing."
+     }
+    ]
+   },
+   "ar": {
+    "intro": "مخططات الإضاءة: المصادر، الزوايا، الأجهزة. <em>كيف بُني ضوء النوار-المطر.</em>",
+    "schemas": [
+     {
+      "num": "مخطط · 01",
+      "title": "ضوء جانبي واحد",
+      "text": "مصدر رئيسي من اليسار بزاوية 45°، صندوق ناعم كبير مع نصف CTO. قاطع، لا محيط."
+     },
+     {
+      "num": "مخطط · 02",
+      "title": "تعبئة سلبية",
+      "text": "علم أسود كبير على اليمين يضيف حجماً للظلال. لا تخفيف. الظلام يبقى ظلاماً."
+     },
+     {
+      "num": "مخطط · 03",
+      "title": "ضوء النافذة",
+      "text": "Stradale منخفض خلف النافذة يحاكي ضوء المطر البارد. CTB كامل."
+     },
+     {
+      "num": "مخطط · 04",
+      "title": "تركيز نقطي",
+      "text": "Snoot ضيق من الأعلى-اليمين يضيء الفلفل المعصور فقط. يبقيه مضيئاً."
+     }
+    ],
+    "hotspots": [
+     {
+      "label": "مصدر · 01",
+      "text": "صندوق ناعم كبير من اليسار. رئيسي، قاطع، بزاوية 45°."
+     },
+     {
+      "label": "تعبئة · 02",
+      "text": "علم أسود على اليمين يضيف عمقاً للظلال."
+     },
+     {
+      "label": "مخطط · 03",
+      "text": "Stradale خلف النافذة. ضوء مطر، واسع."
+     },
+     {
+      "label": "تركيز · 04",
+      "text": "Snoot ضيق على الفلفل فقط. يبقيه مضيئاً."
+     }
+    ]
+   }
+  },
+  "meaning": {
+   "he": {
+    "intro": "מה כל אובייקט מסמל, מה תפקידו בסיפור. <em>הקריאה הסימבולית.</em>",
+    "items": [
+     {
+      "meta": "סימבוליקה · חפץ",
+      "title": "הפלפל הסחוט",
+      "text": "שריד. סימן של מה שכבר התרחש לפני שהמסגרת התחילה. הקליפה הקמוטה היא ציר זמן הפוך.",
+      "sub": "תפקיד בסיפור: עוגן הראשון של הספק."
+     },
+     {
+      "meta": "מחווה · 04",
+      "title": "היד המושטת",
+      "text": "אינה נותנת — מציעה. ההצעה היא הבסיס למסכה של ההכלה. הילדה לא לוקחת — היא בוחנת.",
+      "sub": "תפקיד: הרגע שלפני בחירה. הסכמה עוד עומדת."
+     },
+     {
+      "meta": "תפקיד · 07",
+      "title": "הילדה",
+      "text": "נקודת המבחן. הסכמה הביתית עומדת או נופלת על האם תיקח את הפרי.",
+      "sub": "תפקיד: הצופה מזדהה איתה — מה שהיא לא רואה, גם הוא לא רואה."
+     },
+     {
+      "meta": "אטמוספרה · 02",
+      "title": "אור יחיד",
+      "text": "איום, לא חמלה. מה שמואר נחשף; מה שבצל נשאר חבוי. ההצעה לראות היא ההצעה לחשוף.",
+      "sub": "תפקיד: הצופה מבין שיש אזור שלא נראה."
+     },
+     {
+      "meta": "סימבוליקה · מקום",
+      "title": "הגבעה הצרפתית",
+      "text": "שכונת הילדות של שחף. גם פנים וגם חוץ. מי שייך פה ומי לא.",
+      "sub": "תפקיד: השאלה הפוליטית של הפריים."
+     },
+     {
+      "meta": "אובייקט · רקע",
+      "title": "נייר העטיפה",
+      "text": "משהו נפתח כבר. אין יותר אריזה. החפצים על הרצפה הם תוצאה.",
+      "sub": "תפקיד: סימן של מה שלא יחזור."
+     }
+    ],
+    "hotspots": [
+     {
+      "label": "סימבוליקה · 03",
+      "text": "הפלפל הוא שריד. סימן של מה שכבר התרחש לפני שהמסגרת התחילה."
+     },
+     {
+      "label": "מחווה · 04",
+      "text": "היד אינה נותנת — היא מציעה. ההצעה היא בסיס למסכה של ההכלה."
+     },
+     {
+      "label": "תפקיד בסיפור · 07",
+      "text": "הילדה היא נקודת המבחן. הסכמה הביתית עומדת או נופלת על אם תיקח."
+     },
+     {
+      "label": "אטמוספרה · 02",
+      "text": "האור מצד אחד הוא איום. מה שמואר נחשף, מה שבצל נשאר חבוי."
+     }
+    ]
+   },
+   "en": {
+    "intro": "What each object symbolizes, its role in the story. <em>The symbolic reading.</em>",
+    "items": [
+     {
+      "meta": "Symbolism · Object",
+      "title": "The Squeezed Pepper",
+      "text": "A remnant. A sign of what already happened before the frame began. The wrinkled skin is reversed time.",
+      "sub": "Role: the first anchor of doubt."
+     },
+     {
+      "meta": "Gesture · 04",
+      "title": "The Extended Hand",
+      "text": "Does not give — offers. The offering is the foundation of the mask of inclusion. The girl does not take — examines.",
+      "sub": "Role: the moment before choice. The schema still stands."
+     },
+     {
+      "meta": "Role · 07",
+      "title": "The Girl",
+      "text": "The test point. The domestic schema stands or falls on whether she takes the fruit.",
+      "sub": "Role: the viewer identifies with her — what she does not see, neither does the viewer."
+     },
+     {
+      "meta": "Atmosphere · 02",
+      "title": "Single Light",
+      "text": "Threat, not compassion. What is illuminated is exposed; what is in shadow remains hidden. To see is to expose.",
+      "sub": "Role: the viewer realizes there is an unseen area."
+     },
+     {
+      "meta": "Symbolism · Place",
+      "title": "French Hill",
+      "text": "Shahaf's childhood neighborhood. Both inside and outside. Who belongs and who does not.",
+      "sub": "Role: the political question of the frame."
+     },
+     {
+      "meta": "Object · Background",
+      "title": "Wrapping Paper",
+      "text": "Something has already been opened. No more packaging. The objects on the floor are a result.",
+      "sub": "Role: a sign of what will not return."
+     }
+    ],
+    "hotspots": [
+     {
+      "label": "Symbolism · 03",
+      "text": "The pepper is a remnant. A sign of what already happened before the frame began."
+     },
+     {
+      "label": "Gesture · 04",
+      "text": "The hand does not give — it offers. The offering is the foundation of inclusion's mask."
+     },
+     {
+      "label": "Story Role · 07",
+      "text": "The girl is the test point. The schema stands or falls on whether she takes."
+     },
+     {
+      "label": "Atmosphere · 02",
+      "text": "Light from one side is a threat. What is illuminated is exposed; what stays in shadow remains hidden."
+     }
+    ]
+   },
+   "ar": {
+    "intro": "ما يرمز إليه كل غرض، دوره في الحكاية. <em>القراءة الرمزية.</em>",
+    "items": [
+     {
+      "meta": "رمز · غرض",
+      "title": "الفلفل المعصور",
+      "text": "بقيّة. علامة على ما حدث قبل الإطار. القشرة المتغضنة هي زمن معكوس.",
+      "sub": "الدور: المرسى الأول للشك."
+     },
+     {
+      "meta": "إيماءة · 04",
+      "title": "اليد الممدودة",
+      "text": "لا تعطي — تعرض. العرض أساس قناع الاستيعاب. الطفلة لا تأخذ — تفحص.",
+      "sub": "الدور: لحظة قبل الاختيار."
+     },
+     {
+      "meta": "دور · 07",
+      "title": "الطفلة",
+      "text": "نقطة الاختبار. المخطط المنزلي يصمد أو ينهار حسب أخذها.",
+      "sub": "الدور: المشاهد يتماهى معها."
+     },
+     {
+      "meta": "أجواء · 02",
+      "title": "ضوء واحد",
+      "text": "تهديد، لا رحمة. ما يُضاء يُكشف؛ ما في الظل يبقى خفياً.",
+      "sub": "الدور: المشاهد يدرك وجود منطقة غير مرئية."
+     },
+     {
+      "meta": "رمز · مكان",
+      "title": "التلة الفرنسية",
+      "text": "حي الطفولة لشحاف. داخل وخارج معاً. من ينتمي ومن لا.",
+      "sub": "الدور: السؤال السياسي للإطار."
+     },
+     {
+      "meta": "غرض · خلفية",
+      "title": "ورق التغليف",
+      "text": "شيء فُتح بالفعل. لا غلاف بعد. الأشياء على الأرض نتيجة.",
+      "sub": "الدور: علامة لما لن يعود."
+     }
+    ],
+    "hotspots": [
+     {
+      "label": "رمزية · 03",
+      "text": "الفلفل بقيّة. علامة على ما حدث قبل أن يبدأ الإطار."
+     },
+     {
+      "label": "إيماءة · 04",
+      "text": "اليد لا تعطي — تعرض. العرض هو أساس قناع الاستيعاب."
+     },
+     {
+      "label": "دور في الحكاية · 07",
+      "text": "الطفلة هي نقطة الاختبار. المخطط يصمد أو ينهار حسب أخذها."
+     },
+     {
+      "label": "أجواء · 02",
+      "text": "الضوء من جهة واحدة تهديد. ما يُضاء يُكشف، وما يبقى في الظل يبقى خفياً."
+     }
+    ]
+   }
+  },
+  "layers": {
+   "he": {
+    "intro": "שבע השכבות של הקריאה. <em>כל אחת הופכת את הקודמת. בסוף — התרוקנות.</em>",
+    "items": [
+     {
+      "meta": "01",
+      "title": "סכימה ביתית",
+      "text": "המסגרת הראשונית: אישה, ילדה, מטבח, פרי. הצופה משלים את התמונה לכדי \"אם ובת\"."
+     },
+     {
+      "meta": "02",
+      "title": "אור יחיד",
+      "text": "מקור אור אחד מצד שמאל. החותך, לא העוטף. מסמן שאין חזרה."
+     },
+     {
+      "meta": "03",
+      "title": "האובייקטים על הרצפה",
+      "text": "פלפל סחוט, נייר עטיפה. ציר זמן הפוך — מה שכבר לא יחזור."
+     },
+     {
+      "meta": "04",
+      "title": "המחווה",
+      "text": "היד המושטת. הילדה לא לוקחת — היא בוחנת. הספק כבר נכנס למסגרת."
+     },
+     {
+      "meta": "05",
+      "title": "המבט המסיט",
+      "text": "האישה מסתכלת לכיוון אחר. לא לעבר הילדה. שבירת הציפייה הראשונה."
+     },
+     {
+      "meta": "06",
+      "title": "המסכה הפוליטית",
+      "text": "הקריאה השכונתית — הגבעה הצרפתית של הילדות. הוצאה והכלה."
+     },
+     {
+      "meta": "07",
+      "title": "הסכימה הכוזבת",
+      "text": "השכבה הסופית: היא לא האם. כל מה שנבנה מתפרק אחורה. התרוקנות."
+     }
+    ],
+    "hotspots": [
+     {
+      "label": "שכבה · 03",
+      "text": "האובייקטים על הרצפה. ציר זמן הפוך — מה שכבר לא יחזור."
+     },
+     {
+      "label": "שכבה · 04",
+      "text": "המחווה. הילדה לא לוקחת — היא בוחנת. הספק כבר נכנס למסגרת."
+     },
+     {
+      "label": "שכבה · 07",
+      "text": "הסכימה הכוזבת. היא לא האם. כל מה שנבנה מתפרק אחורה."
+     },
+     {
+      "label": "שכבה · 02",
+      "text": "אור יחיד. החותך, לא העוטף. מסמן שאין חזרה."
+     }
+    ]
+   },
+   "en": {
+    "intro": "The seven layers of reading. <em>Each one inverts the previous. In the end — emptiness.</em>",
+    "items": [
+     {
+      "meta": "01",
+      "title": "Domestic Schema",
+      "text": "Initial framing: woman, girl, kitchen, fruit. The viewer completes the image as \"mother and daughter\"."
+     },
+     {
+      "meta": "02",
+      "title": "Single Light",
+      "text": "One light source from the left. Cutting, not enveloping. Marks no return."
+     },
+     {
+      "meta": "03",
+      "title": "Objects on the Floor",
+      "text": "A squeezed pepper, wrapping paper. Reverse timeline — what will not return."
+     },
+     {
+      "meta": "04",
+      "title": "The Gesture",
+      "text": "Extended hand. The girl does not take — she examines. Doubt has entered the frame."
+     },
+     {
+      "meta": "05",
+      "title": "The Diverting Gaze",
+      "text": "The woman looks elsewhere. Not toward the girl. First break of expectation."
+     },
+     {
+      "meta": "06",
+      "title": "The Political Mask",
+      "text": "Neighborhood reading — French Hill of childhood. Inclusion and exclusion."
+     },
+     {
+      "meta": "07",
+      "title": "The False Schema",
+      "text": "Final layer: she is not the mother. All built unravels backwards. Emptiness."
+     }
+    ],
+    "hotspots": [
+     {
+      "label": "Layer · 03",
+      "text": "Objects on the floor. Reverse timeline — what will not return."
+     },
+     {
+      "label": "Layer · 04",
+      "text": "The gesture. The girl does not take — examines. Doubt has entered."
+     },
+     {
+      "label": "Layer · 07",
+      "text": "The false schema. She is not the mother. All built unravels backwards."
+     },
+     {
+      "label": "Layer · 02",
+      "text": "Single light. Cutting, not enveloping. Marks no return."
+     }
+    ]
+   },
+   "ar": {
+    "intro": "الطبقات السبع للقراءة. <em>كلّ منها تقلب التي قبلها. في النهاية — فراغ.</em>",
+    "items": [
+     {
+      "meta": "01",
+      "title": "المخطط المنزلي",
+      "text": "الإطار الأوّلي: امرأة، طفلة، مطبخ، ثمرة. يكمل المشاهد الصورة كـ\"أم وابنة\"."
+     },
+     {
+      "meta": "02",
+      "title": "ضوء واحد",
+      "text": "مصدر ضوء واحد من اليسار. قاطع، لا محيط. يدلّ على أن لا عودة."
+     },
+     {
+      "meta": "03",
+      "title": "أشياء على الأرض",
+      "text": "فلفل معصور، ورق تغليف. زمن معكوس — ما لن يعود."
+     },
+     {
+      "meta": "04",
+      "title": "الإيماءة",
+      "text": "يد ممدودة. الطفلة لا تأخذ — تفحص. دخل الشك إلى الإطار."
+     },
+     {
+      "meta": "05",
+      "title": "النظرة الصارفة",
+      "text": "المرأة تنظر إلى مكان آخر. ليس نحو الطفلة. كسر التوقع الأول."
+     },
+     {
+      "meta": "06",
+      "title": "القناع السياسي",
+      "text": "القراءة الحيّية — التلة الفرنسية في الطفولة. إدراج وإقصاء."
+     },
+     {
+      "meta": "07",
+      "title": "المخطط الزائف",
+      "text": "الطبقة النهائية: ليست الأم. كل ما بُني ينهار للوراء. فراغ."
+     }
+    ],
+    "hotspots": [
+     {
+      "label": "طبقة · 03",
+      "text": "الأشياء على الأرض. زمن معكوس — ما لن يعود."
+     },
+     {
+      "label": "طبقة · 04",
+      "text": "الإيماءة. الطفلة لا تأخذ — تفحص. دخل الشك."
+     },
+     {
+      "label": "طبقة · 07",
+      "text": "المخطط الزائف. ليست الأم. كل ما بُني ينهار."
+     },
+     {
+      "label": "طبقة · 02",
+      "text": "ضوء واحد. قاطع، لا محيط. يدلّ على أن لا عودة."
+     }
+    ]
+   }
+  },
+  "path": {
+   "he": {
+    "intro": "מסלול העין: איך הצופה מובל מנקודת עיגון לשבירת הסכמה. <em>gist → schema → התרוקנות.</em>",
+    "stops": [
+     {
+      "num": "תחנה · 1",
+      "title": "נקודת עיגון: הילדה",
+      "text": "הצופה מתחיל פה. דמות במרכז, פנים מוארות, מבט מופנה. ה-gist הראשוני: \"סצנה ביתית\"."
+     },
+     {
+      "num": "תחנה · 2",
+      "title": "היד המושטת",
+      "text": "העין נעה ימינה אל היד שמחזיקה את הפרי. ציפייה למסירה. הסכמה \"אם ובת\" מתחזקת."
+     },
+     {
+      "num": "תחנה · 3",
+      "title": "הפלפל על הרצפה",
+      "text": "משיכה כלפי מטה. שבירה ראשונה — משהו לא מסתדר. למה פלפל סחוט שוכב על הרצפה?"
+     },
+     {
+      "num": "תחנה · 4",
+      "title": "חזרה לאישה — גילוי",
+      "text": "העין חוזרת אל פני האישה. עכשיו רואים שזו לא האם. הסכמה קורסת. התרוקנות."
+     }
+    ],
+    "hotspots": [
+     {
+      "label": "תחנה · 1",
+      "text": "נקודת עיגון: הילדה במרכז. הצופה מתחיל פה."
+     },
+     {
+      "label": "תחנה · 2",
+      "text": "העין נעה ליד המושטת. ציפייה למסירה."
+     },
+     {
+      "label": "תחנה · 3",
+      "text": "הפלפל על הרצפה. שבירה ראשונה — משהו לא מסתדר."
+     },
+     {
+      "label": "תחנה · 4",
+      "text": "חזרה לאישה. גילוי שזו לא האם. התרוקנות."
+     }
+    ]
+   },
+   "en": {
+    "intro": "The eye path: how the viewer is led from anchor to schema break. <em>gist → schema → emptiness.</em>",
+    "stops": [
+     {
+      "num": "Stop · 1",
+      "title": "Anchor: The Girl",
+      "text": "Viewer begins here. Central figure, lit face, directed gaze. Initial gist: \"domestic scene\"."
+     },
+     {
+      "num": "Stop · 2",
+      "title": "The Extended Hand",
+      "text": "Eye moves right to the hand holding the fruit. Expectation of transfer. The \"mother-daughter\" schema strengthens."
+     },
+     {
+      "num": "Stop · 3",
+      "title": "The Pepper on the Floor",
+      "text": "Pull downward. First break — something does not align. Why is a squeezed pepper lying on the floor?"
+     },
+     {
+      "num": "Stop · 4",
+      "title": "Return to the Woman — Reveal",
+      "text": "Eye returns to the woman's face. Now we see — she is not the mother. Schema collapses. Emptiness."
+     }
+    ],
+    "hotspots": [
+     {
+      "label": "Stop · 1",
+      "text": "Anchor point: the girl at center. The viewer begins here."
+     },
+     {
+      "label": "Stop · 2",
+      "text": "The eye moves to the extended hand. Expectation of a transfer."
+     },
+     {
+      "label": "Stop · 3",
+      "text": "The pepper on the floor. First break — something does not align."
+     },
+     {
+      "label": "Stop · 4",
+      "text": "Return to the woman. Discovery she is not the mother. Emptying."
+     }
+    ]
+   },
+   "ar": {
+    "intro": "مسار النظر: كيف يُقاد المشاهد من الارتكاز إلى كسر المخطط. <em>الجوهر → المخطط → الفراغ.</em>",
+    "stops": [
+     {
+      "num": "محطة · 1",
+      "title": "ارتكاز: الطفلة",
+      "text": "يبدأ المشاهد هنا. شخصية مركزية، وجه مضاء، نظرة موجهة. الجوهر الأولي: \"مشهد منزلي\"."
+     },
+     {
+      "num": "محطة · 2",
+      "title": "اليد الممدودة",
+      "text": "تتحرك العين يميناً نحو اليد الممسكة بالثمرة. توقع للتسليم. يقوى مخطط \"أم وابنة\"."
+     },
+     {
+      "num": "محطة · 3",
+      "title": "الفلفل على الأرض",
+      "text": "سحب نحو الأسفل. كسر أول — شيء لا يستقيم. لماذا يرقد فلفل معصور على الأرض؟"
+     },
+     {
+      "num": "محطة · 4",
+      "title": "العودة إلى المرأة — كشف",
+      "text": "تعود العين إلى وجه المرأة. الآن نرى — ليست الأم. المخطط ينهار. الفراغ."
+     }
+    ],
+    "hotspots": [
+     {
+      "label": "محطة · 1",
+      "text": "نقطة الارتكاز: الطفلة في المنتصف. هنا يبدأ المشاهد."
+     },
+     {
+      "label": "محطة · 2",
+      "text": "تتحرّك العين نحو اليد الممدودة. توقّع للتسليم."
+     },
+     {
+      "label": "محطة · 3",
+      "text": "الفلفل على الأرض. كسر أول — شيء لا يستقيم."
+     },
+     {
+      "label": "محطة · 4",
+      "text": "العودة إلى المرأة. اكتشاف أنها ليست الأم. الإفراغ."
+     }
+    ]
+   }
+  }
+ },
+ "objectData": [
+  {
+   "id": "figure",
+   "x": 71,
+   "y": 60,
+   "labelOffset": {
+    "dx": 80,
+    "dy": -40
+   },
+   "small": false,
+   "name": {
+    "he": "הדמות",
+    "en": "The Figure",
+    "ar": "الشخصية"
+   },
+   "category": {
+    "description": {
+     "he": "איש מבוגר עומד מתחת לפנס רחוב, מחזיק משהו בידו המושטת.",
+     "en": "An older man stands beneath a streetlamp, holding something in his outstretched hand.",
+     "ar": "رجل أكبر سنّاً يقف تحت مصباح الشارع، يمسك بشيء في يده الممتدة."
+    },
+    "meaning": {
+     "he": "דמות העד / המציע. עומד בגבול בין המוכר לזר.",
+     "en": "The witness / the offerer. Stands at the border between familiar and stranger.",
+     "ar": "شخصية الشاهد / العارض. يقف على الحدود بين المألوف والغريب."
+    },
+    "layers": {
+     "he": "נקודת עיגון ראשונה. הצופה מתחיל פה — דמות מוארת בלילה רטוב.",
+     "en": "First anchor point. The viewer begins here — a lit figure on a wet night.",
+     "ar": "نقطة الارتكاز الأولى. يبدأ المشاهد هنا — شخصية مضاءة في ليلة ممطرة."
+    },
+    "path": {
+     "he": "תחנה 1 — הצופה מזהה את הדמות במרכז המסגרת.",
+     "en": "Stop 1 — the viewer identifies the figure at the frame's center.",
+     "ar": "محطة 1 — يميّز المشاهد الشخصية في مركز الإطار."
+    },
+    "light": {
+     "he": "מואר ישירות מהפנס מעל. הפנים בצל חלקי. אור עליון חותך.",
+     "en": "Lit directly by the lamp above. Face in partial shadow. Cutting top-light.",
+     "ar": "مضاء مباشرة من المصباح فوقه. الوجه في ظل جزئي. ضوء علوي قاطع."
+    }
+   }
+  },
+  {
+   "id": "lamp",
+   "x": 53,
+   "y": 35,
+   "labelOffset": {
+    "dx": -90,
+    "dy": -30
+   },
+   "small": false,
+   "name": {
+    "he": "הפנס",
+    "en": "The Streetlamp",
+    "ar": "مصباح الشارع"
+   },
+   "category": {
+    "description": {
+     "he": "פנס רחוב הולוגן בודד מאיר את שלולית הגשם תחתיו.",
+     "en": "A single halogen streetlamp lights the puddle of rain beneath it.",
+     "ar": "مصباح شارع هالوجين منفرد يضيء بركة المطر تحته."
+    },
+    "meaning": {
+     "he": "מקור האור היחיד. סמן הציר שמסביבו הסצנה מאורגנת.",
+     "en": "The single light source. The pivot around which the scene is organized.",
+     "ar": "مصدر الضوء الوحيد. المحور الذي تنتظم حوله الصورة."
+    },
+    "layers": {
+     "he": "מבנה האור — חותך, נקודתי, ללא הקלה. מסמן שאין חזרה.",
+     "en": "The structure of light — cutting, point-source, no relief. Marks no return.",
+     "ar": "بنية الضوء — قاطع، نقطي، بلا تخفيف. يدلّ على أن لا عودة."
+    },
+    "path": {
+     "he": "תחנה 2 — העין נעה אל מקור האור, מבינה את ההיגיון של הסצנה.",
+     "en": "Stop 2 — the eye moves to the light source, understanding the scene's logic.",
+     "ar": "محطة 2 — تتحرك العين نحو مصدر الضوء، فاهمة منطق المشهد."
+    },
+    "light": {
+     "he": "מקור עיקרי — פנס רחוב הולוגן, ~3000K, גבוה (5מ'), חודר את הגשם.",
+     "en": "Primary source — halogen streetlamp, ~3000K, high (5m), penetrating the rain.",
+     "ar": "مصدر رئيسي — مصباح هالوجين، ~3000K، عالٍ (5م)، يخترق المطر."
+    }
+   }
+  },
+  {
+   "id": "pepper",
+   "x": 65,
+   "y": 78,
+   "labelOffset": {
+    "dx": 100,
+    "dy": 50
+   },
+   "small": true,
+   "name": {
+    "he": "הפלפל",
+    "en": "The Pepper",
+    "ar": "الفلفل"
+   },
+   "category": {
+    "description": {
+     "he": "פלפל סחוט מונח על האספלט הרטוב ליד רגלי הדמות.",
+     "en": "A squeezed pepper rests on the wet asphalt near the figure's feet.",
+     "ar": "فلفل معصور يرقد على الإسفلت المبلل قرب قدمي الشخصية."
+    },
+    "meaning": {
+     "he": "שריד. סימן של מה שכבר התרחש לפני שהמסגרת התחילה.",
+     "en": "A remnant. A sign of what already happened before the frame began.",
+     "ar": "بقيّة. علامة على ما حدث قبل أن يبدأ الإطار."
+    },
+    "layers": {
+     "he": "אובייקט-זמן הפוך. רובד 03 — המוצא הראשון לשבירת הסכמה.",
+     "en": "Reverse-time object. Layer 03 — the first cue for schema-break.",
+     "ar": "غرض الزمن المعكوس. الطبقة 03 — أول إشارة لكسر المخطط."
+    },
+    "path": {
+     "he": "תחנה 3 — שבירה ראשונה. למה זה מונח שם?",
+     "en": "Stop 3 — first break. Why is it lying there?",
+     "ar": "محطة 3 — كسر أول. لماذا يرقد هناك؟"
+    },
+    "light": {
+     "he": "מואר באלכסון מהפנס. בוהק רטוב משטח האספלט מסביבו.",
+     "en": "Lit diagonally from the lamp. Wet asphalt highlights surround it.",
+     "ar": "مضاء قطرياً من المصباح. لمعان مبلل من الإسفلت يحيط به."
+    }
+   }
+  },
+  {
+   "id": "bench",
+   "x": 75,
+   "y": 84,
+   "labelOffset": {
+    "dx": 120,
+    "dy": 20
+   },
+   "small": false,
+   "name": {
+    "he": "הספסל",
+    "en": "The Bench",
+    "ar": "المقعد"
+   },
+   "category": {
+    "description": {
+     "he": "ספסל ציבורי ריק עם משענת. רטוב מגשם.",
+     "en": "An empty public bench with a backrest. Wet from the rain.",
+     "ar": "مقعد عامّ فارغ بمسند. مبلل من المطر."
+    },
+    "meaning": {
+     "he": "סמן של היעדרות. מקום לישיבה שאין בו יושב.",
+     "en": "A sign of absence. A place to sit, with no one sitting.",
+     "ar": "علامة الغياب. مكان للجلوس بلا جالس."
+    },
+    "layers": {
+     "he": "רקע אזרחי. רובד 06 — סמן של השכונה כמרחב משותף-אך-ריק.",
+     "en": "Civic background. Layer 06 — sign of the neighborhood as shared-yet-empty space.",
+     "ar": "خلفية مدنية. الطبقة 06 — علامة الحيّ كفضاء مشترك-فارغ."
+    },
+    "path": null,
+    "light": {
+     "he": "בצל. רק קווי בוהק עדינים על המתכת מהפנס הרחוק.",
+     "en": "In shadow. Only faint highlights on the metal from the distant lamp.",
+     "ar": "في الظل. فقط لمعان خافت على المعدن من المصباح البعيد."
+    }
+   }
+  },
+  {
+   "id": "cars",
+   "x": 30,
+   "y": 65,
+   "labelOffset": {
+    "dx": -120,
+    "dy": 0
+   },
+   "small": false,
+   "name": {
+    "he": "הרכבים",
+    "en": "The Cars",
+    "ar": "السيارات"
+   },
+   "category": {
+    "description": {
+     "he": "שני רכבים חונים על שולי הכביש, רטובים, חלקם משתקפים.",
+     "en": "Two cars parked on the roadside, wet, partially reflective.",
+     "ar": "سيارتان متوقفتان على حافة الطريق، مبللتان، تعكسان جزئياً."
+    },
+    "meaning": {
+     "he": "נוכחות חיים אזרחיים — אבל ריק. אנשים שלא נמצאים.",
+     "en": "Civic presence — but empty. People who are not there.",
+     "ar": "حضور مدني — لكن فارغ. أناس ليسوا هنا."
+    },
+    "layers": {
+     "he": "מסגור פוליטי. השכונה כשטח של רכוש פרטי בלילה.",
+     "en": "Political framing. The neighborhood as private-property territory at night.",
+     "ar": "تأطير سياسي. الحيّ كأرض ملكية خاصة في الليل."
+    },
+    "path": null,
+    "light": {
+     "he": "משתקפים את אור הפנס בצורה רטובה. מסגור צד שמאל של הפריים.",
+     "en": "Reflect lamp light in a wet manner. Frame the left side of the image.",
+     "ar": "تعكس ضوء المصباح بشكل مبلل. تؤطر الجانب الأيسر للصورة."
+    }
+   }
+  },
+  {
+   "id": "tree",
+   "x": 50,
+   "y": 25,
+   "labelOffset": {
+    "dx": -100,
+    "dy": -50
+   },
+   "small": false,
+   "name": {
+    "he": "העץ העקום",
+    "en": "The Crooked Tree",
+    "ar": "الشجرة المعوجّة"
+   },
+   "category": {
+    "description": {
+     "he": "עץ במרכז הפריים, ענפיו עקומים מהרוח, גזעו מתפצל.",
+     "en": "A tree at the frame's center, branches bent by wind, trunk forked.",
+     "ar": "شجرة في مركز الإطار، فروعها معوّجة من الريح، جذعها متشعّب."
+    },
+    "meaning": {
+     "he": "שם הסדרה. צורה שעוצבה על ידי כוח חיצוני, לא פגומה — מובחנת.",
+     "en": "The series' namesake. A form shaped by external force — not flawed, but distinct.",
+     "ar": "الاسم الذي تحمله السلسلة. شكل صاغته قوة خارجية — ليس معطوباً، بل متميّزاً."
+    },
+    "layers": {
+     "he": "מטאפורה ראשית של כל הסדרה. עץ שצמח לתוך הצורה שלו.",
+     "en": "Primary metaphor of the series. A tree that grew into its form.",
+     "ar": "استعارة أساسية للسلسلة. شجرة نمت إلى شكلها."
+    },
+    "path": null,
+    "light": {
+     "he": "בצל מהפנס, מואר רק מאחור על ידי אורות רחוקים. צללית.",
+     "en": "Shadowed from the lamp, lit only from behind by distant lights. Silhouette.",
+     "ar": "مظلّلة من المصباح، مضاءة فقط من الخلف بأضواء بعيدة. ظل."
+    }
+   }
+  }
+ ],
+ "translations": {
+  "he": {
+   "dir": "rtl",
+   "back": "← חזרה לעבודות",
+   "navCounter": "02 / 06 · פלפלים",
+   "summary": "רגע ביתי שגרתי בגבעה הצרפתית. אם מושיטה פרי לילדה. בשכבה השביעית מתברר שהיא לא האם, ושכל הסכימה הביתית שנבנתה מהפריים הראשון הייתה כוזבת. הפלפלים נשארים על הרצפה אחרי שהבית כבר התרוקן.",
+   "expand": "הרחבה — שכבות ומסמך בנייה",
+   "collapse": "סגור",
+   "sectionLayers": "שבע שכבות",
+   "sectionConstruction": "מסמך בנייה",
+   "readFull": "קרא את הניתוח המלא",
+   "imageHint": "העבר את העכבר על הדימוי לחשיפת השכבות",
+   "otherWorks": "עבודות נוספות",
+   "scrollHint": "גלול ←",
+   "ctaInquire": "פנייה",
+   "ctaInquireDesc": "לאספנים, אוצרים, גלריות, עיתונות וכל מי שרוצה ליצור קשר על העבודה.",
+   "ctaInquireAction": "המשך ←",
+   "ctaAsk": "שאלה לאמן",
+   "ctaAskDesc": "ערוץ דיסקורד פתוח לעבודה הזו. שאל על הבנייה, על השכבות, על ההחלטות.",
+   "ctaAskAction": "פתח דיסקורד ←",
+   "ctaJoin": "הצטרפות",
+   "ctaJoinDesc": "הירשם כדי לסמן בלייק, לשתף ולהגיב. תגובות מאושרות ידנית.",
+   "ctaJoinAction": "הרשמה ←",
+   "footerJournal": "יומן הפרויקט",
+   "footerJournalText": "תיעוד התהליך, סיפורים מהשטח, התלבטויות והחלטות שעוד מתהוות. ניוזלטר ב-Substack.",
+   "footerSubscribe": "הירשם →",
+   "footerWork": "העבודה",
+   "footerLink_allImages": "כל הדימויים",
+   "footerLink_about": "על הפרויקט",
+   "footerLink_emptiness": "בניית התרוקנות",
+   "footerFollow": "המשך",
+   "footerLink_fb": "פייסבוק",
+   "footerLink_ig": "אינסטגרם",
+   "footerLink_dc": "דיסקורד",
+   "layer1": "סכימה ביתית",
+   "layer1desc": "המסגרת הראשונית: אישה, ילדה, מטבח, פרי. הצופה משלים את התמונה לכדי \"אם ובת\".",
+   "layer2": "אור יחיד",
+   "layer2desc": "מקור אור אחד מצד שמאל. החותך, לא העוטף. מסמן שאין חזרה.",
+   "layer3": "האובייקטים על הרצפה",
+   "layer3desc": "פלפל סחוט, נייר עטיפה. ציר זמן הפוך — מה שכבר לא יחזור.",
+   "layer4": "המחווה",
+   "layer4desc": "היד המושטת. הילדה לא לוקחת — היא בוחנת. הספק כבר נכנס למסגרת.",
+   "layer5": "המבט המסיט",
+   "layer5desc": "האישה מסתכלת לכיוון אחר. לא לעבר הילדה. שבירת הציפייה הראשונה.",
+   "layer6": "המסכה הפוליטית",
+   "layer6desc": "הקריאה השכונתית — הגבעה הצרפתית של הילדות. הוצאה והכלה.",
+   "layer7": "הסכימה הכוזבת",
+   "layer7desc": "השכבה הסופית: היא לא האם. כל מה שנבנה מתפרק אחורה. התרוקנות.",
+   "work01": "תריסים",
+   "work01en": "Shutters",
+   "work02": "פלפלים",
+   "work02en": "Peppers",
+   "work03": "שבילים",
+   "work03en": "Trails",
+   "work04": "חליפה",
+   "work04en": "Suit",
+   "work05": "[שם 5]",
+   "work05en": "[Name 5]",
+   "work06": "[שם 6]",
+   "work06en": "[Name 6]",
+   "currentLabel": "נוכחי",
+   "catDescription": "תיאור",
+   "catDescriptionEn": "Description",
+   "catLight": "אור",
+   "catLightEn": "Light",
+   "catMeaning": "משמעות",
+   "catMeaningEn": "Meaning",
+   "catLayers": "רבדים",
+   "catLayersEn": "Layers",
+   "catPath": "מסלול הולכה",
+   "catPathEn": "Eye Path",
+   "hotspot1label": "אובייקט · 03",
+   "hotspot1text": "הפלפל הסחוט. נשאר על הרצפה כשבית כבר יצא מהמסגרת.",
+   "hotspot2label": "מחווה · 04",
+   "hotspot2text": "היד שמושטת לפרי. בשכבה השביעית נחשף שזו לא יד האם.",
+   "hotspot3label": "סכמה · 07",
+   "hotspot3text": "הסכימה הביתית הייתה כוזבת מההתחלה. כל מה שראית מתפרק אחורה.",
+   "hotspot4label": "אור · 02",
+   "hotspot4text": "האור נכנס מצד יחיד. הצל החתוך מסמן שלא תהיה חזרה.",
+   "railTitle": "כותרת",
+   "railImage": "דימוי",
+   "railLayers": "שכבות",
+   "railConstruction": "בנייה",
+   "railActions": "פעולות"
+  },
+  "en": {
+   "dir": "ltr",
+   "back": "← Back to works",
+   "navCounter": "02 / 06 · Peppers",
+   "summary": "A mundane domestic moment in French Hill. A mother hands fruit to a girl. In the seventh layer it is revealed that she is not the mother, and that the entire domestic schema built from the first frame was false. The peppers remain on the floor after the house has already emptied.",
+   "expand": "Expand — Layers & Construction Document",
+   "collapse": "Close",
+   "sectionLayers": "Seven Layers",
+   "sectionConstruction": "Construction Document",
+   "readFull": "Read the full analysis",
+   "imageHint": "Hover over the image to reveal the layers",
+   "otherWorks": "Other Works",
+   "scrollHint": "Scroll →",
+   "ctaInquire": "Inquire",
+   "ctaInquireDesc": "For collectors, curators, galleries, press, and anyone wishing to reach out about the work.",
+   "ctaInquireAction": "Continue →",
+   "ctaAsk": "Ask the Artist",
+   "ctaAskDesc": "A Discord channel dedicated to this work. Ask about construction, layers, and decisions.",
+   "ctaAskAction": "Open Discord →",
+   "ctaJoin": "Join",
+   "ctaJoinDesc": "Sign in to like, share, and comment. Comments are reviewed manually.",
+   "ctaJoinAction": "Sign up →",
+   "footerJournal": "Project Journal",
+   "footerJournalText": "Process documentation, stories from the field, and decisions still being formed. Newsletter on Substack.",
+   "footerSubscribe": "Subscribe →",
+   "footerWork": "The Work",
+   "footerLink_allImages": "All Images",
+   "footerLink_about": "About the Project",
+   "footerLink_emptiness": "Building Emptiness",
+   "footerFollow": "Follow",
+   "footerLink_fb": "Facebook",
+   "footerLink_ig": "Instagram",
+   "footerLink_dc": "Discord",
+   "layer1": "Domestic Schema",
+   "layer1desc": "The initial framing: woman, girl, kitchen, fruit. The viewer completes the picture as \"mother and daughter\".",
+   "layer2": "Single Light",
+   "layer2desc": "One light source from the left. Cutting, not enveloping. Marks that there is no return.",
+   "layer3": "Objects on the Floor",
+   "layer3desc": "A squeezed pepper, wrapping paper. Reverse timeline — what will no longer return.",
+   "layer4": "The Gesture",
+   "layer4desc": "The extended hand. The girl does not take — she examines. Doubt has already entered the frame.",
+   "layer5": "The Diverting Gaze",
+   "layer5desc": "The woman looks elsewhere. Not toward the girl. The first break of expectation.",
+   "layer6": "The Political Mask",
+   "layer6desc": "The neighborhood reading — French Hill of childhood. Inclusion and exclusion.",
+   "layer7": "The False Schema",
+   "layer7desc": "The final layer: she is not the mother. Everything built unravels backwards. Emptiness.",
+   "work01": "Shutters",
+   "work01en": "תריסים",
+   "work02": "Peppers",
+   "work02en": "פלפלים",
+   "work03": "Trails",
+   "work03en": "שבילים",
+   "work04": "Suit",
+   "work04en": "חליפה",
+   "work05": "[Name 5]",
+   "work05en": "[שם 5]",
+   "work06": "[Name 6]",
+   "work06en": "[שם 6]",
+   "currentLabel": "Current",
+   "catDescription": "Description",
+   "catDescriptionEn": "תיאור",
+   "catLight": "Light",
+   "catLightEn": "אור",
+   "catMeaning": "Meaning",
+   "catMeaningEn": "משמעות",
+   "catLayers": "Layers",
+   "catLayersEn": "רבדים",
+   "catPath": "Eye Path",
+   "catPathEn": "מסלול",
+   "hotspot1label": "Object · 03",
+   "hotspot1text": "The squeezed pepper. Remains on the floor after the house has already left the frame.",
+   "hotspot2label": "Gesture · 04",
+   "hotspot2text": "The hand extended toward the fruit. In the seventh layer it is revealed this is not the mother's hand.",
+   "hotspot3label": "Schema · 07",
+   "hotspot3text": "The domestic schema was false from the start. Everything you saw unravels backwards.",
+   "hotspot4label": "Light · 02",
+   "hotspot4text": "The light enters from a single side. The cut shadow marks that there will be no return.",
+   "railTitle": "Title",
+   "railImage": "Image",
+   "railLayers": "Layers",
+   "railConstruction": "Construction",
+   "railActions": "Actions"
+  },
+  "ar": {
+   "dir": "rtl",
+   "back": "← العودة إلى الأعمال",
+   "navCounter": "02 / 06 · فلفل",
+   "summary": "لحظة منزلية عادية في التلة الفرنسية. أمّ تمدّ ثمرة إلى طفلة. في الطبقة السابعة يتبيّن أنها ليست الأم، وأن كل المخطط المنزلي الذي بُني من اللقطة الأولى كان زائفاً. يبقى الفلفل على الأرض بعد أن أُفرغ البيت.",
+   "expand": "توسيع — الطبقات ووثيقة البناء",
+   "collapse": "إغلاق",
+   "sectionLayers": "سبع طبقات",
+   "sectionConstruction": "وثيقة البناء",
+   "readFull": "اقرأ التحليل الكامل",
+   "imageHint": "مرّر المؤشر فوق الصورة لكشف الطبقات",
+   "otherWorks": "أعمال أخرى",
+   "scrollHint": "مرّر ←",
+   "ctaInquire": "استفسار",
+   "ctaInquireDesc": "للمقتنين، الأمناء، الصالات، الصحافة، وكل من يودّ التواصل حول العمل.",
+   "ctaInquireAction": "متابعة ←",
+   "ctaAsk": "اسأل الفنان",
+   "ctaAskDesc": "قناة Discord مخصصة لهذا العمل. اسأل عن البناء والطبقات والقرارات.",
+   "ctaAskAction": "افتح Discord ←",
+   "ctaJoin": "انضمام",
+   "ctaJoinDesc": "سجّل الدخول للإعجاب والمشاركة والتعليق. تتم مراجعة التعليقات يدوياً.",
+   "ctaJoinAction": "تسجيل ←",
+   "footerJournal": "يوميات المشروع",
+   "footerJournalText": "توثيق العملية، قصص من الميدان، وقرارات لا تزال تتشكّل. نشرة على Substack.",
+   "footerSubscribe": "اشترك ←",
+   "footerWork": "العمل",
+   "footerLink_allImages": "كل الصور",
+   "footerLink_about": "حول المشروع",
+   "footerLink_emptiness": "بناء الفراغ",
+   "footerFollow": "تابع",
+   "footerLink_fb": "فيسبوك",
+   "footerLink_ig": "إنستغرام",
+   "footerLink_dc": "ديسكورد",
+   "layer1": "المخطط المنزلي",
+   "layer1desc": "الإطار الأولي: امرأة، طفلة، مطبخ، ثمرة. يكمل المشاهد الصورة كـ\"أم وابنة\".",
+   "layer2": "ضوء وحيد",
+   "layer2desc": "مصدر ضوء واحد من اليسار. قاطع، لا محيط. يدلّ على أن لا عودة.",
+   "layer3": "الأشياء على الأرض",
+   "layer3desc": "فلفل معصور، ورق تغليف. خط زمني معكوس — ما لن يعود.",
+   "layer4": "الإيماءة",
+   "layer4desc": "اليد الممدودة. الطفلة لا تأخذ — تفحص. دخل الشك إلى الإطار.",
+   "layer5": "النظرة الصارفة",
+   "layer5desc": "المرأة تنظر إلى مكان آخر. ليس نحو الطفلة. كسر التوقع الأول.",
+   "layer6": "القناع السياسي",
+   "layer6desc": "القراءة الحيّية — التلة الفرنسية في الطفولة. إدراج وإقصاء.",
+   "layer7": "المخطط الزائف",
+   "layer7desc": "الطبقة النهائية: ليست الأم. كل ما بُني ينهار للوراء. فراغ.",
+   "work01": "مصاريع",
+   "work01en": "تריסים",
+   "work02": "فلفل",
+   "work02en": "פלפלים",
+   "work03": "مسارات",
+   "work03en": "שבילים",
+   "work04": "بدلة",
+   "work04en": "חליפה",
+   "work05": "[اسم 5]",
+   "work05en": "[שם 5]",
+   "work06": "[اسم 6]",
+   "work06en": "[שם 6]",
+   "currentLabel": "الحالي",
+   "catDescription": "وصف",
+   "catDescriptionEn": "Description",
+   "catLight": "ضوء",
+   "catLightEn": "Light",
+   "catMeaning": "معنى",
+   "catMeaningEn": "Meaning",
+   "catLayers": "طبقات",
+   "catLayersEn": "Layers",
+   "catPath": "مسار النظر",
+   "catPathEn": "Eye Path",
+   "hotspot1label": "غرض · 03",
+   "hotspot1text": "الفلفل المعصور. يبقى على الأرض بعد أن خرج البيت من الإطار.",
+   "hotspot2label": "إيماءة · 04",
+   "hotspot2text": "اليد الممدودة نحو الثمرة. في الطبقة السابعة يُكشف أنها ليست يد الأم.",
+   "hotspot3label": "مخطط · 07",
+   "hotspot3text": "المخطط المنزلي كان زائفاً من البداية. كل ما رأيته ينهار للوراء.",
+   "hotspot4label": "ضوء · 02",
+   "hotspot4text": "الضوء يدخل من جهة واحدة. الظل المقطوع يدلّ على ألا عودة.",
+   "railTitle": "عنوان",
+   "railImage": "صورة",
+   "railLayers": "طبقات",
+   "railConstruction": "بناء",
+   "railActions": "إجراءات"
+  }
+ },
+ "summary": "רגע ביתי שגרתי בגבעה הצרפתית. אם מושיטה פרי לילדה. בשכבה השביעית מתברר שהיא לא האם, ושכל הסכימה הביתית שנבנתה מהפריים הראשון הייתה כוזבת. הפלפלים נשארים על הרצפה אחרי שהבית כבר התרוקן."
+}

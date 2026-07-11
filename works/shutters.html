@@ -1,0 +1,1572 @@
+<!DOCTYPE html><html lang="he" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>תריסים · Shutters — שחף גליל</title><meta name="description" content="משחק שכונתי על מדרגות הופך לדימוי של השתייכות, אומץ שהגיע מאוחר, והמתנה לקבוצה שכבר איננה."><meta property="og:title" content="תריסים — שחף גליל"><meta property="og:description" content="משחק שכונתי על מדרגות הופך לדימוי של השתייכות, אומץ שהגיע מאוחר, והמתנה לקבוצה שכבר איננה."><meta property="og:type" content="article"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet"><style>:root{--black:#0a0a0a;--black-deep:#050505;--bone:#e8e4dd;--bone-dim:#8a857c;--bone-faint:#4a463f;--accent:#b8a78f;--serif-heb:'Frank Ruhl Libre',serif;--serif-en:'Cormorant Garamond',serif;--mono:'JetBrains Mono',monospace}*{margin:0;padding:0;box-sizing:border-box}::selection{background:var(--bone);color:var(--black-deep)}html{background:var(--black-deep);color:var(--bone);font-family:var(--serif-heb);min-height:100vh;height:100vh;overflow:hidden;-webkit-font-smoothing:antialiased}body{background:var(--black-deep);color:var(--bone);font-family:var(--serif-heb);height:100vh;overflow:hidden;-webkit-font-smoothing:antialiased;cursor:none}#cursor-light{position:fixed;width:380px;height:380px;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);background:radial-gradient( circle,rgba(232,228,221,0.05) 0%,rgba(232,228,221,0.018) 30%,transparent 70% );transition:width 0.5s,height 0.5s,opacity 0.3s;mix-blend-mode:screen}#cursor-dot{position:fixed;width:5px;height:5px;border-radius:50%;background:var(--bone);pointer-events:none;z-index:10000;transform:translate(-50%,-50%);opacity:0.6;transition:opacity 0.3s,transform 0.3s}@media (max-width:560px){html,body{cursor:auto}#cursor-light,#cursor-dot{display:none}}a,button,.clickable{cursor:pointer}body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;pointer-events:none;z-index:9998;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grainShift 0.5s steps(1) infinite;mix-blend-mode:overlay}@keyframes grainShift{0%{transform:translate(0,0)}20%{transform:translate(-2%,1%)}40%{transform:translate(1%,-2%)}60%{transform:translate(-1%,2%)}80%{transform:translate(2%,-1%)}100%{transform:translate(0,0)}}.progress-rail{display:none}html[dir="rtl"] .progress-rail{left:auto;right:32px}.progress-track{position:absolute;top:24px;bottom:24px;width:1px;background:var(--bone-faint)}html[dir="ltr"] .progress-track{left:8px;right:auto}html[dir="rtl"] .progress-track{right:8px;left:auto}.progress-fill{position:absolute;top:0;width:1px;background:var(--bone);height:0%;transition:height 0.2s linear}html[dir="ltr"] .progress-fill{left:0;right:auto}html[dir="rtl"] .progress-fill{right:0;left:auto}.progress-section{display:block;cursor:pointer;position:relative;transition:color 0.4s cubic-bezier(0.4,0,0.2,1);text-decoration:none;color:var(--bone-dim);font-family:var(--mono);font-size:12px;letter-spacing:0.2em;text-transform:uppercase;white-space:nowrap;padding:12px 0}html[dir="rtl"] .progress-section{text-align:right;padding-right:26px;padding-left:0;font-family:var(--serif-heb);font-size:14px;letter-spacing:0.06em;text-transform:none}html[dir="ltr"] .progress-section{text-align:left;padding-left:26px;padding-right:0}.progress-section:hover{color:var(--bone)}.progress-section.active{color:var(--bone)}.top-nav{position:fixed;top:40px;right:0;left:0;z-index:200;padding:0 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;background:var(--black-deep);border-bottom:1px solid var(--bone-faint);height:64px;box-sizing:border-box}.nav-home{font-family:var(--mono);font-weight:300;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--bone-dim);transition:color 0.4s}.nav-home:hover{color:var(--bone)}.image-nav{position:relative}.image-nav-trigger{background:none;border:1px solid transparent;color:var(--bone-dim);font-family:var(--mono);font-size:11px;letter-spacing:0.18em;padding:6px 12px;transition:all 0.3s;display:flex;align-items:center;gap:8px}.image-nav-trigger:hover{color:var(--bone);border-color:var(--bone-faint)}.image-nav-trigger .chevron{font-size:8px;transition:transform 0.3s}.image-nav.open .image-nav-trigger .chevron{transform:rotate(180deg)}.image-nav-dropdown{position:absolute;top:calc(100%+8px);left:0;background:var(--black-deep);border:1px solid var(--bone-faint);min-width:280px;opacity:0;pointer-events:none;transform:translateY(-8px);transition:all 0.3s cubic-bezier(0.4,0,0.2,1);backdrop-filter:blur(20px)}.image-nav.open .image-nav-dropdown{opacity:1;pointer-events:auto;transform:translateY(0)}.image-nav-item{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 20px;border-bottom:1px solid var(--bone-faint);color:var(--bone);text-decoration:none;transition:all 0.3s;text-align:start}.image-nav-item:last-child{border-bottom:none}.image-nav-item:hover{background:var(--bone);color:var(--black-deep)}.image-nav-item.current{color:var(--bone-dim)}.image-nav-item-num{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;color:inherit;opacity:0.6}.image-nav-item-name{font-family:var(--serif-heb);font-weight:400;font-size:16px}.locked-frame{position:absolute;top:104px;left:0;right:0;bottom:0;max-width:1400px;margin:0 auto;padding-block:24px;padding-inline:0;display:flex;flex-direction:column;gap:24px;box-sizing:border-box}.frame-top{flex:0 0 auto;display:flex;flex-direction:column;gap:16px;padding-inline:24px}.frame-top .title-block{margin:0}.frame-top .summary-block{margin:0 auto}.frame-top .categories-row{margin:8px 0 0}.frame-bottom{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:40% 58% 2%;grid-template-rows:1fr;gap:0;align-items:stretch}.frame-list{grid-column:1;min-width:0;min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:var(--bone-faint) transparent;padding-inline:24px;box-sizing:border-box}.frame-list::-webkit-scrollbar{width:4px}.frame-list::-webkit-scrollbar-track{background:transparent}.frame-list::-webkit-scrollbar-thumb{background:var(--bone-faint)}.frame-list::-webkit-scrollbar-thumb:hover{background:var(--bone-dim)}.frame-image{grid-column:2;min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden}.frame-image .image-stage{width:100%;height:100%;display:flex;align-items:center;justify-content:center;margin:0}.frame-image .image-row{width:100%;height:100%;align-items:stretch;gap:16px}.frame-image .image-frame{width:100%;height:auto;aspect-ratio:4/3;flex:1 1 auto;max-height:100%}.frame-image .side-icons{align-self:flex-end;padding-bottom:8px}.page{display:none}.title-block{text-align:center;margin-bottom:64px;opacity:0;animation:titleIn 1.2s 0.3s ease-out forwards}@keyframes titleIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes fadeIn{to{opacity:1}}.lang-block{display:flex;align-items:baseline;justify-content:center;gap:18px;flex-wrap:wrap}.project-line{margin-bottom:22px;line-height:1.2;flex-wrap:nowrap;gap:12px;max-width:100%;overflow-x:auto;scrollbar-width:none}.project-line::-webkit-scrollbar{display:none}.project-line .lang-word{font-family:var(--mono);font-weight:300;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;background:none;border:none;padding:4px 0;color:var(--bone-faint);transition:color 0.5s cubic-bezier(0.4,0,0.2,1);cursor:pointer;position:relative;white-space:nowrap}.project-line .lang-word[data-lang="he"],.project-line .lang-word[data-lang="ar"]{font-family:var(--serif-heb);letter-spacing:0.05em;font-size:14px;text-transform:none}.project-line .lang-word::after{content:'';position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);width:0;height:1px;background:var(--bone);transition:width 0.4s cubic-bezier(0.4,0,0.2,1)}.project-line .lang-word.active{color:var(--bone)}.project-line .lang-word.active::after{width:100%}.project-line .lang-word:hover:not(.active){color:var(--bone-dim)}.project-line .sep{color:var(--bone-faint);font-size:9px}.work-title-line{line-height:1.05;margin:0;gap:22px;flex-wrap:nowrap;max-width:100%;overflow-x:auto;scrollbar-width:none}.work-title-line::-webkit-scrollbar{display:none}.work-title-line .lang-word{background:none;border:none;padding:4px 0;color:var(--bone-faint);transition:color 0.5s cubic-bezier(0.4,0,0.2,1);font-family:var(--serif-heb);font-weight:300;font-size:clamp(20px,2.7vw,33px);cursor:pointer;letter-spacing:-0.01em;position:relative;white-space:nowrap}.work-title-line .lang-word[data-lang="en"]{font-family:var(--serif-en);font-style:italic;font-size:clamp(17px,2.3vw,28px)}.work-title-line .lang-word::after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:0;height:1px;background:var(--bone);transition:width 0.4s cubic-bezier(0.4,0,0.2,1)}.work-title-line .lang-word.active{color:var(--bone)}.work-title-line .lang-word.active::after{width:60%}.work-title-line .lang-word:hover:not(.active){color:var(--bone-dim)}.work-title-line .sep{font-family:var(--serif-heb);font-weight:300;color:var(--bone-faint);font-size:clamp(17px,2.3vw,28px)}.summary-block{max-width:680px;margin:0 auto 24px;opacity:0;animation:titleIn 1.2s 0.7s ease-out forwards}.summary-text{font-family:var(--serif-heb);font-weight:300;font-size:clamp(16px,1.4vw,19px);line-height:1.85;color:var(--bone);text-align:start}.section-label{font-family:var(--mono);font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:32px;text-align:start}.works-rail{flex:1;display:flex;align-items:center;justify-content:center;position:relative;height:100%}.rail-bars{display:none}.rail-thumbs{display:flex;align-items:center;gap:6px;padding:0;background:none;border:none}.rail-thumb{position:relative;display:block;text-decoration:none;transition:transform 0.3s cubic-bezier(0.4,0,0.2,1)}.rail-thumb-img{display:block;width:36px;height:27px;background:linear-gradient(135deg,#1a1612 0%,#0d0a08 50%,#050302 100%);background-size:cover;background-position:center;border:1px solid transparent;opacity:0.55;transition:all 0.3s cubic-bezier(0.4,0,0.2,1)}.rail-thumb:hover .rail-thumb-img{opacity:1;transform:scale(1.15);border-color:var(--bone-dim)}.rail-thumb.current .rail-thumb-img{opacity:1;border-color:var(--bone)}.rail-thumb-label{position:absolute;top:calc(100%+6px);left:50%;transform:translateX(-50%) translateY(-4px);display:flex;align-items:center;gap:6px;padding:4px 8px;background:rgba(5,5,5,0.95);border:1px solid var(--bone-faint);backdrop-filter:blur(8px);white-space:nowrap;opacity:0;pointer-events:none;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);z-index:5}.rail-thumb:hover .rail-thumb-label{opacity:1;transform:translateX(-50%) translateY(0)}.rail-thumb-num{font-family:var(--mono);font-size:9px;letter-spacing:0.15em;color:var(--bone-dim)}.rail-thumb-name{font-family:var(--serif-heb);font-size:12px;color:var(--bone)}.top-nav-title{flex:0 1 auto;margin:0;line-height:1.2;flex-wrap:nowrap;gap:10px;max-width:60%}.top-nav-title .lang-word{padding:2px 0}.title-with-nav{display:flex;align-items:center;justify-content:center;gap:24px;width:100%}.title-nav{background:none;border:none;color:var(--bone-faint);font-family:var(--serif-heb);font-size:clamp(32px,3.6vw,48px);cursor:pointer;padding:8px 16px;transition:color 0.4s,transform 0.4s;font-weight:300;line-height:1;flex:0 0 auto}.title-nav:hover{color:var(--bone);transform:scale(1.15)}.nav-counter{font-family:var(--mono);font-size:11px;color:var(--bone-dim);letter-spacing:0.18em;flex:0 0 auto}.sticky-viewer{display:contents}.category-panel{background:transparent;padding:0 0 32px;min-height:auto}.panel-inner{max-width:none;margin:0;padding:0}.panel-section-label{font-family:var(--mono);font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:12px;text-align:start}.panel-title{font-family:var(--serif-heb);font-weight:300;font-size:clamp(28px,3.4vw,42px);color:var(--bone);margin-bottom:32px;text-align:start;line-height:1.2}.panel-intro{font-family:var(--serif-heb);font-weight:300;font-size:15px;line-height:1.85;color:var(--bone);text-align:start;margin-bottom:48px;max-width:680px}.panel-intro em{color:var(--bone-dim);font-style:italic}.panel-items{display:grid;grid-template-columns:1fr;gap:28px;margin-bottom:32px}.panel-item{border-right:1px solid var(--bone-faint);padding-right:24px;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);cursor:pointer;position:relative}.panel-item:hover,.panel-item.focused{border-right-color:var(--bone);padding-right:32px}.panel-item.focused{background:rgba(232,228,221,0.03)}.panel-item.focused .panel-item-title{color:var(--bone)}.panel-item-meta{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:8px}.panel-item-title{font-family:var(--serif-heb);font-weight:400;font-size:20px;color:var(--bone);margin-bottom:12px}.panel-item-text{font-family:var(--serif-heb);font-weight:300;font-size:13px;line-height:1.8;color:var(--bone-dim)}.panel-item-sub{font-family:var(--serif-heb);font-weight:300;font-size:14px;line-height:1.7;color:var(--bone-faint);margin-top:8px;padding-top:8px;border-top:1px dashed var(--bone-faint)}.panel-path{display:flex;flex-direction:column;gap:0;margin-bottom:48px}.panel-stop{position:relative;padding:32px 36px 32px 0;border-right:1px solid var(--bone-faint);margin-right:24px}.panel-stop::before{content:'';position:absolute;top:38px;right:-7px;width:13px;height:13px;border-radius:50%;background:var(--black-deep);border:1px solid var(--bone-dim);transition:all 0.4s}.panel-stop:hover::before{background:var(--bone);border-color:var(--bone)}.panel-stop-num{font-family:var(--mono);font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:10px}.panel-stop-title{font-family:var(--serif-heb);font-weight:400;font-size:18px;color:var(--bone);margin-bottom:10px}.panel-stop-text{font-family:var(--serif-heb);font-weight:300;font-size:13px;line-height:1.8;color:var(--bone-dim)}.panel-light-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:48px}.panel-light-item{background:rgba(255,255,255,0.02);border:1px solid var(--bone-faint);padding:28px;transition:border-color 0.4s}.panel-light-item:hover{border-color:var(--bone-dim)}.panel-light-diagram{width:100%;aspect-ratio:16/10;background:var(--black);margin-bottom:18px;position:relative;overflow:hidden}.panel-light-diagram svg{width:100%;height:100%}.construction{border-top:1px solid var(--bone-faint);padding-top:40px;margin-top:60px;text-align:start}.construction-link{display:inline-flex;align-items:center;gap:12px;font-family:var(--serif-heb);font-weight:300;font-size:clamp(20px,2.4vw,28px);color:var(--bone);border-bottom:1px solid var(--bone-dim);padding-bottom:6px;transition:all 0.5s;text-decoration:none}.construction-link:hover{border-bottom-color:var(--bone);gap:20px}.categories-row{display:flex;gap:0;margin-bottom:0;border-bottom:1px solid var(--bone-faint)}.category-btn{flex:1;background:none;border:none;padding:14px 16px;cursor:pointer;text-align:center;color:var(--bone-dim);transition:color 0.4s cubic-bezier(0.4,0,0.2,1);position:relative;display:flex;flex-direction:column;gap:4px;align-items:center}.category-btn::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:var(--bone);transform:scaleX(0);transform-origin:center;transition:transform 0.4s cubic-bezier(0.4,0,0.2,1)}.category-btn:hover{color:var(--bone)}.category-btn.active{color:var(--bone)}.category-btn.active::after{transform:scaleX(1)}.cat-name{font-family:var(--serif-heb);font-weight:400;font-size:16px;letter-spacing:0.02em}.cat-name-en{font-family:var(--mono);font-weight:300;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--bone-faint);transition:color 0.4s}.category-btn.active .cat-name-en,.category-btn:hover .cat-name-en{color:var(--bone-dim)}.image-stage{margin-bottom:0}.image-row{display:flex;align-items:stretch;gap:24px}.side-icons{display:flex;flex-direction:column;justify-content:flex-end;gap:4px;padding-bottom:12px}.side-icon{width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:none;border:1px solid var(--bone-faint);transition:all 0.4s cubic-bezier(0.4,0,0.2,1);color:var(--bone-dim);position:relative}.side-icon:hover{border-color:var(--bone);color:var(--bone);background:rgba(232,228,221,0.04)}.side-icon svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.2}.side-icon-like.is-liked{color:#c47862;border-color:#c47862}.side-icon-like.is-liked svg{fill:currentColor;stroke:currentColor}.side-icon-like.is-liked:hover{color:#d4886e;border-color:#d4886e;background:rgba(196,120,98,0.06)}@keyframes likePulse{0%{transform:scale(1)}30%{transform:scale(1.3)}60%{transform:scale(0.95)}100%{transform:scale(1)}}.side-icon-like.is-liked svg{animation:likePulse 0.4s ease-out}.image-frame{position:relative;flex:1;aspect-ratio:4/3;background:var(--black-deep);box-shadow:0 0 80px rgba(0,0,0,0.8);overflow:hidden}.image-content{position:absolute;inset:0;background-image:url('../assets/shutters-real-1c.jpg');background-size:cover;background-position:center;background-color:#0d0a08}.rain{position:absolute;inset:0;pointer-events:none;overflow:hidden}.rain-line{position:absolute;width:1px;background:linear-gradient(to bottom,transparent,rgba(232,228,221,0.25),transparent);animation:fall linear infinite}@keyframes fall{from{transform:translateY(-100px)}to{transform:translateY(120%)}}.hotspots-layer{position:absolute;inset:0;pointer-events:none;z-index:5}.hotspot{position:absolute;pointer-events:auto;transform:translate(-50%,-50%);cursor:pointer}.hotspot-star{width:16px;height:16px;color:rgba(232,228,221,0.85);transition:all 0.4s cubic-bezier(0.4,0,0.2,1);filter:drop-shadow(0 0 2px rgba(0,0,0,0.8))}.hotspot-star svg{width:100%;height:100%;display:block}.hotspot:hover .hotspot-star,.hotspot.focused .hotspot-star{color:var(--bone);transform:scale(1.4) rotate(45deg);filter:drop-shadow(0 0 8px rgba(232,228,221,0.6))}.hotspot-leader{position:absolute;width:0;height:1px;background:var(--bone);transform-origin:0 50%;pointer-events:none;opacity:0;transition:opacity 0.3s,width 0.4s cubic-bezier(0.4,0,0.2,1);left:0;top:0;transform:rotate(-45deg)}.hotspot:hover .hotspot-leader,.hotspot.focused .hotspot-leader{opacity:1;width:60px}.hotspot-tag{position:absolute;left:50px;bottom:50px;padding:0 0 4px 0;border-bottom:1px solid var(--bone);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.4s 0.15s cubic-bezier(0.4,0,0.2,1),transform 0.4s 0.15s cubic-bezier(0.4,0,0.2,1);transform:translateY(4px);display:flex;align-items:baseline;gap:8px}.hotspot:hover .hotspot-tag,.hotspot.focused .hotspot-tag{opacity:1;transform:translateY(0)}.hotspot-tag-num{font-family:var(--mono);font-size:9px;letter-spacing:0.18em;color:var(--bone-dim)}.hotspot-tag-name{font-family:var(--serif-heb);font-weight:400;font-size:14px;color:var(--bone)}.hotspots-layer.initial-reveal .hotspot-leader{opacity:0.5;width:60px}.hotspots-layer.initial-reveal .hotspot-tag{opacity:0.85;transform:translateY(0);transition-delay:0s}.hotspots-layer.initial-reveal .hotspot-star{color:var(--bone)}.zoom-overlay{position:absolute;inset:0;background:var(--black-deep);opacity:0;pointer-events:none;transition:opacity 1.4s cubic-bezier(0.25,0.1,0.25,1);z-index:4;background-size:cover;background-position:center;background-repeat:no-repeat}.zoom-overlay.active{opacity:1}.image-frame.zooming .image-content{opacity:0.15}.image-content{transition:opacity 1.4s cubic-bezier(0.25,0.1,0.25,1)}.image-hint{display:none}.other-works{max-width:100%;margin:0;padding:0}.other-works-inner{margin-right:58px}.other-works-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px}.scroll-hint{font-family:var(--mono);font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--bone-faint)}.works-scroller{display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;padding:0 0 12px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--bone-faint) transparent}.works-scroller::-webkit-scrollbar{height:2px}.works-scroller::-webkit-scrollbar-track{background:transparent}.works-scroller::-webkit-scrollbar-thumb{background:var(--bone-faint)}.work-thumb{flex:0 0 auto;width:calc((100% - 60px) / 6);min-width:110px;text-decoration:none;color:var(--bone);scroll-snap-align:start;transition:all 0.5s cubic-bezier(0.4,0,0.2,1);opacity:0.5}.work-thumb:hover{opacity:1}.work-thumb.current{opacity:1}.work-thumb-image{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#1a1612 0%,#0d0a08 50%,#050302 100%);box-shadow:inset 0 0 30px rgba(0,0,0,0.6);margin-bottom:8px;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1)}.work-thumb:hover .work-thumb-image{transform:translateY(-3px)}.work-thumb.current .work-thumb-image{border:1px solid var(--bone)}.work-thumb-meta{text-align:start}.work-thumb-num{font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:3px}.work-thumb.current .work-thumb-num{color:var(--bone)}.work-thumb-name{font-family:var(--serif-heb);font-weight:400;font-size:13px;color:var(--bone);margin-bottom:0;line-height:1.3}.work-thumb-en{font-family:var(--serif-en);font-style:italic;font-size:11px;color:var(--bone-dim);line-height:1.3}.cta-section{max-width:none;margin:48px 0 0;padding:32px 0 0;border-top:1px solid var(--bone-faint)}.cta-links{display:flex;align-items:center;justify-content:flex-start;gap:18px;flex-wrap:nowrap}.cta-link{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;text-decoration:none;color:var(--bone);padding:4px 0;position:relative;transition:color 0.4s;flex:0 0 auto}.cta-link>span:first-child{font-family:var(--serif-heb);font-weight:300;font-size:17px;line-height:1.1}.cta-link::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--bone);transform:scaleX(0);transform-origin:center;transition:transform 0.4s cubic-bezier(0.4,0,0.2,1)}.cta-link:hover::after{transform:scaleX(1)}.cta-link-en{font-family:var(--mono);font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--bone-faint);transition:color 0.4s}.cta-link:hover .cta-link-en{color:var(--bone-dim)}.cta-sep{color:var(--bone-faint);font-size:10px;flex:0 0 auto}.footer{padding:32px 0 16px;border-top:1px solid var(--bone-faint);max-width:none;margin:24px 0 0;display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:end}.footer-substack{max-width:400px;grid-column:1;grid-row:1}.footer>div:nth-of-type(2){grid-column:1;grid-row:2;display:flex;gap:20px;flex-wrap:wrap;align-items:baseline}.footer>div:nth-of-type(2) .footer-block-label{margin-bottom:0;margin-inline-end:8px}.social-corner{position:fixed;bottom:16px;left:30%;right:auto;z-index:150;display:flex;gap:10px;align-items:center;padding:6px 10px;background:rgba(5,5,5,0.6);backdrop-filter:blur(8px);border:1px solid rgba(232,228,221,0.08)}.social-corner-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;color:var(--bone-faint);transition:color 0.4s,transform 0.4s;text-decoration:none}.social-corner-icon:hover{color:var(--bone);transform:translateY(-1px)}.social-corner-icon svg{width:11px;height:11px}.footer-substack{max-width:400px}.footer-block-label{font-family:var(--mono);font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:18px}.footer-substack-text{font-family:var(--serif-heb);font-weight:300;font-size:14px;line-height:1.8;color:var(--bone);margin-bottom:20px}.footer-substack-link{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--bone);border-bottom:1px solid var(--bone-dim);padding-bottom:4px;transition:all 0.4s}.footer-substack-link:hover{border-bottom-color:var(--bone)}.footer-link{display:block;font-family:var(--serif-heb);font-weight:300;font-size:14px;color:var(--bone-dim);margin-bottom:10px;transition:color 0.3s}.footer-link:hover{color:var(--bone)}.modal{position:fixed;inset:0;background:rgba(0,0,0,0.92);backdrop-filter:blur(20px);z-index:500;display:none;align-items:center;justify-content:center;opacity:0;transition:opacity 0.5s;padding:20px}.modal.active{display:flex;opacity:1}.modal-content{background:var(--black-deep);border:1px solid var(--bone-faint);padding:50px;max-width:520px;width:100%;position:relative}.modal-close{position:absolute;top:16px;left:20px;background:none;border:none;color:var(--bone-dim);font-size:24px;transition:color 0.3s;font-family:var(--mono)}.modal-close:hover{color:var(--bone)}.modal-title{font-family:var(--serif-heb);font-weight:300;font-size:28px;color:var(--bone);margin-bottom:8px;text-align:start}.modal-subtitle{font-family:var(--mono);font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:32px;text-align:start}.profile-options{display:flex;flex-direction:column;gap:1px}.profile-option{background:rgba(255,255,255,0.02);border:1px solid var(--bone-faint);padding:18px 22px;text-align:start;transition:all 0.3s;color:var(--bone)}.profile-option:hover{background:var(--bone);color:var(--black-deep)}.profile-name{font-family:var(--serif-heb);font-weight:400;font-size:17px;margin-bottom:4px}.profile-desc{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;opacity:0.6}.cookie-banner{position:fixed;bottom:24px;right:24px;z-index:400;max-width:380px;background:var(--black-deep);border:1px solid var(--bone-faint);padding:20px 24px;backdrop-filter:blur(20px);transform:translateY(120%);transition:transform 0.6s cubic-bezier(0.4,0,0.2,1)}.cookie-banner.show{transform:translateY(0)}.cookie-text{font-family:var(--serif-heb);font-weight:300;font-size:13px;line-height:1.7;color:var(--bone);margin-bottom:16px}.cookie-buttons{display:flex;gap:12px;align-items:center}.cookie-btn{background:none;border:1px solid var(--bone-faint);color:var(--bone);font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;padding:8px 16px;transition:all 0.3s}.cookie-btn:hover{border-color:var(--bone)}.cookie-btn.primary{background:var(--bone);color:var(--black-deep);border-color:var(--bone)}.cookie-btn.primary:hover{background:transparent;color:var(--bone)}@media (max-width:1100px) and (min-width:561px){.frame-top{padding-inline:16px}.frame-list{padding-inline:16px}.frame-bottom{grid-template-columns:42% 56% 2%}.work-title-line .lang-word{font-size:clamp(32px,4.8vw,52px)}.work-title-line .lang-word[data-lang="en"]{font-size:clamp(28px,4vw,44px)}.work-title-line .sep{font-size:clamp(28px,4vw,44px)}.cat-name{font-size:14px}.summary-text{font-size:15px;line-height:1.7}.summary-block{margin-bottom:8px}}.categories-row-mobile{display:none}.rotate-overlay{display:none;position:fixed;inset:0;z-index:9999;background:var(--black-deep);align-items:center;justify-content:center;flex-direction:column;gap:24px;padding:32px;text-align:center}.rotate-overlay-icon{width:60px;height:60px;color:var(--bone);animation:rotateHint 2.5s ease-in-out infinite}.rotate-overlay-icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.2}@keyframes rotateHint{0%,100%{transform:rotate(-90deg)}50%{transform:rotate(0deg)}}.rotate-overlay-text{display:flex;flex-direction:column;gap:6px;max-width:420px}.rotate-overlay-text>div{font-family:var(--serif-heb);font-weight:300;font-size:18px;line-height:1.4;color:var(--bone)}.rotate-overlay-text>div[lang="en"]{font-family:var(--serif-en);font-style:italic;font-size:17px}.rotate-overlay-sub{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--bone-dim)}.rotate-overlay-sub .sep{color:var(--bone-faint);font-size:8px}.rotate-overlay-sub span[lang="he"],.rotate-overlay-sub span[lang="ar"]{font-family:var(--serif-heb);font-size:13px;letter-spacing:0.05em;text-transform:none;color:var(--bone-dim)}@media (max-height:500px) and (orientation:landscape){.rotate-overlay{display:flex}}.sticky-bundle{display:contents}.sticky-bundle-spacer{display:none}.frame-bottom>.frame-list{grid-row:1}@media (max-width:560px){.top-nav{padding:0 12px;height:56px;gap:10px}.top-nav-title{display:none}.nav-counter{font-size:9px;letter-spacing:0.12em}.work-title-line{gap:6px}.work-title-line .lang-word{font-size:clamp(16px,4.2vw,22px)}.work-title-line .lang-word[data-lang="en"]{font-size:clamp(14px,3.6vw,20px)}.work-title-line .sep{font-size:clamp(14px,3.6vw,20px)}.title-nav{font-size:24px;padding:2px 6px}.title-with-nav{gap:8px}.frame-top .categories-row{display:none}.categories-row-mobile{display:flex;margin:0;border-bottom:1px solid var(--bone-faint);background:var(--black-deep)}.categories-row-mobile .category-btn{padding:12px 6px;gap:0}.categories-row-mobile .cat-name-en{display:none}.cat-name{font-size:13px}.cat-name-en{font-size:8px;letter-spacing:0.15em}.panel-items{grid-template-columns:1fr;gap:32px}.panel-light-grid{grid-template-columns:1fr}html,body{height:auto;overflow:auto}.locked-frame{position:static;top:auto;height:auto;padding:80px 20px 30px;gap:0}.frame-top{gap:12px;padding-inline:0;margin-bottom:16px}.frame-bottom{display:block}.sticky-bundle{display:block;background:var(--black-deep);margin:0 -20px;padding:0 20px;width:auto}.sticky-bundle.is-fixed{position:fixed;top:96px;left:0;right:0;z-index:30;padding:0 20px;margin:0;box-shadow:0 4px 20px rgba(0,0,0,0.5)}.sticky-bundle-spacer{display:none}.sticky-bundle.is-fixed + .sticky-bundle-spacer{display:block}.frame-image{display:block;max-width:100%;flex:initial;position:relative;background:var(--black-deep);padding:8px 0;margin-top:0}.frame-list{display:block;overflow:visible;padding-inline-end:0;padding-inline:0;flex:initial;margin-top:16px}.frame-image .image-row{display:block;height:auto;gap:0}.frame-image .image-frame{height:auto;width:100%;max-width:100%;max-height:none;position:relative}.frame-image .side-icons{position:absolute;flex-direction:row;justify-content:flex-start;padding:0;gap:5px;bottom:12px;left:12px;right:auto;z-index:6}.frame-image .side-icon{width:22px;height:22px;background:rgba(5,5,5,0.65);backdrop-filter:blur(6px);border-color:rgba(232,228,221,0.25)}.frame-image .side-icon svg{width:10px;height:10px}.cta-section{padding:32px 0 0;margin-top:32px}.footer{grid-template-columns:1fr;gap:24px;padding:32px 0 16px;align-items:start}.footer-substack,.footer>div:nth-of-type(2){grid-column:1;grid-row:auto}.social-corner{padding:5px 8px;gap:8px}.social-corner-icon{width:16px;height:16px}.social-corner-icon svg{width:10px;height:10px}.image-nav-dropdown{right:0;left:auto}}.panel-light-block{margin-bottom:32px}.panel-light-diagram-img{display:block;width:100%;height:auto;background:#fff;border:1px solid var(--bone-faint);box-shadow:0 0 30px rgba(0,0,0,0.4)}@media (max-width:560px){.panel-light-diagram-img{width:100%}}.light-marker{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;cursor:pointer;z-index:6}.light-marker-circle{width:32px;height:32px;border-radius:50%;background:var(--marker-color);border:2px solid rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:600;color:#fff;box-shadow:0 0 12px rgba(0,0,0,0.7);transition:all 0.3s cubic-bezier(0.4,0,0.2,1)}.light-marker:hover .light-marker-circle,.light-marker.focused .light-marker-circle{transform:scale(1.2);box-shadow:0 0 18px rgba(255,255,255,0.4),0 0 12px rgba(0,0,0,0.7)}.light-marker-tag{position:absolute;left:42px;top:50%;transform:translateY(-50%);font-family:var(--serif-heb);font-size:13px;color:var(--bone);white-space:nowrap;background:rgba(5,5,5,0.85);padding:4px 10px;border:1px solid rgba(232,228,221,0.25);opacity:0;pointer-events:none;transition:opacity 0.3s}.light-marker:hover .light-marker-tag,.light-marker.focused .light-marker-tag{opacity:1}html[dir='rtl'] .light-marker-tag{left:auto;right:42px}.path-arrows-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4}.path-arrow{stroke:rgba(232,228,221,0);stroke-width:1.4;fill:none;marker-end:url(#arrow-head);transition:stroke 0.5s,stroke-width 0.5s}.path-arrow.is-active{stroke:rgba(232,228,221,0.95);stroke-width:2.4}.hotspot.is-dim .hotspot-star{color:rgba(232,228,221,0.45)}.hotspot.is-dim:hover .hotspot-star,.hotspot.is-dim.focused .hotspot-star{color:var(--bone)}.panel-item.focused{background:rgba(232,228,221,0.04);border-right-color:var(--bone)}.hotspot.is-revealed .hotspot-leader{opacity:0.5;width:60px}.hotspot.is-revealed .hotspot-tag{opacity:0.85;transform:translateY(0);transition-delay:0s}.hotspot.is-revealed .hotspot-star{color:var(--bone)}.hotspot[data-leader-dir='right']      .hotspot-leader{transform:rotate(0deg)}.hotspot[data-leader-dir='up-right']   .hotspot-leader{transform:rotate(-45deg)}.hotspot[data-leader-dir='up']         .hotspot-leader{transform:rotate(-90deg)}.hotspot[data-leader-dir='up-left']    .hotspot-leader{transform:rotate(-135deg)}.hotspot[data-leader-dir='left']       .hotspot-leader{transform:rotate(180deg)}.hotspot[data-leader-dir='down-left']  .hotspot-leader{transform:rotate(135deg)}.hotspot[data-leader-dir='down']       .hotspot-leader{transform:rotate(90deg)}.hotspot[data-leader-dir='down-right'] .hotspot-leader{transform:rotate(45deg)}.hotspot[data-leader-dir='right']      .hotspot-tag{left:64px;bottom:auto;top:-7px}.hotspot[data-leader-dir='up-right']   .hotspot-tag{left:50px;bottom:50px;top:auto;right:auto}.hotspot[data-leader-dir='up']         .hotspot-tag{left:50%;bottom:64px;top:auto;right:auto;transform:translateX(-50%)}.hotspot[data-leader-dir='up'].focused .hotspot-tag,.hotspot[data-leader-dir='up']:hover  .hotspot-tag{transform:translateX(-50%) translateY(0)}.hotspot[data-leader-dir='up'].is-revealed .hotspot-tag{transform:translateX(-50%) translateY(0)}.hotspot[data-leader-dir='up-left']    .hotspot-tag{right:50px;bottom:50px;left:auto;top:auto;flex-direction:row-reverse}.hotspot[data-leader-dir='left']       .hotspot-tag{right:64px;left:auto;bottom:auto;top:-7px;flex-direction:row-reverse}.hotspot[data-leader-dir='down-left']  .hotspot-tag{right:50px;top:50px;left:auto;bottom:auto;flex-direction:row-reverse}.hotspot[data-leader-dir='down']       .hotspot-tag{left:50%;top:64px;right:auto;bottom:auto;transform:translateX(-50%)}.hotspot[data-leader-dir='down'].focused .hotspot-tag,.hotspot[data-leader-dir='down']:hover  .hotspot-tag{transform:translateX(-50%) translateY(0)}.hotspot[data-leader-dir='down'].is-revealed .hotspot-tag{transform:translateX(-50%) translateY(0)}.hotspot[data-leader-dir='down-right'] .hotspot-tag{left:50px;top:50px;right:auto;bottom:auto}.hotspot.is-revealed .hotspot-leader{transition:opacity 0.06s,width 0.06s}.hotspot.is-revealed .hotspot-tag{transition:opacity 0.06s,transform 0.06s;transition-delay:0s}</style><style>
+.site-bar{position:fixed;top:0;right:0;left:0;z-index:210;height:40px;display:flex;align-items:center;justify-content:flex-start;direction:rtl;padding:0 40px;gap:38px;background:var(--black-deep);border-bottom:1px solid rgba(74,70,63,.5);font-family:var(--mono);font-size:12px;letter-spacing:.35em}
+.site-bar a{color:var(--bone-dim);text-decoration:none;transition:color .4s;padding:4px 0}
+a{text-decoration:none}
+.site-bar a:hover{color:var(--bone)}
+@media (max-width:560px){.site-bar{gap:16px;font-size:9px;letter-spacing:.18em}}
+</style><script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "xknwer6lgs");</script></head><body><div id="cursor-light"></div><div id="cursor-dot"></div><div class="site-bar"><a href="../index.html">עבודות</a><a href="../about.html">אודות</a><a href="../exhibitions.html">תערוכות</a><a href="../journal.html">יומן</a><a href="../contact.html">פנייה</a></div><nav class="top-nav"><a href="../index.html" class="nav-home" data-i18n="back">← חזרה לעבודות</a><h2 class="project-line lang-block top-nav-title" dir="rtl"><button class="lang-word" data-lang="he">עצים מעוקמים</button><span class="sep">·</span><button class="lang-word" data-lang="ar" lang="ar">أشجار معوجّة</button><span class="sep">·</span><button class="lang-word" data-lang="en">Forged Trees</button></h2><div class="nav-counter" data-i18n="navCounter">01 / 05 · תריסים</div></nav><aside class="progress-rail"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><a href="#title" class="progress-section active" data-section="title"><span data-i18n="railTitle">כותרת</span></a><a href="#image" class="progress-section" data-section="image"><span data-i18n="railImage">דימוי</span></a><a href="#layers" class="progress-section" data-section="layers"><span data-i18n="railLayers">שכבות</span></a><a href="#construction" class="progress-section" data-section="construction"><span data-i18n="railConstruction">בנייה</span></a><a href="#actions" class="progress-section" data-section="actions"><span data-i18n="railActions">פעולות</span></a></aside><div class="locked-frame"><div class="frame-top"><header class="title-block" id="title"><div class="title-with-nav"><button class="title-nav title-nav-prev" aria-label="previous work" title="תמונה קודמת">‹</button><h1 class="work-title-line lang-block" dir="rtl"><button class="lang-word" data-lang="he">תריסים</button><span class="sep">·</span><button class="lang-word" data-lang="ar" lang="ar">مصاريع</button><span class="sep">·</span><button class="lang-word" data-lang="en">Shutters</button></h1><button class="title-nav title-nav-next" aria-label="next work" title="תמונה הבאה">›</button></div></header><section class="summary-block"><p class="summary-text" data-i18n="summary">משחק שכונתי על מדרגות הופך לדימוי של השתייכות, אומץ שהגיע מאוחר, והמתנה לקבוצה שכבר איננה.</p></section><div class="categories-row"><button class="category-btn active" data-mode="description"><span class="cat-name" data-i18n="catDescription">תיאור</span><span class="cat-name-en" data-i18n="catDescriptionEn">Description</span></button><button class="category-btn" data-mode="light"><span class="cat-name" data-i18n="catLight">אור</span><span class="cat-name-en" data-i18n="catLightEn">Light</span></button><button class="category-btn" data-mode="meaning"><span class="cat-name" data-i18n="catMeaning">משמעות</span><span class="cat-name-en" data-i18n="catMeaningEn">Meaning</span></button><button class="category-btn" data-mode="layers"><span class="cat-name" data-i18n="catLayers">רבדים</span><span class="cat-name-en" data-i18n="catLayersEn">Layers</span></button><button class="category-btn" data-mode="path"><span class="cat-name" data-i18n="catPath">מסלול הולכה</span><span class="cat-name-en" data-i18n="catPathEn">Eye Path</span></button></div></div><div class="frame-bottom"><div class="sticky-bundle"><div class="categories-row categories-row-mobile"><button class="category-btn active" data-mode="description"><span class="cat-name" data-i18n="catDescription">תיאור</span><span class="cat-name-en" data-i18n="catDescriptionEn">Description</span></button><button class="category-btn" data-mode="light"><span class="cat-name" data-i18n="catLight">אור</span><span class="cat-name-en" data-i18n="catLightEn">Light</span></button><button class="category-btn" data-mode="meaning"><span class="cat-name" data-i18n="catMeaning">משמעות</span><span class="cat-name-en" data-i18n="catMeaningEn">Meaning</span></button><button class="category-btn" data-mode="layers"><span class="cat-name" data-i18n="catLayers">רבדים</span><span class="cat-name-en" data-i18n="catLayersEn">Layers</span></button><button class="category-btn" data-mode="path"><span class="cat-name" data-i18n="catPath">מסלול הולכה</span><span class="cat-name-en" data-i18n="catPathEn">Eye Path</span></button></div><div class="frame-image"><section class="image-stage"><div class="image-row"><div class="image-frame"><div class="image-content"></div><div class="rain" id="rainContainer"></div><div class="hotspots-layer" id="hotspotsLayer"></div><div class="zoom-overlay" id="zoomOverlay"></div></div><div class="side-icons"><button class="side-icon side-icon-like" id="likeBtn" title="לייק" onclick="toggleLike()"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.5 1 4 2.5 1-1.5 2.5-2.5 4.5-2.5 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></button><button class="side-icon" title="שיתוף" onclick="openModal('share')"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><line x1="8.5" y1="11" x2="15.5" y2="7"/><line x1="8.5" y1="13" x2="15.5" y2="17"/></svg></button><button class="side-icon" title="תגובה" onclick="openModal('respond')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button></div></div></section></div></div><div class="sticky-bundle-spacer" id="stickyBundleSpacer"></div><div class="frame-list" id="panelCol"><div class="category-panel" id="categoryPanel"><div class="panel-inner"></div><div class="construction" id="construction"><a href="../journal.html" class="construction-link"><span data-i18n="readFull">קרא את הניתוח המלא</span><span style="font-family: var(--mono); font-size: 0.7em; color: var(--bone-dim);">←</span></a></div></div><section class="cta-section" id="actions"><nav class="cta-links" aria-label="פעולות"><a href="#" class="cta-link" onclick="openModal('inquire');return false;"><span data-i18n="ctaInquire">פנייה</span><span class="cta-link-en">Inquire</span></a><span class="cta-sep">·</span><a href="#" class="cta-link" onclick="openModal('ask');return false;"><span data-i18n="ctaAsk">שאלה לאמן</span><span class="cta-link-en">Ask</span></a><span class="cta-sep">·</span><a href="#" class="cta-link" onclick="openModal('respond');return false;"><span data-i18n="ctaJoin">הצטרפות</span><span class="cta-link-en">Join</span></a></nav></section><footer class="footer"><div class="footer-substack"><div class="footer-block-label" data-i18n="footerJournal">יומן הפרויקט · Project Journal</div><p class="footer-substack-text" data-i18n="footerJournalText">
+      תיעוד התהליך, סיפורים מהשטח, התלבטויות והחלטות שעוד מתהוות. ניוזלטר ב-Substack.
+    </p><a href="mailto:shahafgalil@gmail.com?subject=%D7%A2%D7%93%D7%9B%D7%A0%D7%95%20%D7%90%D7%95%D7%AA%D7%99%20%D7%9B%D7%A9%D7%94%D7%99%D7%95%D7%9E%D7%9F%20%D7%A0%D7%A4%D7%AA%D7%97" class="footer-substack-link" data-i18n="footerSubscribe">הירשם →</a></div><div><div class="footer-block-label" data-i18n="footerWork">העבודה</div><a href="../index.html" class="footer-link" data-i18n="footerLink_allImages">כל הדימויים</a><a href="../about.html" class="footer-link" data-i18n="footerLink_about">על הפרויקט</a><a href="../statement.html" class="footer-link" data-i18n="footerLink_emptiness">בניית התרוקנות</a></div></footer></div></div></div><div class="cookie-banner" id="cookieBanner"><p class="cookie-text">
+    האתר משתמש ב-cookies לצורך ניתוח אנונימי של חוויית הצפייה (Microsoft Clarity), כדי לשפר את האתר. לא נאסף מידע אישי מזהה.
+  </p><div class="cookie-buttons"><button class="cookie-btn primary" onclick="acceptCookies()">הבנתי</button><button class="cookie-btn" onclick="declineCookies()">דחה</button></div></div><div class="modal" id="modal-inquire"><div class="modal-content"><button class="modal-close" onclick="closeModal()">×</button><div class="modal-title">פנייה</div><div class="modal-subtitle">בחר את הפרופיל המתאים</div><div class="profile-options"><a class="profile-option" href="mailto:shahafgalil@gmail.com?subject=%D7%90%D7%A1%D7%A4%D7%9F%20%C2%B7%20%D7%A8%D7%9B%D7%99%D7%A9%D7%94%20%E2%80%94%20%D7%AA%D7%A8%D7%99%D7%A1%D7%99%D7%9D"><div class="profile-name">אספן · רכישה</div><div class="profile-desc">Collector · Acquisition</div></a><a class="profile-option" href="mailto:shahafgalil@gmail.com?subject=%D7%90%D7%95%D7%A6%D7%A8%20%C2%B7%20%D7%AA%D7%A2%D7%A8%D7%95%D7%9B%D7%94%20%E2%80%94%20%D7%AA%D7%A8%D7%99%D7%A1%D7%99%D7%9D"><div class="profile-name">אוצר · תערוכה</div><div class="profile-desc">Curator · Exhibition</div></a><a class="profile-option" href="mailto:shahafgalil@gmail.com?subject=%D7%92%D7%9C%D7%A8%D7%99%D7%94%20%C2%B7%20%D7%99%D7%99%D7%A6%D7%95%D7%92%20%E2%80%94%20%D7%AA%D7%A8%D7%99%D7%A1%D7%99%D7%9D"><div class="profile-name">גלריה · ייצוג</div><div class="profile-desc">Gallery · Representation</div></a><a class="profile-option" href="mailto:shahafgalil@gmail.com?subject=%D7%A2%D7%99%D7%AA%D7%95%D7%A0%D7%95%D7%AA%20%C2%B7%20%D7%9B%D7%AA%D7%99%D7%91%D7%94%20%E2%80%94%20%D7%AA%D7%A8%D7%99%D7%A1%D7%99%D7%9D"><div class="profile-name">עיתונות · כתיבה</div><div class="profile-desc">Press · Editorial</div></a><a class="profile-option" href="mailto:shahafgalil@gmail.com?subject=%D7%A1%D7%A7%D7%A8%D7%9F%20%C2%B7%20%D7%A9%D7%99%D7%97%D7%94%20%E2%80%94%20%D7%AA%D7%A8%D7%99%D7%A1%D7%99%D7%9D"><div class="profile-name">סקרן · שיחה</div><div class="profile-desc">Curious · Conversation</div></a></div></div></div><div class="modal" id="modal-ask"><div class="modal-content"><button class="modal-close" onclick="closeModal()">×</button><div class="modal-title">שאלה לאמן</div><div class="modal-subtitle">Ask the artist — directly</div><p style="font-family: var(--serif-heb); font-weight: 300; font-size: 15px; line-height: 1.8; color: var(--bone-dim); margin-bottom: 28px; text-align: start;">אפשר לשאול על הבנייה, על השכבות, על ההחלטות של "תריסים". אני עונה בעצמי, לא תמיד מיד.</p><a href="mailto:shahafgalil@gmail.com?subject=%D7%A9%D7%90%D7%9C%D7%94%20%D7%9C%D7%90%D7%9E%D7%9F%20%E2%80%94%20%D7%AA%D7%A8%D7%99%D7%A1%D7%99%D7%9D" style="display:block; text-align:center; font-family: var(--mono); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--bone); border: 1px solid var(--bone); padding: 14px;">כתוב לי ←</a></div></div><div class="modal" id="modal-share"><div class="modal-content"><button class="modal-close" onclick="closeModal()">×</button><div class="modal-title">שיתוף</div><div class="modal-subtitle">Share this work</div><div class="profile-options"><button class="profile-option" onclick="shareNative()"><div class="profile-name">שיתוף…</div><div class="profile-desc">Share</div></button><button class="profile-option" onclick="copyLink(this)"><div class="profile-name">העתק קישור</div><div class="profile-desc">Copy link</div></button><a class="profile-option" href="https://www.instagram.com/shahafgalilstudio" target="_blank" rel="noopener"><div class="profile-name">אינסטגרם</div><div class="profile-desc">Instagram ↗</div></a></div></div></div><div class="modal" id="modal-respond"><div class="modal-content"><button class="modal-close" onclick="closeModal()">×</button><div class="modal-title">הצטרפות</div><div class="modal-subtitle">Follow · Respond</div><p style="font-family: var(--serif-heb); font-weight: 300; font-size: 14px; line-height: 1.8; color: var(--bone-dim); margin-bottom: 28px; text-align: start;">השיח על העבודות קורה ביומן הפרויקט ובאינסטגרם — שם אפשר להגיב, לשאול ולעקוב.</p><div class="profile-options"><a class="profile-option" href="mailto:shahafgalil@gmail.com?subject=%D7%A2%D7%93%D7%9B%D7%A0%D7%95%20%D7%90%D7%95%D7%AA%D7%99%20%D7%9B%D7%A9%D7%94%D7%99%D7%95%D7%9E%D7%9F%20%D7%A0%D7%A4%D7%AA%D7%97"><div class="profile-name">יומן הפרויקט</div><div class="profile-desc">Project Journal</div></a><a class="profile-option" href="https://www.instagram.com/shahafgalilstudio" target="_blank" rel="noopener"><div class="profile-name">אינסטגרם</div><div class="profile-desc">Instagram ↗</div></a></div></div></div><script>  // === STRUCTURED CATEGORY CONTENT (Light / Layers / Path) ===
+  // Description and meaning render per-object from objectData (with hotspot sync).
+  // Light/layers/path render their own structures below.
+
+  const LIGHT_DATA = {
+    diagramSrc: '../assets/shutters-real-2.png',
+    sources: [
+      { num: '01', title: 'פנס הרחוב', subtitle: 'Street Lamp · Practical', text: 'מקור פרקטי קיים, בקצה השמאלי העליון של הפריים, בקדמתו, בין ענפי העץ. דלוק בצילום. תרומתו האנרגטית מתונה. תפקידו אינו להאיר אלא להצדיק, הוא מקור האור הנראה היחיד בסצנה, וכל יתר המקורות נדרשים להתחזות להמשך שלו במרחב.' },
+      { num: '02', title: 'פלאש בבסיס הפנס', subtitle: 'Flash at lamp base · Key on boy', text: 'מסונכרן, מכוון אל פני הנער. אור מפסל ראשי על הדמות. יוצר את הצורה התלת-ממדית של הפנים, הכתפיים והזרועות. עוצמתו ואופיו על גבול תאורת סטודיו. הסיבה שהנער נקרא כדמות מובחנת ולא כצללית.' },
+      { num: '03', title: 'שלושה פלאשים משמאל', subtitle: 'Three flashes along the stairs · Fill', text: 'מסונכרנים, מוסתרים מחוץ לפריים. מכוונים אל הנער ואל המדרגות התחתונות. תפקיד כפול, מילוי על הצללים של הנער כדי לרכך את הפיסול של מקור 02 שלא יהפוך לתאטרלי, ופריסה של אור על המדרגה התחתונה, הקרשים, והחפצים האישיים.' },
+      { num: '04', title: 'פלאש משמאל מעל הקבוצה', subtitle: 'Flash left of group · Rain on stairs', text: 'מסונכרן. מכוון אל המדרגות העליונות. תפקידו לחשוף את טיפות הגשם באלכסון האור היורד. הגשם נראה רק היכן שיש אור שמחזיר ממנו, וזה המקור שמייצר את האפקט באמצע הפריים.' },
+      { num: '05', title: 'פלאש מימין לקבוצה', subtitle: 'Flash right of group · Soft details', text: 'מסונכרן, בגובה הקבוצה. עוצמה נמוכה במכוון. תפקידו לחלץ פרטים עדינים על הגופים והגדר. בלעדיו הקבוצה תהיה סילואט מוחלט. עוצמתו מספיקה להגדיר נוכחות, לא מספיקה לחשוף זהות.' },
+      { num: '06', title: 'Ayrton Stradale (LED)', subtitle: 'Behind the group · Key on upper half', text: 'מנורת LED מקצועית בעוצמה מירבית, מאחורי גדר האבן הרחוקה, מעבר לקבוצה, בגובה הגדר. כיוונה קדימה, מהקבוצה אל המדרגות ואל המצלמה. דמות אחת בקבוצה מסתירה אותה חלקית, ויוצרת את פסי האור היורדים במורד גרם המדרגות. מקור LED מתמשך ולא פלאש, מה שמאפשר לחשוף את הגשם בעוצמה לאורך זמן.' },
+    ]
+  };
+
+  // === LIGHT-SOURCE MARKERS (used in light mode) ===
+  const LIGHT_MARKERS = [
+    { num: '01', x: 36.07, y: 9.46, name: 'פנס הרחוב', color: '#d4a017' },
+    { num: '02', x: 75.22, y: 66.88, name: 'פלאש בבסיס הפנס', color: '#3b6cd0' },
+    { num: '03', x: 64.78, y: 81.5, name: 'שלושה פלאשים, מילוי', color: '#3a8a47' },
+    { num: '04', x: 52.25, y: 55.4, name: 'פלאש על אלכסון הגשם', color: '#7a3aaa' },
+    { num: '05', x: 71.05, y: 41.83, name: 'פלאש על הקבוצה', color: '#b56a30' },
+    { num: '06', x: 58.52, y: 46, name: 'Ayrton Stradale, אור ראשי', color: '#a02a2a' },
+  ];
+
+  // === PATH ARROWS (used in path mode) — sequence of conductions between objects ===
+  const PATH_ARROWS = [
+    { from: 'boy_body', to: 'group', label: '1 → 2' },
+    { from: 'group', to: 'fence_top', label: '2 → 3' },
+    { from: 'fence_top', to: 'boy_body', label: '3 → 4' },
+    { from: 'boy_body', to: 'broken_slats', label: '4 → 5' },
+    { from: 'broken_slats', to: 'group', label: '5 → 6' },
+    { from: 'group', to: 'boy_head', label: '6 → 7' },
+    { from: 'boy_head', to: 'shoes', label: '7 → 8' },
+    { from: 'shoes', to: 'boy_feet', label: '8 → 9' },
+    { from: 'boy_feet', to: 'shoes', label: '9 → 10' },
+    { from: 'shoes', to: 'boy_hand', label: '10 → 11' },
+    { from: 'boy_hand', to: 'raft', label: '11 → 12' },
+    { from: 'raft', to: 'group', label: '12 → 13' },
+    { from: 'group', to: 'branches_fg', label: '13 → 14' },
+    { from: 'branches_fg', to: 'flowers', label: '14 → 15' },
+    { from: 'flowers', to: 'snail', label: '15 → 16' },
+    { from: 'snail', to: 'boy_body', label: '16 → 17' },
+  ];
+
+  const LEADER_DIRS = {
+    'boy_body': 'right',
+    'boy_head': 'up',
+    'boy_hand': 'down',
+    'boy_feet': 'up-right',
+    'shoes': 'down-left',
+    'bottle': 'up',
+    'hat': 'up-left',
+    'bag': 'left',
+    'raft': 'down-right',
+    'broken_slats': 'right',
+    'group': 'up-left',
+    'fence_top': 'up',
+    'stairs': 'up-right',
+    'stone_wall': 'right',
+    'vegetation': 'left',
+    'fence_right': 'left',
+    'flowers': 'down-left',
+    'branches_fg': 'left',
+    'snail': 'right',
+    'rain': 'up-left',
+    'light_beam': 'up-right',
+    'rain_beams': 'right',
+    'lamp': 'down-left',
+    'lamp_pole': 'right',
+  };
+
+
+  const LAYERS_DATA = [
+    { num: '01', title: 'משחק', text: 'ילד עם קרשים על מדרגות בלילה. גוף רוכן, ידיים עסוקות בחומר. סצנה של ילדות בשולי המרחב הציבורי. נסבלת. אינה דורשת התערבות, אינה דורשת הסבר.' },
+    { num: '02', title: 'משהו במעלה', text: 'בקצה גרם המדרגות נראית קבוצה של דמויות בסילואט. אי אפשר להכריע מי הם. הראייה מספקת רק נוכחות, לא זהות. הנער אינו לבד.' },
+    { num: '03', title: 'הם הולכים', text: 'לא עומדים, לא צופים, לא מחכים. צועדים לאורך הגדר, גבם אל המצלמה. עוד שנייה לא יהיו. בין אם איום ובין אם חברים, נסוגים מחוץ לפריים.' },
+    { num: '04', title: 'חזרה אליו, פרשנות חדשה', text: 'המבט חוזר אל הנער עם ידיעה נוספת. הקבוצה הולכת. אם כך, מה שהוא עושה עם הקרשים אינו משחק עצמאי. הוא מפרק. הוא מסיים. עוד רגע יקום וירוץ אחריהם.' },
+    { num: '05', title: 'הוא לא היה במשחק', text: 'הסכמה הקודמת מתעקמת. הקרשים סביבו פזורים, לא נאספים. תנוחתו של מי שמתחיל, לא של מי שמסיים. למה לא היה? אולי לא הוזמן. אולי הוזמן והגיע מאוחר. אולי לא אזר אומץ. כל אפשרות פוצעת אחרת ואף אחת לא נסגרת.' },
+    { num: '06', title: 'הם היו במשחק', text: 'מבט נוסף לקבוצה. הם מסודרים בכבדות של מי ששיחק עד תום. גופים שנמתחו, רגליים שרצו. בעלי הרגע שעבר. הוא לא הגיע אליו. הם פשוט מי שכבר היה.' },
+    { num: '07', title: 'הוא לא משחק, הוא מפרק', text: 'בידיעה שלא היה במשחק, הקריאה החדשה היא שמפרק. אולי שובבות מאוחרת, מי שלא היה ועכשיו מנקם בקרשים. אולי כעס. או פשוט עוסק במה שיש, עובד עם החומר שנותר אחרי שהאחרים הלכו.' },
+    { num: '08', title: 'חפצים אישיים', text: 'שורת חפצים על המדרגה משמאלו. כובע על תיק אוכל, בקבוק מים, נעלי ספורט. רגע. מי בעליהם? אולי נשארו ממישהו אחר. אולי שייכים לאחד מהקבוצה שזה עתה הלכה. אי ודאות שמותחת את הקריאה הקודמת.' },
+    { num: '09', title: 'הרגליים היחפות', text: 'רגליים יחפות. אבן רטובה. עכשיו ברור: הנעליים על המדרגה הן שלו. הוא הוריד אותן. גם הכובע, גם התיק, גם הבקבוק. הכל שלו. רק הוא, כפוף, יחף, נשאר עם הקרשים.' },
+    { num: '10', title: 'הסדר. נער טוב', text: 'החפצים מסודרים. צמד נעליים מקבילי, פתוחות באותו כיוון. בקבוק זקוף. כובע על התיק. שורה ישרה על מדרגה אחת. לא תנועה של מי שזרק. תנועה של מי שלימדו אותו. הניח כמו שמורידים נעליים בכניסה לבית.' },
+    { num: '11', title: 'אגודל למעלה. הוא בונה', text: 'האגודל פונה כלפי מעלה. האצבעות פרושות מתחת לתריס. לא תנוחת הוצאה, לא תנוחת זריקה, לא תנוחת שבירה. תנוחת הרכבה. אחיזה של מי שמתאים חלק לחלק. הקריאה שמפרק מתה. הנער בונה. רפסודה.' },
+    { num: '12', title: 'הסכנה. הוא הוריד הכל כדי לא להתלכלך', text: 'רפסודה על אבן בזווית הזו, ברגע שתיטען בגוף, תקרוס. אין סיכוי שזה יעמוד. ונער שיודע לסדר נעליים מקבילות, יודע גם לקרוא קונסטרוקציה. הוא בונה משהו שהוא יודע שלא יחזיק. ואירוניה חדה, הוריד נעליים, סילק כובע, סידר תיק, לא כדי להיפצע, כדי לא להתלכלך. ובדיוק במה שעשה כדי לשמור על עצמו, חשף את עצמו.' },
+    { num: '13', title: 'הסילואט אינו', text: 'מבט אחרון אל מעלה. הקבוצה כמעט הלכה. רגע אחד נוסף וההליכה תיגמר. בין אם היו אלה אנשים שיכלו לעזור ובין אם איום שהיה צריך להישמר ממנו, שניהם הולכים. הגשם ממשיך לרדת על שני הצדדים, גם אחרי שהקרן ביניהם מתרוקנת מגופים. הנער לבד.' },
+    { num: '14', title: 'הענפים. אנחנו מציצים', text: 'פתאום נוכחות הענפים בקדמת הפריים מקבלת משמעות. אנחנו לא מסתכלים על הסצנה. אנחנו מציצים אליה דרך מסך. למה אנחנו לא עוזרים? ושאלה כפולה, אולי המבט שלנו אינו תמים. אולי הענפים הם מחבוא של מי שצופה במכוון. אולי הצופה הזה, אנחנו, הוא בעצמו האיום.' },
+    { num: '15', title: 'הפרחים מעבר לגדר', text: 'מבט נוסף, ימינה. מעל קיר האבן, מאחורי גדר נוספת, גדל צמח עם פרחים. ומעליו, בצללים, בית, חלון. מאוכלס. אולי משם הגיעו התריסים השבורים. אולי שם גרים אנשים שעוד רגע ילכו לישון. הם קרובים. ממש קרובים. ואף על פי כן, אינם רואים. המקום שבו דברים שלא צריכים לקרות, יכולים לקרות בלי שאיש יראה.' },
+    { num: '16', title: 'החילזון', text: 'העין פוגשת את החילזון. שלוש מדרגות מעל הנער. גופו מוצא, מחושיו פתוחים, זוחל לכיוון ימין. בית הקונכייה על גבו. גוף רך נוסף על אבן רטובה. עוד יצור על מסלול של ירידה איטית. שניהם, הנער והחילזון, הם הצורה שבה דברים קורים בעולם הזה, לאט, ביחידות, על אבן רטובה, ללא קהל.' },
+    { num: '17', title: 'התרוקנות', text: 'הנער שלא היה במשחק, ואי אפשר לדעת למה. שיפצע, ואיש לא יראה. אנחנו, שכן רואים, לא נעזור, או גרוע מזה, אולי אנחנו עצמנו הסכנה. החילזון איטי מדי. הפרחים שייכים לאחרים. הבית סגור. הקבוצה כבר אינה. הגשם נופל על הכל בלי להבחין. מה שנשאר אינו מסר, ואינו רגש מוגדר. הוא ריבוי שאינו נסגר.' },
+  ];
+
+  const PATH_DATA = [
+    { num: '1 → 2', title: 'אור וצורנית', text: 'אלכסון פנס הרחוב חותך כלפי מעלה במדרגות, וקווי הפרספקטיבה של גרם המדרגות מתכנסים אל הנקודה העליונה. שני אלה מובילים את העין ממקום הנער במורד אל הקצה העליון של הפריים.' },
+    { num: '2 → 3', title: 'פסיכולוגית וצורנית', text: 'העין נדרשת לפענח את זהות הקבוצה ולא מצליחה. במקום הפענוח קולטת היא את התנועה שלהם. הסכמת התנועה מסיטה את העין מהפענוח אל המעקב.' },
+    { num: '3 → 4', title: 'אור וצורנית', text: 'אלומות האור מאחורי הקבוצה ממשיכות לרדת במורד גרם המדרגות, נחשפות באוויר הגשום, וטיפות הגשם מסמנות את מסלולן עד אל הנער בתחתית. גרם המדרגות עצמו פועל כמסילה דו-סטרית בין הקצה העליון לתחתון.' },
+    { num: '4 → 5', title: 'פסיכולוגית', text: 'הסכמה החדשה מייצרת ציפייה פעילה. הצופה ממתין שהנער יקום. במהלך ההמתנה הזאת מתחילה העין לבדוק את התנוחה, לחפש סימני סיום, ובמקום זאת מוצאת סימני התחלה.' },
+    { num: '5 → 6', title: 'נורמטיבית חברתית ופסיכולוגית', text: 'שאלת השייכות מפעילה את הסכמה החברתית של הצופה, מי בפנים, מי בחוץ, ולמה. הצופה מחפש רמז שיכריע, וכשאינו מוצא, מבטו עולה שוב אל הקבוצה לבדוק אם הם מספקים תשובה.' },
+    { num: '6 → 7', title: 'צורנית וגופנית', text: 'המבט יורד חזרה במורד גרם המדרגות אל הנער. השוואה גופנית ישירה בין הקבוצה הזרוקה במעלה לבין הנער הרוכן בתחתית.' },
+    { num: '7 → 8', title: 'צורנית ונורמטיבית חברתית', text: 'העין יורדת מהידיים אל הסביבה הקרובה. כשמשהו מסודר במיוחד, העין נמשכת אליו כמו אל פריט בחלון ראווה. שורת החפצים על המדרגה משמאלו תופסת את המבט.' },
+    { num: '8 → 9', title: 'פסיכולוגית וגופנית', text: 'אי הוודאות מובילה את הצופה לחפש ראיה, והגוף של הנער מספק אותה. העין יורדת מהחפצים אל גופו, ולמטה אל רגליו.' },
+    { num: '9 → 10', title: 'גופנית ונורמטיבית חברתית', text: 'לאחר שזוהה שהחפצים שלו, העין רוצה לראות איך הוא הניח אותם. סדרם של חפצים אישיים שייך לקטגוריה של חינוך, של הוראה. הצופה מתבונן ברצף מתוך ציפייה לקרוא את ההיסטוריה האישית של הנער דרך הסידור.' },
+    { num: '10 → 11', title: 'צורנית', text: 'לאחר זיהוי הסדר, העין חוזרת אל הפעולה, אל הידיים. השאלה הבאה ברורה, נער שכזה, מה הוא עושה עם הקרשים?' },
+    { num: '11 → 12', title: 'גופנית ופסיכולוגית', text: 'זיהוי הבנייה מפעיל את התודעה החזותית של מבנה. העין בוחנת את היציבות, את הזוויות, את היחס בין הקרשים לאבן. הגוף של הצופה מתחיל לדמיין מה יקרה כשהמבנה ייטען במשקל.' },
+    { num: '12 → 13', title: 'צורנית ופסיכולוגית', text: 'לאחר זיהוי הסכנה, העין עולה למעלה אל הקבוצה. שאלה לא מנוסחת, מי יראה? מי יבוא? והעלייה נתקלת במרחב המתרוקן, כי הקבוצה כבר כמעט אינה.' },
+    { num: '13 → 14', title: 'צורנית ופסיכולוגית', text: 'העין נסוגה מהמרחב הריק במעלה אל המסך הקדמי. תנועה אינסטינקטיבית של חיפוש, מי כן יכול להציל? מי עוד פה?' },
+    { num: '14 → 15', title: 'נורמטיבית חברתית, גופנית ופסיכולוגית', text: 'שאלת ההתערבות מפעילה את אפקט הצופה, מודעות עצמית של מי שרואה ולא פועל. הגוף של הצופה מתעורר לעצמו, למיקום שלו במרחב, ולשאלה מאיזה צד של המסך אני נמצא.' },
+    { num: '15 → 16', title: 'נורמטיבית חברתית', text: 'הקרבה הפיזית של הבית מימין מחריפה את ההיעדרות. אם הוא ככה קרוב לבית ועדיין אף אחד לא יראה, ההסתרה היא אקטיבית. המרחב הציבורי בנוי כך שמה שקורה בו לא ייראה.' },
+    { num: '16 → 17', title: 'סריקה אחרונה', text: 'העין עוברת על כל הפריים, מהענפים בקדמה אל הקבוצה במעלה, אל הנער בתחתית, אל החילזון, אל הפרחים, אל הבית. כל אלמנט נקרא עכשיו מחדש בידיעת הסיום.' },
+  ];
+
+  let currentCategory = 'description';
+
+  // === OBJECTS ON IMAGE ===
+  // Coordinates from the annotator tool's JSON export.
+  // X was measured from the RIGHT (RTL annotator) so we flipped it to (100 - x) when generating.
+  // 24 objects ordered: boy → his removed items → his materials → group → close env → far env → foreground → snail → weather → light system.
+  // Each object has: id, position (xPercent, yPercent), label position offset, name in 3 langs,
+  // and per-category meaning. small=true triggers zoom on focus.
+  const objectData = [
+    {
+      id: 'boy_body',
+      x: 78.43, y: 70.16,
+      labelOffset: { dx: 0, dy: 0 },
+      small: false,
+      layer: 1,
+      name: { he: 'הנער', en: '', ar: '' },
+      category: {
+        description: { he: 'נער על סף ההתבגרות, גוף רוכן קדימה, ראש מורכן, ידיים עסוקות בקרשים. בגדים בהירים, רגליים יחפות על אבן רטובה.', en: '', ar: '' },
+        meaning: { he: 'מוקד הפעולה. תנוחת הריכוז של ילדות מאוחרת, גיל שיודע להיכנס לעבודה גופנית עם חומרים. הוא קרוב מאוד לקרשים, רחוק מאוד מהקבוצה, מופרד מהחפצים האישיים שלו על ידי גופו עצמו.', en: '', ar: '' },
+        layers: { he: 'רובד 1, הקריאה הראשונה. ילד שעושה משהו עם מה שמצא. סצנה של ילדות בשולי המרחב הציבורי. נסבלת, אינה דורשת התערבות.', en: '', ar: '' },
+        path: { he: 'תחנה 1, נקודת הכניסה לפריים. ההולכה מכאן תוביל אל הקצה העליון של גרם המדרגות לחיפוש מי עוד נמצא.', en: '', ar: '' },
+        light: { he: 'מואר על ידי פלאש בבסיס הפנס שמכוון אל פניו וכתפיו, מעצב אותו כדמות תלת-ממדית. שלושה פלאשים מצד שמאל ממלאים את הצללים ברכות כדי שהפיסול לא יהפוך לתאטרלי.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'boy_head',
+      x: 74.96, y: 69.76,
+      labelOffset: { dx: 0, dy: 0 },
+      small: true,
+      layer: 7,
+      name: { he: 'ראש הנער', en: '', ar: '' },
+      category: {
+        description: { he: 'הראש מורכן כלפי מטה, הפנים פונים אל הקרשים שלפניו. המבט אינו עולה אל הקבוצה במעלה.', en: '', ar: '' },
+        meaning: { he: 'המבט אינו מבט של חיפוש או של פנייה. הוא מבט של ריכוז סגור. הוא לא מסתכל אל הקבוצה, לא קורא להם, לא מנופף. הראש מורכן מסמן בחירה בריטואל הפרטי על פני הפנייה החיצונית.', en: '', ar: '' },
+        layers: { he: 'רובד 7, הקריאה שהוא לא משחק אלא מפרק. תנוחת הראש המורכן תומכת בקריאה הזאת לפני שהיא מתעקמת בידי הרובד הבא.', en: '', ar: '' },
+        path: { he: 'תחנה 7, השוואה גופנית בין הקבוצה הזרוקה במעלה לבין הנער הרוכן בתחתית. העין יורדת מהידיים אל הסביבה הקרובה.', en: '', ar: '' },
+        light: { he: 'מתפתל בין אור הפלאש המפסל מצד שמאל לבין הצל החלקי בצד הפנים הימני. הפנים נקראות כעוסקות, לא כמסויטות.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'boy_hand',
+      x: 73.2, y: 79.25,
+      labelOffset: { dx: 0, dy: 0 },
+      small: true,
+      layer: 11,
+      name: { he: 'היד, אגודל למעלה', en: '', ar: '' },
+      category: {
+        description: { he: 'היד אוחזת תריס פלסטיק, האגודל פונה כלפי מעלה, האצבעות פרושות מתחת. התריס בזווית ביחס למשטח האבן.', en: '', ar: '' },
+        meaning: { he: 'אחיזה של בנייה, לא של פירוק. אגודל למעלה ואצבעות פרושות מתחת זאת תנוחה של מי שמתאים חלק לחלק, לא של מי שזורק או שובר. רגע ההיפוך של הקריאה, הנער אינו מפרק.', en: '', ar: '' },
+        layers: { he: 'רובד 11, אגודל למעלה. הוא בונה. מהקרשים השבורים שהקבוצה השאירה הוא מרכיב משהו חדש, רפסודה.', en: '', ar: '' },
+        path: { he: 'תחנה 11, ההולכה הצורנית. לאחר זיהוי הסדר של חפציו, העין חוזרת אל הפעולה ושואלת, נער שכזה, מה הוא עושה עם הקרשים.', en: '', ar: '' },
+        light: { he: 'מואר נקודתית באלכסון של הפלאש המרכזי, הצללים תחת היד מעבים את הקריאה של אחיזה ולא של נגיעה.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'boy_feet',
+      x: 81.84, y: 86.37,
+      labelOffset: { dx: 0, dy: 0 },
+      small: true,
+      layer: 9,
+      name: { he: 'רגליים יחפות', en: '', ar: '' },
+      category: {
+        description: { he: 'כפות רגליים יחפות על אבן רטובה. סמוכות לקרשים שבורים מולן ולנעליים המקבילות שעל המדרגה משמאל.', en: '', ar: '' },
+        meaning: { he: 'הוא הוריד נעליים בעצמו. רגליים יחפות על אבן רטובה הן אינטימיות וחשיפה, מוכנות לקבל את החומר על העור. הן גם פגיעות, יחפים על קרשים שבורים זאת הזמנה לפציעה. נער יחף על הקרשים הופך פעולה תפקודית לריטואל.', en: '', ar: '' },
+        layers: { he: 'רובד 9, הרגליים היחפות. ועכשיו ברור, הנעליים על המדרגה משמאלו הן שלו, וגם הכובע, התיק, הבקבוק. הכל שלו. רק הוא, כפוף, יחף, נשאר עם הקרשים.', en: '', ar: '' },
+        path: { he: 'תחנה 9, ההולכה גופנית ופסיכולוגית. אי הוודאות לגבי בעלי החפצים מובילה את הצופה לחפש ראיה, והגוף של הנער מספק אותה.', en: '', ar: '' },
+        light: { he: 'מצללית את עצמן על האבן הבהירה הרטובה. הניגוד בין עור הילד לאבן הוא טבעי, לא דרמטי.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'shoes',
+      x: 56.55, y: 76,
+      labelOffset: { dx: 0, dy: 0 },
+      small: false,
+      layer: 10,
+      name: { he: 'נעלי ספורט מקבילות', en: '', ar: '' },
+      category: {
+        description: { he: 'צמד נעלי ספורט מסודר, מקבילות זו לזו, פתוחות באותו כיוון. מונחות על המדרגה משמאל לנער.', en: '', ar: '' },
+        meaning: { he: 'צמד נעליים מקבילי הוא צורה של סדר שלמדו אותו. נער שלא חונך לסדר זורק נעליים. הסידור הזה הוא הצהרה, לימדו אותי. גם בלילה, על אבן, באמצע מדרון בין שכונות, אני מסדר. רובד של חינוך, של הורות, של נורמה שהופנמה.', en: '', ar: '' },
+        layers: { he: 'רובד 10, הסדר. נער טוב. שורה ישרה על מדרגה אחת, לא תנועה של מי שזרק, תנועה של מי שלימדו אותו.', en: '', ar: '' },
+        path: { he: 'תחנה 10, ההולכה הגופנית-נורמטיבית. לאחר שזוהה שהחפצים שלו, העין רוצה לקרוא את ההיסטוריה האישית שלו דרך הסידור.', en: '', ar: '' },
+        light: { he: 'מוארות באלכסון מהפלאשים מצד שמאל. הצל הקצר תחתיהן מסמן ששטחן יציב, לא זרוק.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'bottle',
+      x: 55.4, y: 73.21,
+      labelOffset: { dx: 0, dy: 0 },
+      small: true,
+      layer: 10,
+      name: { he: 'בקבוק מים תרמי', en: '', ar: '' },
+      category: {
+        description: { he: 'בקבוק תרמי זקוף, מונח על המדרגה ליד הכובע, התיק והנעליים. עומד על תחתיתו.', en: '', ar: '' },
+        meaning: { he: 'בקבוק תרמי זקוף הוא חפץ של הורה. ילד לא אורז לעצמו תרמוס. מישהו אריז לו אותו. עדות לטיפול קודם, לסדר יום שכלל יציאה ארוכה. הזקיפות היא בחירה. ילד שלמד לסדר נעליים בצמד למד גם להעמיד בקבוק על תחתיתו.', en: '', ar: '' },
+        layers: { he: 'רובד 10, הסדר. הבקבוק הוא ההוכחה היחידה בסידור שמאשר את קיומו של מבוגר אחראי כלשהו.', en: '', ar: '' },
+        path: null,
+        light: { he: 'המתכת המלוטשת תופסת ברק קצר מהאלכסון. נקודת אור קטנה שמסמנת אותו בתוך השורה.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'hat',
+      x: 52.7, y: 72.61,
+      labelOffset: { dx: 0, dy: 0 },
+      small: true,
+      layer: 10,
+      name: { he: 'כובע', en: '', ar: '' },
+      category: {
+        description: { he: 'כובע מונח על תיק האוכל, בקצה הימני של שורת החפצים על המדרגה.', en: '', ar: '' },
+        meaning: { he: 'כובע על תיק רך הוא חפץ של בוקר. ילד יוצא מהבית עם כובע. בלילה כובע אינו רלוונטי. נוכחות הכובע אומרת שהיום של הילד התחיל הרבה לפני הרגע שאנחנו רואים. הוא משתמש בתיק כמשטח, יוצר עמו מבנה ארכיטקטוני.', en: '', ar: '' },
+        layers: { he: 'רובד 10, הסדר. הכובע הוא מעין שעון שמראה שהיה בוקר.', en: '', ar: '' },
+        path: null,
+        light: { he: 'תופס את האור באלכסון מצד שמאל, הצל שמתחתיו מבליט את העובדה שהוא נח על משטח רך.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'bag',
+      x: 52.43, y: 75.05,
+      labelOffset: { dx: 0, dy: 0 },
+      small: true,
+      layer: 10,
+      name: { he: 'תיק אוכל', en: '', ar: '' },
+      category: {
+        description: { he: 'תיק רך, אובלי, מונח על המדרגה. הכובע נח עליו, בקבוק לידו, ונעלי הספורט בקצה השני של השורה.', en: '', ar: '' },
+        meaning: { he: 'תיק אוכל הוא חפץ ילדי, של ילד שאמא או אבא ארזו לו אוכל. אם הבקבוק הוא ההוכחה לקיום של מבוגר, התיק הוא ההוכחה למסירות, לאריזה ולא רק לאספקה. הוא היחיד שמשמש בעצמו כמשטח לחפץ אחר.', en: '', ar: '' },
+        layers: { he: 'רובד 10, הסדר. בלי התיק, נוצרת תחושה של נער שהגיע מאי שם בלי הכנה. עם התיק, הוא ילד שיצא במכוון.', en: '', ar: '' },
+        path: null,
+        light: { he: 'הצורה הרכה תופסת אור ברכות, בלי הברק שיש למתכת או הניגוד שיש לעור הקשה של הנעליים.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'raft',
+      x: 74.81, y: 81.68,
+      labelOffset: { dx: 0, dy: 0 },
+      small: false,
+      layer: 12,
+      name: { he: 'הרפסודה הנבנית', en: '', ar: '' },
+      category: {
+        description: { he: 'קרשי תריסים מורכבים זה לזה בזווית ביחס לאבן הרטובה. המבנה לא יציב, הזוויות שגויות.', en: '', ar: '' },
+        meaning: { he: 'רפסודה על אבן רטובה, ברגע שתיטען בגוף, תקרוס. הקרשים אינם מתחברים נכון, האבן רטובה. הוא בונה משהו שהוא יודע שלא יחזיק. הוריד נעליים, סילק כובע, סידר תיק, לא כדי להיפצע, כדי לא להתלכלך. ובדיוק במה שעשה כדי לשמור על עצמו, חשף את עצמו.', en: '', ar: '' },
+        layers: { he: 'רובד 12, הסכנה. הוא הוריד הכל כדי לא להתלכלך. נער שיודע לסדר נעליים מקבילות בצמד מושלם, יודע גם לקרוא קונסטרוקציה. הוא בונה משהו שהוא יודע שלא יחזיק.', en: '', ar: '' },
+        path: { he: 'תחנה 12, ההולכה הגופנית-פסיכולוגית. זיהוי הבנייה מפעיל את התודעה החזותית של מבנה. העין בוחנת את היציבות, את הזוויות, ומדמיינת מה יקרה כשהמבנה ייטען במשקל.', en: '', ar: '' },
+        light: { he: 'באור החותך מצד שמאל, הקרשים מטילים צללים חדים שחושפים את חוסר היציבות של החיבורים.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'broken_slats',
+      x: 77.2, y: 82.87,
+      labelOffset: { dx: 0, dy: 0 },
+      small: false,
+      layer: 5,
+      name: { he: 'קרשים ותריסים שבורים', en: '', ar: '' },
+      category: {
+        description: { he: 'פזורים על המדרגה סביב הנער. תריסי פלסטיק ירושלמיים וקרשי עץ דקים, חלקם שלמים, חלקם שבורים בקצוות.', en: '', ar: '' },
+        meaning: { he: 'התריסים נושאים את שם הדימוי. תריסי פלסטיק ירושלמיים, חומר שמסמן בית ישראלי ישן יותר ממה שהילד יכול לזכור. תריס הוא הגנה מאור, מחום, מבית מבחוץ. הם הגבול בין הבית לעולם. ילד שבונה רפסודה מתריסים בונה ממה שהיה הגנה.', en: '', ar: '' },
+        layers: { he: 'רובד 5, הוא לא היה במשחק. הקרשים סביבו אינם נאספים, הם פזורים. תנוחתו אינה תנוחה של מי שמסיים, אלא של מי שמתחיל.', en: '', ar: '' },
+        path: { he: 'תחנה 5, ההולכה הפסיכולוגית. הצופה ממתין שהנער יקום וירוץ אחרי הקבוצה. במקום סימני סיום, העין מוצאת סימני התחלה.', en: '', ar: '' },
+        light: { he: 'האור החותך חושף את הטקסטורה של הקצוות השבורים, רגע של בנייה זמנית שננטשה.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'group',
+      x: 65.03, y: 46.59,
+      labelOffset: { dx: 0, dy: 0 },
+      small: true,
+      layer: 2,
+      name: { he: 'הקבוצה במעלה', en: '', ar: '' },
+      category: {
+        description: { he: 'קבוצה של דמויות בסילואט, במנח הליכה, גבן אל המצלמה. צועדות לאורך גדר נמוכה בקצה העליון של גרם המדרגות.', en: '', ar: '' },
+        meaning: { he: 'אנונימיות מכוונת. אם היו לנו פנים, היה לנו סיפור פסיכולוגי על מי הם. בלי פנים, הם פשוט מי שהיה ולא היה. לא עומדים, לא צופים, לא מחכים, הולכים. עוד שנייה לא יהיו. בין אם איום ובין אם חברים, הם נסוגים אל מחוץ לפריים.', en: '', ar: '' },
+        layers: { he: 'רובד 2, משהו במעלה. נוכחות של מישהו אחר בפריים, הנער אינו לבד. רובד 3, הם הולכים. רובד 6, הם היו במשחק. רובד 13, הסילואט אינו, הם נעלמים והנער לבד.', en: '', ar: '' },
+        path: { he: 'תחנה 2, ההולכה הפסיכולוגית-צורנית. העין נדרשת לפענח את זהות הקבוצה ולא מצליחה. במקום הפענוח קולטת את התנועה שלהם.', en: '', ar: '' },
+        light: { he: 'מסומנות בסילואט מול אלומות אור הסטראדלה שמאחוריהן. פלאש דק מצד ימין מחלץ פרטים על הגופים והגדר, מוגבל בעוצמה כדי להגדיר נוכחות בלי לחשוף זהות.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'fence_top',
+      x: 63.81, y: 47.66,
+      labelOffset: { dx: 0, dy: 0 },
+      small: true,
+      layer: 3,
+      name: { he: 'הגדר הנמוכה', en: '', ar: '' },
+      category: {
+        description: { he: 'גדר נמוכה במעלה, חוצה את כל רוחב גרם המדרגות בקצה העליון. הקבוצה צועדת לאורכה, לא חוצה אותה.', en: '', ar: '' },
+        meaning: { he: 'גבול אזרחי קל, לא חומה. סימן של תחום, לא של חסימה. הקבוצה צועדת לאורך הגדר, לא חוצה אותה, מציאות של ציות, של הליכה לפי המבנה. ילדים שמתנהגים יפה לעומת הנער שלא.', en: '', ar: '' },
+        layers: { he: 'רובד 3, הם הולכים. הגדר מציבה את הקבוצה כקבוצה נורמטיבית.', en: '', ar: '' },
+        path: null,
+        light: { he: 'סילואט דק מול האור האחורי של הסטראדלה.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'stairs',
+      x: 77.42, y: 57.59,
+      labelOffset: { dx: 0, dy: 0 },
+      small: false,
+      layer: 1,
+      name: { he: 'גרם המדרגות', en: '', ar: '' },
+      category: {
+        description: { he: 'מדרגות אבן ירושלמית רחבות, אבני גזית בגוון בהיר, רטובות. מתחילות בקדמת הפריים מלמטה ומטפסות אל הקצה העליון, מתכנסות בפרספקטיבה.', en: '', ar: '' },
+        meaning: { he: 'מדרגות בירושלים הן תשתית של עיר על גבעות. לא רחוב ולא חצר. הן בין. נער על מדרגות הוא נער במעבר, בין מקום למקום, בין מצב למצב. גרם המדרגות הוא הציר שעליו הקבוצה הלכה כלפי מעלה, והנער היה יכול לעלות אבל בחר לא.', en: '', ar: '' },
+        layers: { he: 'רובד 1, הסביבה הראשונית של הקריאה הראשונה. גם מסילה צורנית, קווי הפרספקטיבה מובילים את העין מהנער במורד אל הקבוצה במעלה.', en: '', ar: '' },
+        path: { he: 'תחנה 1, מסילה ויזואלית. בכל מעבר בין רבדים העין נעה לאורך הציר הזה.', en: '', ar: '' },
+        light: { he: 'מוארות בעוצמה על ידי אלכסון אור הפנס המחזית והסטראדלה האחורית. המדרגות העליונות הן הנפח המואר ביותר בפריים.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'stone_wall',
+      x: 81.81, y: 60.62,
+      labelOffset: { dx: 0, dy: 0 },
+      small: false,
+      layer: 15,
+      name: { he: 'קיר אבן ירושלמי', en: '', ar: '' },
+      category: {
+        description: { he: 'אבני גזית גדולות, בנויות בקפידה, גובלות בגרם המדרגות מצד ימין. מעל הקיר, בחלק העליון מימין, נראים בצללים קיר של בניין וחלון.', en: '', ar: '' },
+        meaning: { he: 'אבן ירושלמית היא לא רק חומר בנייה, היא חוק. בירושלים יש חוק שמחייב כל בנייה להיות מצופה אבן. נער ישראלי על אבן ירושלמית הוא נער בתוך מערכת חוקים שמעצבים את כל מה שמסביבו. הקיר חוסם את האפשרות לפנות ימינה.', en: '', ar: '' },
+        layers: { he: 'רובד 15, הפרחים מעבר לגדר. המרחב כולו הופך מובן בבת אחת. הנער אינו בשטח פראי, הוא בתוך מרחב מאוכלס, בפינה לא מסומנת בין שכונות, על מדרגות שהן יותר נטושות מאשר ציבוריות.', en: '', ar: '' },
+        path: { he: 'תחנה 15, ההולכה הנורמטיבית-חברתית. הקרבה הפיזית של הבית מימין מחריפה את ההיעדרות, ההסתרה אקטיבית.', en: '', ar: '' },
+        light: { he: 'מואר בעקיפין מאלכסון הפנס. הצללים בין האבנים מבליטים את הטקסטורה של הבנייה הירושלמית.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'vegetation',
+      x: 51.3, y: 49.29,
+      labelOffset: { dx: 0, dy: 0 },
+      small: false,
+      layer: 1,
+      name: { he: 'צמחייה פראית', en: '', ar: '' },
+      category: {
+        description: { he: 'שיחים, עשבים גבוהים, צמחי בר על המדרון משמאל לגרם המדרגות.', en: '', ar: '' },
+        meaning: { he: 'צמחייה פראית במדרון של מדרגות עירוניות היא סימן של מקום לא מטופח. שטחי תפר בין שכונות, מקומות שהעיריה לא מתחזקת, פינות שאיש לא לוקח עליהן אחריות. גרם המדרגות הוא קו תפר בין מטופח (קיר אבן מימין) לבין נטוש (צמחייה משמאל).', en: '', ar: '' },
+        layers: { he: 'רובד 1, אטמוספרה רקעית של הקריאה הראשונה. מקום מוזנח, שולי העיר.', en: '', ar: '' },
+        path: null,
+        light: { he: 'תופסת מעט אור מהסטראדלה האחורית, נשארת ברובה בצללים.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'fence_right',
+      x: 89.92, y: 38.24,
+      labelOffset: { dx: 0, dy: 0 },
+      small: true,
+      layer: 15,
+      name: { he: 'הגדר הימנית', en: '', ar: '' },
+      category: {
+        description: { he: 'גדר נוספת מעל קיר האבן בצד הימני העליון, סמוכה לפינת הפריים. מאחוריה גדל צמח עם פרחים.', en: '', ar: '' },
+        meaning: { he: 'גבול נוסף, לבית של אחרים. הצמח עם הפרחים מאחוריה הוא בצד הסגור והמוגן, לא בצד של הנער.', en: '', ar: '' },
+        layers: { he: 'רובד 15, הפרחים מעבר לגדר. החיים שמעבר לגדר הם של אחרים, לא של הנער.', en: '', ar: '' },
+        path: null,
+        light: { he: 'סילואט דק על רקע הצללים העמוקים של הבית הרחוק.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'flowers',
+      x: 88.54, y: 43.55,
+      labelOffset: { dx: 0, dy: 0 },
+      small: true,
+      layer: 15,
+      name: { he: 'פרחים מעל הגדר', en: '', ar: '' },
+      category: {
+        description: { he: 'צמח עם פרחים גדל מתוך גינה של מישהו, מעבר לגדר הימנית. ענפי הצמח חוצים את הגדר.', en: '', ar: '' },
+        meaning: { he: 'סימן של בית מטופח, של אנשים שיש להם זמן לזרוע פרחים. נוכחות של חיים אזרחיים נורמליים, על הצד השני של הגדר, לא על הצד של הנער. הוא במרחק עשרה מטרים מבית מאוכלס, ועדיין לא נראה.', en: '', ar: '' },
+        layers: { he: 'רובד 15, הפרחים מעבר לגדר. הקרבה הפיזית של הבית לנער היא קטלנית. הוא קרוב, ובכל זאת לא רואה.', en: '', ar: '' },
+        path: { he: 'תחנה 15, ההולכה הנורמטיבית-חברתית. המרחב הציבורי בנוי כך שמה שקורה בו לא ייראה.', en: '', ar: '' },
+        light: { he: 'תופסים מעט אור מצד שמאל, נראים כסימן עדין של חיים על רקע הצללים.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'branches_fg',
+      x: 48.44, y: 72.1,
+      labelOffset: { dx: 0, dy: 0 },
+      small: false,
+      layer: 14,
+      name: { he: 'ענפים יבשים בקדמה', en: '', ar: '' },
+      category: {
+        description: { he: 'ענפי עץ יבשים בקדמת הפריים, חוצים את כל שטחו, מטושטשים מעט בשל המרחק הקרוב למצלמה. כמעט ללא עלים, חלקם מסתעפים לענפים דקים יותר.', en: '', ar: '' },
+        meaning: { he: 'ענפים יבשים בקדמה יוצרים מסך, אבל גם נושאים סמליות בפני עצמם. ענף יבש הוא ענף שאיבד את העלים. הוא בשלב של חורף או של מוות. בלי הענפים, הצופה היה בתוך הסצנה ללא חציצה. עם הענפים, הצופה הוא מציץ. הענפים הם מה שהופך את הראייה שלנו ללא ניטרלית.', en: '', ar: '' },
+        layers: { he: 'רובד 14, הענפים. אנחנו מציצים. אנחנו לא מסתכלים על הסצנה, אנחנו מציצים אליה דרך מסך. למה אנחנו לא עוזרים. ואולי הענפים אינם רק מסך אקראי, אולי הם מחבוא של מי שצופה במכוון. אולי אנחנו עצמנו האיום.', en: '', ar: '' },
+        path: { he: 'תחנה 14, ההולכה הנורמטיבית-גופנית-פסיכולוגית. שאלת ההתערבות מפעילה את אפקט הצופה. הגוף של הצופה מתעורר לעצמו, למיקום שלו במרחב, ולשאלה, מאיזה צד של המסך אני נמצא.', en: '', ar: '' },
+        light: { he: 'קרובים מאוד למצלמה, נצללים על הסצנה כמסך אפל. אזורי האור מאחוריהם מבליטים את הצורה השלדית שלהם.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'snail',
+      x: 65.04, y: 61.99,
+      labelOffset: { dx: 0, dy: 0 },
+      small: true,
+      layer: 16,
+      name: { he: 'החילזון', en: '', ar: '' },
+      category: {
+        description: { he: 'חילזון על שטח האבן של המדרגה השלישית מעל הנער. גופו מוצא, מחושיו פתוחים, זוחל לכיוון ימין. בית הקונכייה על גבו.', en: '', ar: '' },
+        meaning: { he: 'חילזון הוא יצור איטי, מוגן בקונכייה, נושא את ביתו על גבו. בלילה גשום, חילזון הוא יצור שזה הזמן שלו, הוא דווקא יוצא בגשם. הוא היחיד בדימוי שזה הזמן שלו. שלוש מדרגות מעל הנער, על אותה מסילה אנכית. שניהם על אותו ציר זמן בקצב אחר. החילזון איטי מכדי להיות עד.', en: '', ar: '' },
+        layers: { he: 'רובד 16, החילזון. הוא והחילזון על אותו ציר זמן בקצב שונה. החילזון יגיע אל היכן שהוא הולך מאוחר מדי. ייתכן שהחילזון הוא דווקא העד היחיד. ייתכן ששניהם, הנער והחילזון, הם הצורה שבה דברים קורים בעולם הזה, לאט, ביחידות, על אבן רטובה, ללא קהל.', en: '', ar: '' },
+        path: { he: 'תחנה 16, סריקה אחרונה. העין עוברת על כל הפריים, מהענפים בקדמה אל הקבוצה במעלה, אל הנער בתחתית, אל החילזון, אל הפרחים, אל הבית.', en: '', ar: '' },
+        light: { he: 'תופס נקודת אור קטנה ועדינה מהאלכסון, פרט קטן בתוך אזור האבן הבהירה.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'rain',
+      x: 62.14, y: 49.85,
+      labelOffset: { dx: 0, dy: 0 },
+      small: true,
+      layer: 1,
+      name: { he: 'טיפות גשם', en: '', ar: '' },
+      category: {
+        description: { he: 'גשם דק יורד על כל שטח הפריים, נראה כקווים אלכסוניים דקים שמצליחים להיתפס בעיקר בתוך קרני האור שבמרכז ובהבלחות מעל אזורי הצל.', en: '', ar: '' },
+        meaning: { he: 'גשם בלילה הוא אווירה של עצב, של ניקוי, של בידוד. הוא גם זמן. גשם נופל לאורך כל הסצנה, לא רגע אחד, וזה אומר שהזמן עובר. הסצנה היא לא הבזק, היא משך. בלי גשם, הסצנה הייתה לילה יבש, נורמלי. עם הגשם, היא כבדה, ארוכה, שלא נגמרת.', en: '', ar: '' },
+        layers: { he: 'רובד 1, אטמוספרה רקעית. הגשם נותן לסצנה משך, בלעדיו היא הייתה רגע.', en: '', ar: '' },
+        path: null,
+        light: { he: 'גלוי רק היכן שיש אור, התאורה תוכננה לכך. הסטראדלה האחורית מתמשכת באור LED ולא הבזק, מה שמאפשר לה לחשוף את הגשם בעוצמה לאורך זמן.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'light_beam',
+      x: 65.41, y: 55.26,
+      labelOffset: { dx: 0, dy: 0 },
+      small: false,
+      layer: 13,
+      name: { he: 'אלכסון אור הפנס', en: '', ar: '' },
+      category: {
+        description: { he: 'אלכסון אור חזק יורד מהפנס בקדמה השמאלית, נופל על המדרגות העליונות ויוצר שכבה מוארת בה ניתן לראות את טיפות הגשם נופלות.', en: '', ar: '' },
+        meaning: { he: 'האלכסון הוא הציר הגיאומטרי של הפריים, מחבר בין הפנס בקצה השמאלי העליון לבין הנער בקצה הימני התחתון. שני קצותיו הם שני הזרועות של מהלך הקריאה, מקור האור הסטטי מצד אחד ומקור הפעולה הפעילה מצד שני.', en: '', ar: '' },
+        layers: { he: 'רובד 13, הסילואט אינו. אחרי שהקבוצה כמעט הלכה, האור ממשיך לרדת על שני הצדדים. הגשם ממשיך לנפול גם אחרי שהקרן ביניהם מתרוקנת מגופים.', en: '', ar: '' },
+        path: { he: 'תחנה 13, ההולכה הצורנית-פסיכולוגית. העין נסוגה מהמרחב הריק במעלה אל המסך הקדמי. תנועה אינסטינקטיבית של חיפוש, מי כן יכול להציל.', en: '', ar: '' },
+        light: { he: 'האלכסון מסתיר את עצמו ומתחזה להמשך טבעי של הפנס. הוא הסיבה הסיפורית לכל מה שמואר. בלעדיו הצופה היה רואה אור בלילה ולא יודע מאיפה הוא בא.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'rain_beams',
+      x: 65.03, y: 51.75,
+      labelOffset: { dx: 0, dy: 0 },
+      small: false,
+      layer: 13,
+      name: { he: 'קרני אור על הגשם', en: '', ar: '' },
+      category: {
+        description: { he: 'פסי אור בולטים יורדים מהקבוצה במורד גרם המדרגות, מבליטים את הגשם בין הקבוצה לנער.', en: '', ar: '' },
+        meaning: { he: 'הקרניים מסמנות את המרחב הריק בין הקבוצה לנער כנפח פיזי, לא רק מרחק. בתוך הנפח הזה הגשם הופך נראה, הזמן הופך נמדד. הנפח הזה הוא הפער שלא נחצה.', en: '', ar: '' },
+        layers: { he: 'רובד 13, הסילואט אינו. הקרניים מבליטות את ההיעלמות של הקבוצה, האור ממשיך אך הגופים נעלמים.', en: '', ar: '' },
+        path: null,
+        light: { he: 'נוצרים על ידי הסטראדלה האחורית מאחורי הגדר העליונה. דמות אחת בקבוצה עומדת על הציר בין המנורה למצלמה ומסתירה אותה חלקית, יוצרת את החלוקה לפסים.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'lamp',
+      x: 37, y: 13.56,
+      labelOffset: { dx: 0, dy: 0 },
+      small: false,
+      layer: 1,
+      name: { he: 'פנס הרחוב', en: '', ar: '' },
+      category: {
+        description: { he: 'פנס רחוב גבוה בחלק העליון השמאלי של הפריים, עטוף בענפי עץ. מקרין אלכסון אור חזק כלפי מטה ימינה.', en: '', ar: '' },
+        meaning: { he: 'פנס רחוב הוא סימן ציוויליזציה. אומר שהמרחב מתוחזק, שיש עירייה. נער שעובד תחת פנס רחוב הוא נער במקום שאמור להיות נראה לכולם. הפנס בקדמה, יחד עם הענפים, מציב אותו בעולם של הצופה, לא בעולם של הסצנה. הוא קרוב יותר אלינו מאשר אל הנער.', en: '', ar: '' },
+        layers: { he: 'רובד 1, אטמוספרה רקעית של הקריאה הראשונה. הפנס הוא תנאי לראליזם של הקריאה הראשונה, בלעדיו התאורה הייתה נחשפת כמבוימת.', en: '', ar: '' },
+        path: null,
+        light: { he: 'מקור התאורה הסיפורי. כל יתר הפלאשים מסתירים את עצמם ומתחזים להמשך טבעי של הפנס.', en: '', ar: '' }
+      }
+    },
+    {
+      id: 'lamp_pole',
+      x: 38.2, y: 46.22,
+      labelOffset: { dx: 0, dy: 0 },
+      small: true,
+      layer: 1,
+      name: { he: 'עמוד הפנס', en: '', ar: '' },
+      category: {
+        description: { he: 'עמוד אנכי המחבר בין ראש הפנס לקרקע, חוצה את שמאל הפריים מהחלק העליון אל החלק האמצעי.', en: '', ar: '' },
+        meaning: { he: 'מסילה ויזואלית אנכית בצד שמאל של הפריים. ביחד עם קווי המדרגות והגדרות, הוא חלק ממערך הקווים שמארגן את המרחב.', en: '', ar: '' },
+        layers: { he: 'רובד 1, אלמנט קומפוזיציוני רקעי.', en: '', ar: '' },
+        path: null,
+        light: { he: 'סילואט דק מול הצמחייה. הוא עצמו לא מואר, הוא תומך מבני של מקור האור.', en: '', ar: '' }
+      }
+    }
+  ];
+
+  // === HOTSPOTS RENDERING ===
+  let focusedObjectId = null;
+
+  function renderHotspots() {
+    const layer = document.getElementById('hotspotsLayer');
+    if (!layer) return;
+
+    if (currentCategory === 'light') {
+      layer.innerHTML = buildLightMarkers();
+      bindLightMarkerEvents();
+    } else if (currentCategory === 'path' || currentCategory === 'layers') {
+      // Both modes render hotspots + arrows. path dims the hotspots so arrows pop;
+      // layers keeps them at normal brightness so the scene reads first.
+      const dim = currentCategory === 'path';
+      layer.innerHTML = buildObjectHotspots({ dim: dim }) + buildPathArrowsSVG();
+      bindObjectHotspotEvents();
+      bindPathArrowEvents();
+    } else {
+      // description, meaning
+      layer.innerHTML = buildObjectHotspots({ dim: false });
+      bindObjectHotspotEvents();
+    }
+  }
+
+  function buildObjectHotspots(opts) {
+    const dim = opts && opts.dim;
+    let html = '';
+    objectData.forEach((obj, i) => {
+      const name = obj.name[currentLang] || obj.name.he;
+      const isFocused = obj.id === focusedObjectId;
+      html += `
+        <div class="hotspot ${isFocused ? 'focused' : ''} ${dim ? 'is-dim' : ''}" data-obj-id="${obj.id}" data-obj-layer="${obj.layer}" data-leader-dir="${LEADER_DIRS[obj.id] || 'up-right'}" style="left: ${obj.x}%; top: ${obj.y}%;"><div class="hotspot-star"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2 L13.5 9 L20 8 L14.5 12 L20 16 L13.5 15 L12 22 L10.5 15 L4 16 L9.5 12 L4 8 L10.5 9 Z"/></svg></div><div class="hotspot-leader"></div><div class="hotspot-tag"><span class="hotspot-tag-num">${String(i + 1).padStart(2, '0')}</span><span class="hotspot-tag-name">${name}</span></div></div>
+      `;
+    });
+    return html;
+  }
+
+  function bindObjectHotspotEvents() {
+    document.querySelectorAll('.hotspot[data-obj-id]').forEach(el => {
+      const objId = el.dataset.objId;
+      const objLayer = el.dataset.objLayer;
+      const scrollPanelToItem = () => {
+        const panelCol = document.getElementById('panelCol');
+        // In description/meaning, the panel item carries data-panel-obj-id
+        // In layers, the panel-stop carries data-layer-num matching this object's layer
+        let target = document.querySelector(`[data-panel-obj-id="${objId}"]`);
+        if (!target && currentCategory === 'layers' && objLayer) {
+          target = document.querySelector(`[data-layer-num="${objLayer}"]`);
+        }
+        if (!panelCol || !target) return;
+        const panelStyles = window.getComputedStyle(panelCol);
+        const panelScrolls = panelStyles.overflowY === 'auto' || panelStyles.overflowY === 'scroll';
+        if (panelScrolls) {
+          const itemRect = target.getBoundingClientRect();
+          const colRect = panelCol.getBoundingClientRect();
+          const offset = itemRect.top - colRect.top;
+          const targetScroll = panelCol.scrollTop + offset - (colRect.height - itemRect.height) / 2;
+          panelCol.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
+        } else {
+          const itemRect = target.getBoundingClientRect();
+          const bundle = document.querySelector('.sticky-bundle');
+          const bundleHeight = bundle ? bundle.getBoundingClientRect().height : 0;
+          const topNavHeight = 96;
+          const stickyOffset = topNavHeight + bundleHeight + 16;
+          const targetScroll = window.scrollY + itemRect.top - stickyOffset;
+          window.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
+        }
+      };
+      el.addEventListener('mouseenter', () => {
+        focusObject(objId, 'hotspot');
+        scrollPanelToItem();
+      });
+      el.addEventListener('mouseleave', () => unfocusObject());
+      el.addEventListener('click', scrollPanelToItem);
+    });
+  }
+
+  function buildLightMarkers() {
+    let html = '';
+    LIGHT_MARKERS.forEach(m => {
+      html += `<div class="light-marker" data-light-num="${m.num}" style="left: ${m.x}%; top: ${m.y}%; --marker-color: ${m.color};"><div class="light-marker-circle">${m.num}</div><div class="light-marker-tag">${m.name}</div></div>`;
+    });
+    return html;
+  }
+
+  function bindLightMarkerEvents() {
+    document.querySelectorAll('.light-marker').forEach(el => {
+      const num = el.dataset.lightNum;
+      el.addEventListener('mouseenter', () => {
+        document.querySelectorAll('.light-marker').forEach(o => o.classList.toggle('focused', o === el));
+        const panelItem = document.querySelector(`[data-light-num="${num}"].panel-item`);
+        if (panelItem) panelItem.classList.add('focused');
+      });
+      el.addEventListener('mouseleave', () => {
+        el.classList.remove('focused');
+        document.querySelectorAll('.panel-item.focused').forEach(p => p.classList.remove('focused'));
+      });
+    });
+  }
+
+  function buildPathArrowsSVG() {
+    const objMap = {};
+    objectData.forEach(o => { objMap[o.id] = o; });
+    let paths = '';
+    PATH_ARROWS.forEach((arrow, i) => {
+      const from = objMap[arrow.from];
+      const to = objMap[arrow.to];
+      if (!from || !to) return;
+      const x1 = from.x, y1 = from.y, x2 = to.x, y2 = to.y;
+      const dx = x2 - x1, dy = y2 - y1;
+      const len = Math.sqrt(dx * dx + dy * dy) || 1;
+      const offset = Math.min(len * 0.25, 12);
+      const mx = (x1 + x2) / 2 + (-dy / len) * offset;
+      const my = (y1 + y2) / 2 + (dx / len) * offset;
+      const d = `M ${x1} ${y1} Q ${mx} ${my} ${x2} ${y2}`;
+      paths += `<path d="${d}" data-arrow-idx="${i}" class="path-arrow" vector-effect="non-scaling-stroke"></path>`;
+    });
+    return `<svg class="path-arrows-svg" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrow-head" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="rgba(232,228,221,0.85)"/></marker></defs>${paths}</svg>`;
+  }
+
+  function bindPathArrowEvents() {
+    // Path-stop hover in panel highlights the matching arrow
+    document.querySelectorAll('[data-arrow-idx]').forEach((el, i) => {
+      el.style.markerEnd = 'url(#arrow-head)';
+    });
+    document.querySelectorAll('[data-path-idx]').forEach(el => {
+      const idx = el.dataset.pathIdx;
+      el.addEventListener('mouseenter', () => {
+        document.querySelectorAll('.path-arrow').forEach(a => a.classList.toggle('is-active', a.dataset.arrowIdx === idx));
+      });
+      el.addEventListener('mouseleave', () => {
+        document.querySelectorAll('.path-arrow.is-active').forEach(a => a.classList.remove('is-active'));
+      });
+    });
+  }
+
+  // Track if initial reveal has been done
+  let hotspotsInitialRevealDone = false;
+
+  // Trigger initial reveal — rapid sweep, one hotspot at a time.
+  // Each hotspot lights for ~100ms, then the next takes over. Total ≈ 2.4s.
+  // The order matches the panel numbering (object index 1-24).
+  const HOTSPOT_REVEAL_ORDER = [
+    'boy_body', 'boy_head', 'boy_hand', 'boy_feet',
+    'shoes', 'bottle', 'hat', 'bag',
+    'raft', 'broken_slats', 'group', 'fence_top',
+    'stairs', 'stone_wall', 'vegetation', 'fence_right',
+    'flowers', 'branches_fg', 'snail', 'rain',
+    'light_beam', 'rain_beams', 'lamp', 'lamp_pole'
+  ];
+  const REVEAL_STEP_MS = 100;
+
+  function triggerInitialReveal() {
+    if (hotspotsInitialRevealDone) return;
+    hotspotsInitialRevealDone = true;
+    HOTSPOT_REVEAL_ORDER.forEach((id, idx) => {
+      setTimeout(() => {
+        document.querySelectorAll('.hotspot.is-revealed').forEach(h => h.classList.remove('is-revealed'));
+        const h = document.querySelector(`.hotspot[data-obj-id="${id}"]`);
+        if (h) h.classList.add('is-revealed');
+      }, idx * REVEAL_STEP_MS);
+    });
+    // Final cleanup after the last hotspot has been shown
+    setTimeout(() => {
+      document.querySelectorAll('.hotspot.is-revealed').forEach(h => h.classList.remove('is-revealed'));
+    }, HOTSPOT_REVEAL_ORDER.length * REVEAL_STEP_MS + 80);
+  }
+
+  // Re-render hotspots on window resize (image dimensions change)
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => renderHotspots(), 100);
+  });
+
+  function focusObject(objId, source, opts) {
+    focusedObjectId = objId;
+    const obj = objectData.find(o => o.id === objId);
+    if (!obj) return;
+    const skipZoom = opts && opts.skipZoom;
+    // If source is an object (called as focusObject(id, {skipZoom:true})), unpack
+    if (source && typeof source === 'object' && !opts) {
+      opts = source;
+    }
+    const finalSkipZoom = skipZoom || (opts && opts.skipZoom);
+
+    // Highlight hotspot
+    document.querySelectorAll('.hotspot').forEach(h => {
+      h.classList.toggle('focused', h.dataset.objId === objId);
+    });
+
+    // Highlight panel item
+    document.querySelectorAll('[data-panel-obj-id]').forEach(p => {
+      p.classList.toggle('focused', p.dataset.panelObjId === objId);
+    });
+
+    // Zoom to small objects (skipped during scroll-driven focus)
+    const frame = document.querySelector('.image-frame');
+    const overlay = document.getElementById('zoomOverlay');
+    if (!finalSkipZoom && obj.small && frame && overlay) {
+      // Read the background-image from the .image-content element
+      const imageContent = document.querySelector('.image-content');
+      if (imageContent) {
+        const bg = getComputedStyle(imageContent).backgroundImage;
+        if (bg && bg !== 'none') {
+          overlay.style.backgroundImage = bg;
+          overlay.style.backgroundSize = '300%';
+          overlay.style.backgroundPosition = `${obj.x}% ${obj.y}%`;
+          overlay.classList.add('active');
+          frame.classList.add('zooming');
+        }
+      }
+    } else if (finalSkipZoom && frame && overlay) {
+      // Make sure zoom is off during scroll-driven focus
+      frame.classList.remove('zooming');
+      overlay.classList.remove('active');
+    }
+  }
+
+  function unfocusObject() {
+    focusedObjectId = null;
+    document.querySelectorAll('.hotspot.focused').forEach(h => h.classList.remove('focused'));
+    document.querySelectorAll('[data-panel-obj-id].focused').forEach(p => p.classList.remove('focused'));
+    const frame = document.querySelector('.image-frame');
+    if (frame) frame.classList.remove('zooming');
+    const overlay = document.getElementById('zoomOverlay');
+    if (overlay) overlay.classList.remove('active');
+  }
+
+  function renderPanel(mode, lang) {
+    const t = translations[lang];
+    const labels = {
+      description: t.catDescription,
+      light: t.catLight,
+      meaning: t.catMeaning,
+      layers: t.catLayers,
+      path: t.catPath
+    };
+
+    const intros = {
+      description: { he: 'תיאור גולמי של מה שיש בדימוי, ללא פרשנות. <em>מה רואים, לפני שיש משמעות.</em>', en: 'Raw description of what is in the image, without interpretation. <em>What is seen, before meaning.</em>', ar: 'وصف خام لما في الصورة، بلا تفسير. <em>ما يُرى قبل أن يكون له معنى.</em>' },
+      light: { he: 'ששה מקורות אור פועלים יחד בסצנה. הסטראדלה היא המקור הראשי, חמשת הפלאשים פועלים סביבה. <em>כל מקור מסתיר את עצמו ומתחזה להמשך טבעי של הפנס.</em>', en: 'Six light sources work together in the scene. The Stradale is the main source, five flashes work around it. <em>Each source hides itself and pretends to be a natural continuation of the streetlamp.</em>', ar: 'ستة مصادر إضاءة تعمل معاً في المشهد. ال-Stradale هو المصدر الرئيسي، وخمسة فلاشات تعمل حوله. <em>كل مصدر يخفي نفسه ويتظاهر بأنه امتداد طبيعي لمصباح الشارع.</em>' },
+      meaning: { he: 'מה כל אובייקט מסמל, מה תפקידו בסיפור. <em>הקריאה הסימבולית.</em>', en: 'What each object symbolizes, its role in the story. <em>The symbolic reading.</em>', ar: 'ما يرمز إليه كل غرض، دوره في الحكاية. <em>القراءة الرمزية.</em>' },
+      layers: { he: 'הדימוי פותח את עצמו בשבעה-עשר רבדים. כל רובד נסבל ברגע שלו, וכל רובד נחצה בידי הבא אחריו. <em>הסכמה נבנית, ואז שוברת.</em>', en: 'The image opens itself in seventeen layers. Each layer is bearable in its moment, and each is crossed by the next. <em>The schema builds, and breaks.</em>', ar: 'تفتح الصورة نفسها في سبع عشرة طبقة. كل طبقة محتملة في لحظتها، وكل طبقة تتجاوزها التالية. <em>يُبنى المخطط، ثم يُكسر.</em>' },
+      path: { he: 'בכל מעבר בין רובד לרובד פועלת הולכה, מנגנון שמסיט את העין מתחנה אחת לבאה. שש-עשרה הולכות, חמש מערכות, צורנית, אור, פסיכולוגית, נורמטיבית חברתית, גופנית.', en: 'Between each pair of layers, a conduction operates, a mechanism that diverts the eye from one stop to the next. Sixteen conductions, five systems: formal, light, psychological, normative-social, bodily.', ar: 'بين كل طبقتين، يعمل توجيه، آلية تحوّل العين من محطة إلى التالية. ست عشرة توجيهة، خمسة أنظمة: شكلية، إضاءة، نفسية، معيارية اجتماعية، جسدية.' }
+    };
+
+    let html = `
+      <div class="panel-section-label">${labels[mode]}</div><p class="panel-intro">${intros[mode][lang]}</p>
+    `;
+
+    if (mode === 'light') {
+      html += renderLightContent(lang);
+    } else if (mode === 'layers') {
+      html += renderLayersContent(lang);
+    } else if (mode === 'path') {
+      html += renderPathContent(lang);
+    } else {
+      // description, meaning -- per-object with hotspot sync
+      html += '<div class="panel-items">';
+      objectData.forEach((obj, i) => {
+        const content = obj.category[mode];
+        if (!content) return;
+        const text = content[lang] || content.he;
+        const name = obj.name[lang] || obj.name.he;
+        html += `
+          <div class="panel-item" data-panel-obj-id="${obj.id}"><div class="panel-item-meta">${String(i + 1).padStart(2, '0')}</div><div class="panel-item-title">${name}</div><div class="panel-item-text">${text}</div></div>
+        `;
+      });
+      html += '</div>';
+    }
+
+    document.querySelector('#categoryPanel .panel-inner').innerHTML = html;
+
+    // Hotspot-panel sync only applies to per-object modes
+    if (mode === 'description' || mode === 'meaning') {
+      document.querySelectorAll('[data-panel-obj-id]').forEach(item => {
+        const objId = item.dataset.panelObjId;
+        item.addEventListener('mouseenter', () => focusObject(objId, 'panel'));
+        item.addEventListener('mouseleave', () => unfocusObject());
+      });
+      if (focusedObjectId) {
+        const item = document.querySelector(`[data-panel-obj-id="${focusedObjectId}"]`);
+        if (item) item.classList.add('focused');
+      }
+    }
+  }
+
+  function renderLightContent(lang) {
+    let html = '<div class="panel-light-block">';
+    html += `<img class="panel-light-diagram-img" src="${LIGHT_DATA.diagramSrc}" alt="Lighting plan, top-down view"/>`;
+    html += '</div>';
+    html += '<div class="panel-items">';
+    LIGHT_DATA.sources.forEach(s => {
+      html += `<div class="panel-item" data-light-num="${s.num}"><div class="panel-item-meta">${s.num} · ${s.subtitle}</div><div class="panel-item-title">${s.title}</div><div class="panel-item-text">${s.text}</div></div>`;
+    });
+    html += '</div>';
+    return html;
+  }
+
+  function renderLayersContent(lang) {
+    let html = '<div class="panel-path">';
+    LAYERS_DATA.forEach((l, i) => {
+      const num = String(i + 1);
+      html += `<div class="panel-stop" data-layer-num="${num}"><div class="panel-stop-num">רובד ${l.num}</div><div class="panel-stop-title">${l.title}</div><div class="panel-stop-text">${l.text}</div></div>`;
+    });
+    html += '</div>';
+    return html;
+  }
+
+  function renderPathContent(lang) {
+    let html = '<div class="panel-path">';
+    PATH_DATA.forEach((p, i) => {
+      html += `<div class="panel-stop" data-path-idx="${i}"><div class="panel-stop-num">${p.num}</div><div class="panel-stop-title">${p.title}</div><div class="panel-stop-text">${p.text}</div></div>`;
+    });
+    html += '</div>';
+    return html;
+  }
+
+  function setCategory(mode, scrollToView = true) {
+    currentCategory = mode;
+
+    // Update button active states
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.mode === mode);
+    });
+
+    // Render panel content (which uses objectData)
+    renderPanel(mode, currentLang);
+
+    // Render/refresh hotspots on the image
+    renderHotspots();
+
+    // Reset scroll only if explicitly requested (not on initial load)
+    const panelCol = document.getElementById('panelCol');
+    if (panelCol && scrollToView) {
+      const panelStyles = window.getComputedStyle(panelCol);
+      const panelScrolls = panelStyles.overflowY === 'auto' || panelStyles.overflowY === 'scroll';
+      if (panelScrolls) {
+        // Desktop: reset internal scroll
+        panelCol.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        // Mobile: scroll window so panel-list top sits below the sticky bundle
+        const bundle = document.querySelector('.sticky-bundle');
+        const bundleHeight = bundle ? bundle.getBoundingClientRect().height : 0;
+        const topNavHeight = 96;
+        const stickyOffset = topNavHeight + bundleHeight + 16;
+        const listRect = panelCol.getBoundingClientRect();
+        const targetScroll = window.scrollY + listRect.top - stickyOffset;
+        window.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
+      }
+    }
+
+    // Recompute scroll-driven focus for the new category
+    if (typeof window.__scrollFocusUpdate === 'function') {
+      setTimeout(window.__scrollFocusUpdate, 50);
+    }
+  }
+
+  document.querySelectorAll('.category-btn').forEach(btn => {
+    btn.addEventListener('click', () => setCategory(btn.dataset.mode, true));
+  });
+
+  // === LANGUAGE SWITCHER ===
+  const translations = {
+ "he": {
+  "dir": "rtl",
+  "back": "← חזרה לעבודות",
+  "navCounter": "01 / 05 · תריסים",
+  "summary": "משחק שכונתי על מדרגות הופך לדימוי של השתייכות, אומץ שהגיע מאוחר, והמתנה לקבוצה שכבר איננה.",
+  "expand": "הרחבה — שכבות ומסמך בנייה",
+  "collapse": "סגור",
+  "sectionLayers": "שבע שכבות",
+  "sectionConstruction": "מסמך בנייה",
+  "readFull": "קרא את הניתוח המלא",
+  "imageHint": "העבר את העכבר על הדימוי לחשיפת השכבות",
+  "otherWorks": "עבודות נוספות",
+  "scrollHint": "גלול ←",
+  "ctaInquire": "פנייה",
+  "ctaInquireDesc": "לאספנים, אוצרים, גלריות, עיתונות וכל מי שרוצה ליצור קשר על העבודה.",
+  "ctaInquireAction": "המשך ←",
+  "ctaAsk": "שאלה לאמן",
+  "ctaAskDesc": "שאל על הבנייה, על השכבות, על ההחלטות. אני עונה בעצמי, לא תמיד מיד.",
+  "ctaAskAction": "כתוב לי ←",
+  "ctaJoin": "יומן הפרויקט",
+  "ctaJoinDesc": "תיעוד התהליך, התלבטויות והחלטות שעוד מתהוות. נפתח בקרוב.",
+  "ctaJoinAction": "לעדכונים ←",
+  "footerJournal": "יומן הפרויקט",
+  "footerJournalText": "תיעוד התהליך, סיפורים מהשטח, התלבטויות והחלטות שעוד מתהוות. ניוזלטר ב-Substack.",
+  "footerSubscribe": "עדכנו אותי →",
+  "footerWork": "העבודה",
+  "footerLink_allImages": "כל הדימויים",
+  "footerLink_about": "על הפרויקט",
+  "footerLink_emptiness": "הצהרת אמן",
+  "footerFollow": "המשך",
+  "footerLink_ig": "אינסטגרם",
+  "currentLabel": "נוכחי",
+  "catDescription": "תיאור",
+  "catDescriptionEn": "Description",
+  "catLight": "אור",
+  "catLightEn": "Light",
+  "catMeaning": "משמעות",
+  "catMeaningEn": "Meaning",
+  "catLayers": "רבדים",
+  "catLayersEn": "Layers",
+  "catPath": "מסלול הולכה",
+  "catPathEn": "Eye Path",
+  "railTitle": "כותרת",
+  "railImage": "דימוי",
+  "railLayers": "שכבות",
+  "railConstruction": "בנייה",
+  "railActions": "פעולות"
+ },
+ "en": {
+  "dir": "ltr",
+  "back": "← Back to works",
+  "navCounter": "01 / 05 · Shutters",
+  "summary": "A neighborhood game on a staircase becomes an image of belonging, courage that arrived too late, and waiting for a group that is no longer there.",
+  "expand": "Expand — Layers & Construction Document",
+  "collapse": "Close",
+  "sectionLayers": "Seven Layers",
+  "sectionConstruction": "Construction Document",
+  "readFull": "Read the full analysis",
+  "imageHint": "Hover over the image to reveal the layers",
+  "otherWorks": "Other Works",
+  "scrollHint": "Scroll →",
+  "ctaInquire": "Inquire",
+  "ctaInquireDesc": "For collectors, curators, galleries, press, and anyone wishing to reach out about the work.",
+  "ctaInquireAction": "Continue →",
+  "ctaAsk": "Ask the Artist",
+  "ctaAskDesc": "Ask about the construction, the layers, the decisions. I answer personally.",
+  "ctaAskAction": "Write to me →",
+  "ctaJoin": "Project Journal",
+  "ctaJoinDesc": "Process notes, doubts and decisions still taking shape. Opening soon.",
+  "ctaJoinAction": "Get updates →",
+  "footerJournal": "Project Journal",
+  "footerJournalText": "Process documentation, stories from the field, and decisions still being formed. Newsletter on Substack.",
+  "footerSubscribe": "Notify me →",
+  "footerWork": "The Work",
+  "footerLink_allImages": "All Images",
+  "footerLink_about": "About the Project",
+  "footerLink_emptiness": "Artist Statement",
+  "footerFollow": "Follow",
+  "footerLink_ig": "Instagram",
+  "currentLabel": "Current",
+  "catDescription": "Description",
+  "catDescriptionEn": "תיאור",
+  "catLight": "Light",
+  "catLightEn": "אור",
+  "catMeaning": "Meaning",
+  "catMeaningEn": "משמעות",
+  "catLayers": "Layers",
+  "catLayersEn": "רבדים",
+  "catPath": "Eye Path",
+  "catPathEn": "מסלול",
+  "railTitle": "Title",
+  "railImage": "Image",
+  "railLayers": "Layers",
+  "railConstruction": "Construction",
+  "railActions": "Actions"
+ },
+ "ar": {
+  "dir": "rtl",
+  "back": "← العودة إلى الأعمال",
+  "navCounter": "01 / 05 · مصاريع",
+  "summary": "تتحول لعبة حي على الدرج إلى صورة عن الانتماء والشجاعة التي جاءت متأخرة وانتظار مجموعة لم تعد موجودة.",
+  "expand": "توسيع — الطبقات ووثيقة البناء",
+  "collapse": "إغلاق",
+  "sectionLayers": "سبع طبقات",
+  "sectionConstruction": "وثيقة البناء",
+  "readFull": "اقرأ التحليل الكامل",
+  "imageHint": "مرّر المؤشر فوق الصورة لكشف الطبقات",
+  "otherWorks": "أعمال أخرى",
+  "scrollHint": "مرّر ←",
+  "ctaInquire": "استفسار",
+  "ctaInquireDesc": "للمقتنين، الأمناء، الصالات، الصحافة، وكل من يودّ التواصل حول العمل.",
+  "ctaInquireAction": "متابعة ←",
+  "ctaAsk": "اسأل الفنان",
+  "ctaAskDesc": "اسأل عن البناء، عن الطبقات، عن القرارات. أجيب بنفسي.",
+  "ctaAskAction": "اكتب لي ←",
+  "ctaJoin": "يوميات المشروع",
+  "ctaJoinDesc": "توثيق العملية وقرارات ما زالت تتشكل. تُفتح قريباً.",
+  "ctaJoinAction": "للتحديثات ←",
+  "footerJournal": "يوميات المشروع",
+  "footerJournalText": "توثيق العملية، قصص من الميدان، وقرارات لا تزال تتشكّل. نشرة على Substack.",
+  "footerSubscribe": "أخبروني ←",
+  "footerWork": "العمل",
+  "footerLink_allImages": "كل الصور",
+  "footerLink_about": "حول المشروع",
+  "footerLink_emptiness": "بيان الفنان",
+  "footerFollow": "تابع",
+  "footerLink_ig": "إنستغرام",
+  "currentLabel": "الحالي",
+  "catDescription": "وصف",
+  "catDescriptionEn": "Description",
+  "catLight": "ضوء",
+  "catLightEn": "Light",
+  "catMeaning": "معنى",
+  "catMeaningEn": "Meaning",
+  "catLayers": "طبقات",
+  "catLayersEn": "Layers",
+  "catPath": "مسار النظر",
+  "catPathEn": "Eye Path",
+  "railTitle": "عنوان",
+  "railImage": "صورة",
+  "railLayers": "طبقات",
+  "railConstruction": "بناء",
+  "railActions": "إجراءات"
+ }
+};
+
+  let currentLang = 'he';
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    const t = translations[lang];
+
+    // Update both title rows
+    document.querySelectorAll('.lang-block').forEach(block => {
+      block.querySelectorAll('.lang-word').forEach(word => {
+        word.classList.toggle('active', word.dataset.lang === lang);
+      });
+    });
+
+    // Update document direction
+    document.documentElement.setAttribute('dir', t.dir);
+    document.documentElement.setAttribute('lang', lang);
+
+    // Update text content
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (t[key]) el.textContent = t[key];
+    });
+
+    // Save preference
+    try { localStorage.setItem('lang', lang); } catch(e) {}
+
+    // Refresh current category in new language (panel + hotspots)
+    if (typeof objectData !== 'undefined') {
+      renderPanel(currentCategory, lang);
+      renderHotspots();
+    }
+  }
+
+  // Bind clicks on every lang word in any lang-block
+  document.querySelectorAll('.lang-block .lang-word').forEach(word => {
+    word.addEventListener('click', () => setLanguage(word.dataset.lang));
+  });
+
+  // Restore preference or set default
+  try {
+    const saved = localStorage.getItem('lang');
+    setLanguage(saved && translations[saved] ? saved : 'he');
+  } catch(e) {
+    setLanguage('he');
+  }
+
+  // Initialize default category (description) panel — without scrolling
+  setCategory('description', false);
+
+  // === MOBILE STICKY BUNDLE (JS-driven, replaces broken position:sticky) ===
+  // Shared viewport helper (used by sticky bundle, scroll focus, and mobile-only logic)
+  const isMobileViewport = () => window.innerWidth <= 560;
+
+  (function setupMobileStickyBundle() {
+    const bundle = document.querySelector('.sticky-bundle');
+    const spacer = document.getElementById('stickyBundleSpacer');
+    if (!bundle || !spacer) return;
+
+    let bundleNaturalTop = 0; // viewport-relative top when not fixed
+    let bundleHeight = 0;
+    let isMobile = isMobileViewport();
+    let isFixed = false;
+
+    function measure() {
+      if (!isMobile) return;
+      // Temporarily remove fixed to measure natural position
+      if (isFixed) {
+        bundle.classList.remove('is-fixed');
+      }
+      const rect = bundle.getBoundingClientRect();
+      bundleHeight = rect.height;
+      // bundleNaturalTop = where the bundle sits in document (scrollY-relative)
+      bundleNaturalTop = rect.top + window.scrollY;
+      spacer.style.height = bundleHeight + 'px';
+      if (isFixed) {
+        bundle.classList.add('is-fixed');
+      }
+    }
+
+    function onScroll() {
+      if (!isMobile) return;
+      const threshold = bundleNaturalTop - 56; // 56 = top-nav height on mobile
+      const shouldFix = window.scrollY >= threshold;
+      if (shouldFix && !isFixed) {
+        bundle.classList.add('is-fixed');
+        isFixed = true;
+      } else if (!shouldFix && isFixed) {
+        bundle.classList.remove('is-fixed');
+        isFixed = false;
+      }
+    }
+
+    function onResize() {
+      const wasMobile = isMobile;
+      isMobile = isMobileViewport();
+      if (!isMobile && wasMobile) {
+        // Switched to desktop: cleanup
+        bundle.classList.remove('is-fixed');
+        isFixed = false;
+        spacer.style.height = '';
+      }
+      if (isMobile) {
+        measure();
+        onScroll();
+      }
+    }
+
+    // Initial setup
+    if (isMobile) {
+      // Wait for layout & images
+      setTimeout(() => {
+        measure();
+        onScroll();
+      }, 100);
+      window.addEventListener('load', () => {
+        measure();
+        onScroll();
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+  })();
+
+  // === SCROLL-DRIVEN FOCUS (all categories, mobile + desktop) ===
+  (function setupScrollDrivenFocus() {
+    let ticking = false;
+    let lastFocusedKey = null;
+
+    function getThreshold() {
+      if (isMobileViewport()) {
+        // Mobile: bottom edge of the (sticky) image frame
+        const imageFrame = document.querySelector('.frame-image .image-frame');
+        if (!imageFrame) return null;
+        return imageFrame.getBoundingClientRect().bottom;
+      } else {
+        // Desktop: top of the panel area, with a small offset
+        const panel = document.getElementById('panelCol');
+        if (!panel) return null;
+        return panel.getBoundingClientRect().top + 80;
+      }
+    }
+
+    function getItemsForCategory() {
+      const cat = currentCategory;
+      if (cat === 'description' || cat === 'meaning') {
+        return {
+          items: document.querySelectorAll('[data-panel-obj-id]'),
+          keyAttr: 'data-panel-obj-id',
+          kind: 'object'
+        };
+      } else if (cat === 'light') {
+        return {
+          items: document.querySelectorAll('.panel-item[data-light-num]'),
+          keyAttr: 'data-light-num',
+          kind: 'light'
+        };
+      } else if (cat === 'layers') {
+        return {
+          items: document.querySelectorAll('[data-layer-num]'),
+          keyAttr: 'data-layer-num',
+          kind: 'layer'
+        };
+      } else if (cat === 'path') {
+        return {
+          items: document.querySelectorAll('[data-path-idx]'),
+          keyAttr: 'data-path-idx',
+          kind: 'path'
+        };
+      }
+      return { items: [], keyAttr: null, kind: null };
+    }
+
+    function clearAllFocus() {
+      document.querySelectorAll('.hotspot.focused').forEach(h => h.classList.remove('focused'));
+      document.querySelectorAll('.light-marker.focused').forEach(m => m.classList.remove('focused'));
+      document.querySelectorAll('.panel-item.focused').forEach(p => p.classList.remove('focused'));
+      document.querySelectorAll('.panel-stop.focused').forEach(p => p.classList.remove('focused'));
+      document.querySelectorAll('.path-arrow.is-active').forEach(a => a.classList.remove('is-active'));
+    }
+
+    function applyFocus(kind, key) {
+      clearAllFocus();
+      if (kind === 'object') {
+        if (typeof focusObject === 'function') {
+          focusObject(key, { skipZoom: true });
+        }
+      } else if (kind === 'light') {
+        const m = document.querySelector(`.light-marker[data-light-num="${key}"]`);
+        if (m) m.classList.add('focused');
+        const p = document.querySelector(`.panel-item[data-light-num="${key}"]`);
+        if (p) p.classList.add('focused');
+      } else if (kind === 'layer') {
+        // Highlight all hotspots that belong to this layer
+        document.querySelectorAll('.hotspot[data-obj-id]').forEach(h => {
+          if (h.dataset.objLayer === key) h.classList.add('focused');
+        });
+        const stop = document.querySelector(`.panel-stop[data-layer-num="${key}"]`);
+        if (stop) stop.classList.add('focused');
+        // Also activate the out-arrow (layer N → N+1, which is PATH_ARROWS index N-1)
+        const layerNum = parseInt(key);
+        if (layerNum >= 1 && layerNum <= 16) {
+          const arrowIdx = layerNum - 1;
+          const arrow = document.querySelector(`.path-arrow[data-arrow-idx="${arrowIdx}"]`);
+          if (arrow) arrow.classList.add('is-active');
+          // And brighten the destination object so the eye sees where it goes
+          if (typeof PATH_ARROWS !== 'undefined') {
+            const arrowData = PATH_ARROWS[arrowIdx];
+            if (arrowData) {
+              const toHotspot = document.querySelector(`.hotspot[data-obj-id="${arrowData.to}"]`);
+              if (toHotspot) toHotspot.classList.add('focused');
+            }
+          }
+        }
+      } else if (kind === 'path') {
+        const arrow = document.querySelector(`.path-arrow[data-arrow-idx="${key}"]`);
+        if (arrow) arrow.classList.add('is-active');
+        const stop = document.querySelector(`.panel-stop[data-path-idx="${key}"]`);
+        if (stop) stop.classList.add('focused');
+        const arrowData = (typeof PATH_ARROWS !== 'undefined') ? PATH_ARROWS[parseInt(key)] : null;
+        if (arrowData) {
+          document.querySelectorAll('.hotspot[data-obj-id]').forEach(h => {
+            if (h.dataset.objId === arrowData.from || h.dataset.objId === arrowData.to) {
+              h.classList.add('focused');
+            }
+          });
+        }
+      }
+    }
+
+    function update() {
+      ticking = false;
+      const { items, keyAttr, kind } = getItemsForCategory();
+      if (!items || items.length === 0 || !kind) return;
+      const threshold = getThreshold();
+      if (threshold === null) return;
+
+      let targetKey = null;
+      for (const item of items) {
+        const rect = item.getBoundingClientRect();
+        if (rect.top >= threshold - 8) {
+          targetKey = item.getAttribute(keyAttr);
+          break;
+        }
+      }
+      if (!targetKey && items.length) {
+        targetKey = items[items.length - 1].getAttribute(keyAttr);
+      }
+
+      const focusKey = `${kind}:${targetKey}`;
+      if (focusKey !== lastFocusedKey) {
+        lastFocusedKey = focusKey;
+        applyFocus(kind, targetKey);
+      }
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    // Desktop: panel scrolls inside #panelCol, so listen there too
+    const panelCol = document.getElementById('panelCol');
+    if (panelCol) panelCol.addEventListener('scroll', onScroll, { passive: true });
+
+    // Expose a manual trigger so setCategory can ask us to recompute
+    window.__scrollFocusUpdate = () => {
+      lastFocusedKey = null;
+      update();
+    };
+
+    setTimeout(update, 200);
+    window.addEventListener('load', () => setTimeout(update, 100));
+  })();
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      renderHotspots();
+      // Show all names briefly to give viewer overview, then fade
+      setTimeout(() => triggerInitialReveal(), 300);
+    }, 50);
+  });
+  // Also re-render after a short delay even before load fires
+  setTimeout(() => renderHotspots(), 200);
+
+  // === CURSOR LIGHT ===
+  const cursorLight = document.getElementById('cursor-light');
+  const cursorDot = document.getElementById('cursor-dot');
+
+  document.addEventListener('mousemove', (e) => {
+    cursorLight.style.left = e.clientX + 'px';
+    cursorLight.style.top = e.clientY + 'px';
+    cursorDot.style.left = e.clientX + 'px';
+    cursorDot.style.top = e.clientY + 'px';
+  });
+
+  // Cursor expands on interactive elements
+  document.querySelectorAll('a, button, .clickable').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursorLight.style.width = '500px';
+      cursorLight.style.height = '500px';
+      cursorDot.style.transform = 'translate(-50%, -50%) scale(2)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursorLight.style.width = '380px';
+      cursorLight.style.height = '380px';
+      cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+  });
+
+  // === RAIN ===
+  const rainContainer = document.getElementById('rainContainer');
+  for (let i = 0; i < 60; i++) {
+    const drop = document.createElement('div');
+    drop.className = 'rain-line';
+    drop.style.left = Math.random() * 100 + '%';
+    drop.style.height = (40 + Math.random() * 60) + 'px';
+    drop.style.animationDuration = (0.7 + Math.random() * 0.8) + 's';
+    drop.style.animationDelay = Math.random() * 2 + 's';
+    drop.style.opacity = 0.25 + Math.random() * 0.35;
+    rainContainer.appendChild(drop);
+  }
+
+  // === WORKS RAIL (mobile tap support) ===
+  // On desktop, hover handles expansion. On mobile, tap toggles.
+  const worksRail = document.getElementById('worksRail');
+  if (worksRail) {
+    worksRail.addEventListener('click', (e) => {
+      // Only toggle on mobile / touch
+      if (window.matchMedia('(hover: none)').matches) {
+        // If clicking on a thumb link, let it navigate; else toggle
+        if (!e.target.closest('.rail-thumb') && !e.target.closest('.rail-bar')) {
+          e.preventDefault();
+          worksRail.classList.toggle('open');
+        }
+      }
+    });
+
+    // Close when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+      if (!worksRail.contains(e.target)) {
+        worksRail.classList.remove('open');
+      }
+    });
+  }
+
+  // === MODAL ===
+  function openModal(type) { document.getElementById('modal-' + type).classList.add('active'); }
+
+  // === LIKE (no signup required, persists per work via localStorage) ===
+  const LIKE_KEY = 'forged-trees:like:shutters';
+  function toggleLike() {
+    const btn = document.getElementById('likeBtn');
+    if (!btn) return;
+    const liked = btn.classList.toggle('is-liked');
+    try {
+      if (liked) localStorage.setItem(LIKE_KEY, '1');
+      else localStorage.removeItem(LIKE_KEY);
+    } catch(e) { /* private mode / no storage */ }
+  }
+  // Restore like state on load
+  try {
+    if (localStorage.getItem(LIKE_KEY) === '1') {
+      const btn = document.getElementById('likeBtn');
+      if (btn) btn.classList.add('is-liked');
+    }
+  } catch(e) {}
+  function closeModal() { document.querySelectorAll('.modal').forEach(m => m.classList.remove('active')); }
+
+  document.querySelectorAll('.modal').forEach(m => {
+    m.addEventListener('click', (e) => { if (e.target === m) closeModal(); });
+  });
+
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  // === SCROLL PROGRESS + ACTIVE SECTION ===
+  const progressFill = document.getElementById('progressFill');
+  const sections = document.querySelectorAll('.progress-section');
+  const sectionTargets = ['title', 'image', 'layers', 'construction', 'actions'];
+
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    progressFill.style.height = progress + '%';
+
+    // Find current section
+    let current = sectionTargets[0];
+    sectionTargets.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top < window.innerHeight * 0.4) {
+        current = id;
+      }
+    });
+
+    sections.forEach(s => {
+      s.classList.toggle('active', s.dataset.section === current);
+    });
+  }
+
+  window.addEventListener('scroll', updateProgress);
+  updateProgress();
+
+  // === COOKIE BANNER ===
+  const banner = document.getElementById('cookieBanner');
+
+  if (!localStorage.getItem('cookieChoice')) {
+    setTimeout(() => banner.classList.add('show'), 2000);
+  }
+
+  function acceptCookies() {
+    localStorage.setItem('cookieChoice', 'accepted');
+    banner.classList.remove('show');
+  }
+
+  function declineCookies() {
+    localStorage.setItem('cookieChoice', 'declined');
+    banner.classList.remove('show');
+    // Disable Clarity
+    if (window.clarity) window.clarity('consent', false);
+  }</script><div class="social-corner" role="navigation" aria-label="social"><a href="https://www.instagram.com/shahafgalilstudio" target="_blank" rel="noopener" class="social-corner-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg></a><a href="../journal.html" class="social-corner-icon" aria-label="Journal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h13a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3V4z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="14" y2="13"/></svg></a></div><div class="rotate-overlay" role="dialog" aria-label="סובב את המכשיר"><div class="rotate-overlay-icon"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="9" y1="19" x2="15" y2="19"/></svg></div><div class="rotate-overlay-text"><div lang="he" dir="rtl">החוויה הזו מותאמת לתצוגה לאורך</div><div lang="ar" dir="rtl">هذه التجربة مصمّمة للعرض العمودي</div><div lang="en" dir="ltr">This experience is designed for portrait view</div></div><div class="rotate-overlay-sub"><span lang="he">סובב את המכשיר</span><span class="sep">·</span><span lang="ar">أدر جهازك</span><span class="sep">·</span><span lang="en">Rotate your device</span></div></div>
+<script>
+// ===== per-work patch (build-live) =====
+var WORK_KEY = "shutters";
+var PREV_URL = "bicycles.html";
+var NEXT_URL = "peppers.html";
+
+// חשיפה קולנועית: גלילת רשימת העצמים מלמטה למעלה, כל נקודה נדלקת בתורה
+triggerInitialReveal = function () {
+  if (window.__revealDone) return; window.__revealDone = true;
+  var DURATION = 1000; // שנייה אחת לכל הרצף
+  var col = document.getElementById('panelCol');
+  var items = Array.prototype.slice.call(document.querySelectorAll('[data-panel-obj-id]'));
+  function clearAll(delay) {
+    setTimeout(function () {
+      document.querySelectorAll('.hotspot.is-revealed').forEach(function (h) { h.classList.remove('is-revealed'); });
+      document.querySelectorAll('.panel-item.focused').forEach(function (p) { p.classList.remove('focused'); });
+    }, delay);
+  }
+  function light(it) {
+    var h = document.querySelector('.hotspot[data-obj-id="' + it.dataset.panelObjId + '"]');
+    if (h) h.classList.add('is-revealed');
+    it.classList.add('focused');
+    setTimeout(function () { it.classList.remove('focused'); }, 600);
+  }
+  if (items.length && col) {
+    var order = items.slice().reverse();
+    var startTop = 0;
+    try { col.scrollTop = col.scrollHeight; startTop = col.scrollTop; } catch (e) {}
+    var revealed = 0, t0 = null;
+    function frame(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / DURATION);
+      try { col.scrollTop = startTop * (1 - p); } catch (e) {}
+      var want = Math.floor(p * order.length);
+      while (revealed < want) light(order[revealed++]);
+      if (p < 1) requestAnimationFrame(frame);
+      else { while (revealed < order.length) light(order[revealed++]); clearAll(1200); }
+    }
+    requestAnimationFrame(frame);
+  } else {
+    var hs = Array.prototype.slice.call(document.querySelectorAll('.hotspot'));
+    hs.sort(function (a, b) { return parseFloat(b.style.top) - parseFloat(a.style.top); });
+    var step = Math.max(40, DURATION / Math.max(1, hs.length));
+    var k = 0;
+    (function tick() {
+      if (k >= hs.length) { clearAll(1400); return; }
+      hs[k].classList.add('is-revealed');
+      k++; setTimeout(tick, step);
+    })();
+  }
+};
+
+// ברבדים אין כוכבים על הדימוי, הם שייכים לתיאור/משמעות/מסלול
+(function () {
+  var _setCat = setCategory;
+  setCategory = function (m, s) {
+    _setCat(m, s);
+    var L = document.getElementById('hotspotsLayer');
+    if (L) L.style.display = (m === 'layers') ? 'none' : '';
+  };
+  setTimeout(function () {
+    var L = document.getElementById('hotspotsLayer');
+    if (L) L.style.display = (currentCategory === 'layers') ? 'none' : '';
+  }, 50);
+})();
+
+// prev/next: חיצי הכותרת + מקלדת
+(function () {
+  var p = document.querySelector('.title-nav-prev');
+  var n = document.querySelector('.title-nav-next');
+  if (p) p.addEventListener('click', function () { location.href = PREV_URL; });
+  if (n) n.addEventListener('click', function () { location.href = NEXT_URL; });
+  document.addEventListener('keydown', function (e) {
+    if (e.target.closest && e.target.closest('input,textarea')) return;
+    if (e.key === 'ArrowRight') location.href = PREV_URL; // rtl: ימינה = קודם
+    if (e.key === 'ArrowLeft') location.href = NEXT_URL;
+  });
+})();
+// share
+function shareNative() {
+  if (navigator.share) navigator.share({ title: document.title, url: location.href }).catch(function () {});
+}
+function copyLink(el) {
+  navigator.clipboard.writeText(location.href).then(function () {
+    if (el) { var n = el.querySelector('.profile-name'); var o = n.textContent; n.textContent = 'הועתק ✓'; setTimeout(function () { n.textContent = o; }, 1400); }
+  });
+}
+// analytics: section_view + שהייה בסקשנים + עצירה על אובייקטים
+(function () {
+  var seen = {}, dwell = {}, openAt = {};
+  function report(name) {
+    if (seen[name]) return; seen[name] = true;
+    if (window.clarity) clarity('set', 'section', WORK_KEY + ':' + name);
+    if (window.gtag) gtag('event', 'section_view', { work: WORK_KEY, section_name: name });
+  }
+  function bucket(s) { return s < 5 ? '0-5s' : s < 15 ? '5-15s' : s < 30 ? '15-30s' : s < 60 ? '30-60s' : s < 120 ? '1-2m' : '2m+'; }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        var id = en.target.id || en.target.dataset.section;
+        if (en.isIntersecting) { report(id); openAt[id] = Date.now(); }
+        else if (openAt[id]) { dwell[id] = (dwell[id] || 0) + (Date.now() - openAt[id]); delete openAt[id]; }
+      });
+    }, { threshold: 0.4 });
+    ['title', 'image', 'categoryPanel'].forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+  }
+  function flush() {
+    var now = Date.now();
+    for (var id in openAt) { dwell[id] = (dwell[id] || 0) + (now - openAt[id]); }
+    openAt = {};
+    for (var id in dwell) {
+      var s = Math.round(dwell[id] / 1000);
+      if (s < 1) continue;
+      if (window.clarity) clarity('set', 'dwell_' + id, bucket(s));
+      if (window.gtag) gtag('event', 'section_dwell', { work: WORK_KEY, section_name: id, seconds: s });
+    }
+    if (window.clarity && Object.keys(dwell).length) clarity('event', 'dwell_report');
+    dwell = {};
+  }
+  window.addEventListener('pagehide', flush);
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') flush(); });
+  // עצירה על אובייקט: ריחוף מעל 700ms נספר כהתעכבות
+  document.addEventListener('mouseover', function (e) {
+    var h = e.target.closest && e.target.closest('.hotspot');
+    if (!h || h.__t0) return;
+    h.__t0 = Date.now();
+    h.addEventListener('mouseleave', function onLeave() {
+      var dt = Date.now() - h.__t0; h.__t0 = null;
+      h.removeEventListener('mouseleave', onLeave);
+      if (dt >= 700) {
+        var name = (h.querySelector('.hotspot-tag-name') || {}).textContent || h.dataset.objId;
+        if (window.clarity) { clarity('set', 'object_focus', WORK_KEY + ':' + name); clarity('event', 'object_focus'); }
+        if (window.gtag) gtag('event', 'object_focus', { work: WORK_KEY, object: name, ms: dt });
+      }
+    });
+  });
+  document.querySelectorAll('.category-btn[data-mode]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (window.clarity) clarity('set', 'category', WORK_KEY + ':' + b.dataset.mode);
+      if (window.gtag) gtag('event', 'category_view', { work: WORK_KEY, category: b.dataset.mode });
+    });
+  });
+})();
+</script></body></html>

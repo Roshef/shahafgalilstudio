@@ -1,748 +1,674 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shahaf — Portfolio — CRT VHS 1.9.0</title>
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      font-family: 'VT323', monospace;
-      color: #7a0d0d;
-      overflow-x: hidden;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>שחף גליל · Shahaf Galil — עצים מעוקמים · Forged Trees</title>
+<meta name="description" content="עולמות מבוימים בצילום: עצים מעוקמים, ספרייה לאומית ישנה, יוסי חכמי, 12. הדפסות פיגמנט ופלטינה-פלדיום בקנה מידה גדול.">
+<meta property="og:title" content="שחף גליל · Shahaf Galil">
+<meta property="og:description" content="אני בונה עולמות. עולמות מבוימים בצילום.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Frank+Ruhl+Libre:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400;700&family=Noto+Naskh+Arabic:wght@400&display=swap" rel="stylesheet">
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "xknwer6lgs");</script>
+<style>
+:root{--black:#0a0a0a;--black-deep:#050505;--bone:#e8e4dd;--bone-dim:#8a857c;--bone-faint:#4a463f;--accent:#b8a78f;
+--serif-heb:'Frank Ruhl Libre',serif;--serif-en:'Cormorant Garamond',serif;--serif-ar:'Noto Naskh Arabic',serif;--mono:'JetBrains Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+::selection{background:var(--bone);color:var(--black-deep)}
+html,body{height:100%;overflow:hidden}
+body{background:var(--black-deep);color:var(--bone);font-family:var(--serif-heb);font-weight:300;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;pointer-events:none;z-index:9998;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grainShift 0.5s steps(1) infinite;mix-blend-mode:overlay}
+@keyframes grainShift{0%{transform:translate(0,0)}20%{transform:translate(-2%,1%)}40%{transform:translate(1%,-2%)}60%{transform:translate(-1%,2%)}80%{transform:translate(2%,-1%)}100%{transform:translate(0,0)}}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
-    .scanlines-overlay {
-      pointer-events: none;
-      position: fixed;
-      inset: 0;
-      z-index: 2;
-      animation: scanShift 0.8s linear infinite;
-      opacity: 0.40;
-    }
-    @keyframes scanShift {
-      0%   { background-position: 0 0; }
-      100% { background-position: 0 4px; }
-    }
+/* ── פס ניווט עליון ── */
+.top-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;
+direction:rtl;padding:22px 40px;font-family:var(--mono);font-size:12px;letter-spacing:.35em;
+opacity:0;animation:fadeUp .9s 2.6s forwards}
+.top-nav .nav-items{display:flex;gap:38px}
+.top-nav a{color:var(--bone-dim);transition:color .4s}
+.top-nav a:hover{color:var(--bone)}
+.top-nav a.active{color:var(--bone)}
+.lang-row{display:flex;gap:16px;font-size:10px;letter-spacing:.15em}
+.lang-row button{color:var(--bone-faint);padding:2px 0;border-bottom:1px solid transparent;transition:all .4s}
+.lang-row button.active{color:var(--bone);border-color:var(--bone-faint)}
+.lang-row button:hover:not(.active){color:var(--bone-dim)}
 
-    .vhs-bar {
-      pointer-events: none;
-      position: fixed;
-      left: 0;
-      width: 100%;
-      z-index: 3;
-      height: 190px;
-      top: -200vh;
-    }
-    #vhs1 { display: none; }
 
-    .crt-layer {
-      position: relative;
-      z-index: 4;
-      animation: crtFlicker 2.5s infinite steps(2, end);
-    }
-    @keyframes crtFlicker {
-      0% { opacity: 1; }
-      50% { opacity: 0.97; }
-      100% { opacity: 1; }
-    }
+/* טלפון אנכי: בקשה לסובב לרוחב */
+.rotate-ask{display:none;position:fixed;inset:0;z-index:9999;background:#050505;align-items:center;justify-content:center;flex-direction:column;gap:20px;text-align:center;padding:32px}
+@media (max-width:560px) and (orientation:portrait){.rotate-ask{display:flex}}
+.rotate-ask .ra-icon{width:56px;height:56px;color:#e8e4dd;animation:raRot 2.6s ease-in-out infinite}
+.rotate-ask .ra-icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.2}
+@keyframes raRot{0%,100%{transform:rotate(0deg)}50%{transform:rotate(90deg)}}
+.rotate-ask .ra-he{font-family:'Frank Ruhl Libre',serif;font-weight:300;font-size:18px;color:#e8e4dd}
+.rotate-ask .ra-sub{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8a857c}
 
-    /* Splash screen */
-    #splash {
-      position: fixed;
-      inset: 0;
-      background: #000;
-      z-index: 20;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .splash-inner {
-      text-align: center;
-    }
-    .splash-line {
-      opacity: 0;
-      transition: opacity 0.15s linear;
-      font-size: 2.2rem;
-    }
-    .splash-sub {
-      opacity: 0;
-      transition: opacity 0.15s linear;
-      margin-top: 0.3rem;
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
+@media (max-height:520px) and (orientation:landscape){
+  .top-nav{padding:10px 18px;font-size:10px}
+  .menu{width:min(230px,30vw);padding:40px 20px 5vh}
+  .brand h1{font-size:clamp(22px,4.5vw,42px)}
+  .brand .en-name{margin-top:10px;font-size:clamp(8px,1.3vw,13px);letter-spacing:.3em}
+  .exh-stack{bottom:2vh;gap:5px}
+  .exh-line{font-size:10.5px}
+  .exh-head{font-size:12px}
+  .preview{top:46px;bottom:calc(2vh + 84px);inset-inline-start:calc(min(230px,30vw) + 14px)}
+  .pv-wall{font-size:12px;line-height:1.7;margin-bottom:12px}
+  .pv-desc{display:none}
+}
+/* ── במה ── */
+.stage{height:100%;display:flex;flex-direction:row-reverse}
+html[dir="ltr"] .stage{flex-direction:row}
+@media (min-width:861px){
+  .menu{position:fixed;top:0;bottom:0;right:0;left:auto}
+  html[dir="ltr"] .menu{left:0;right:auto}
+  .main{width:100%}
+}
+.main{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;min-width:0;position:relative;padding:0 4vw}
+.brand{text-align:center}
+.brand h1{font-size:clamp(32px,5vw,75px);font-weight:300;line-height:1;opacity:0;animation:fadeUp 1.2s .3s cubic-bezier(.4,0,.2,1) forwards}
+.brand .en-name{display:block;font-family:var(--serif-en);font-size:clamp(11px,1.5vw,22px);letter-spacing:.4em;text-transform:uppercase;color:var(--bone-dim);margin-top:26px;font-weight:300}
+.tagline{margin-top:6vh;font-size:clamp(19px,2vw,28px);color:var(--bone-dim);line-height:1.9;text-align:center;opacity:0;animation:fadeUp 1.1s 1.3s cubic-bezier(.4,0,.2,1) forwards}
+.tagline .l2{display:block;font-family:var(--serif-ar);font-size:.78em;color:var(--bone-faint);margin-top:8px}
+.tagline .l3{display:block;font-family:var(--serif-en);font-style:italic;font-size:.78em;color:var(--bone-faint);margin-top:4px}
+.exh-stack{position:absolute;bottom:4vh;inset-inline-start:4vw;display:flex;flex-direction:column;gap:10px;opacity:0;animation:fadeUp .9s 3.1s forwards}
+.exh-line{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;font-size:13px}
+.exh-label{font-family:var(--mono);font-size:9px;letter-spacing:.25em;color:var(--accent);text-transform:uppercase}
+.exh-info{color:var(--bone-dim)}
+.exh-rsvp{font-family:var(--mono);font-size:9px;letter-spacing:.15em;color:var(--bone);border-bottom:1px solid var(--bone-faint);padding-bottom:3px;transition:all .4s}
+.exh-rsvp:hover{border-color:var(--bone)}
+.exh-count{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:#ffffff;font-weight:700}
+.exh-head{font-size:16px;font-weight:700;color:#ffffff;letter-spacing:.04em;margin-bottom:2px}
+.exh-info{color:#ffffff;font-weight:700}
+.exh-cta{margin-top:4px;padding-top:10px;border-top:1px solid rgba(74,70,63,.4);gap:22px}
+.preview{position:fixed;top:70px;bottom:calc(4vh + 150px);inset-inline-start:calc(min(300px,26vw) + 28px);inset-inline-end:4vw;display:flex;flex-direction:column;padding:6px 0 16px;opacity:0;pointer-events:none;transition:opacity .35s;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--bone-faint) transparent}
+.preview.active{opacity:1;pointer-events:auto}
+.brand{transition:opacity .35s}
+.brand.faded{opacity:0;pointer-events:none}
+.pv-top{display:flex;align-items:baseline;gap:20px;margin-bottom:20px}
+.pv-head{font-size:16px;color:#ffffff;font-weight:700;letter-spacing:.04em}
+.pv-close{margin-inline-start:auto;font-family:var(--mono);font-size:11px;color:var(--bone-faint);transition:color .3s}
+.pv-close:hover{color:#fff}
+.pv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 18px;width:100%;padding:5px 9px;box-sizing:border-box}
+.pv-tile{display:block;color:var(--bone-dim);transition:color .3s}
+.pv-img{display:block;aspect-ratio:4/3;overflow:hidden;background:var(--black);outline:1px solid transparent;transition:outline-color .3s,transform .3s}
+.pv-img img{width:100%;height:100%;object-fit:cover;opacity:.82;transition:opacity .3s}
+.pv-name{display:block;margin-top:9px;font-size:14px;color:#ffffff}
+.pv-name i{font-family:var(--serif-en);font-size:11px;color:var(--bone-dim);font-style:italic}
+.pv-meta{display:block;margin-top:2px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--bone-dim)}
+.pv-desc{display:block;margin-top:5px;font-size:11.5px;line-height:1.65;color:#c9c4bb;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pv-tile.hl .pv-img{outline-color:var(--bone);transform:scale(1.03)}
+.pv-tile.hl .pv-img img{opacity:1}
+.pv-tile:hover .pv-img img{opacity:1}
+.pv-wall{margin:0 auto 22px;max-width:820px;font-size:15px;line-height:1.9;color:#b5b0a7;text-align:center;transition:color .35s}
+.pv-wall:hover{color:#ffffff}
+.pv-link{font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--accent);border-bottom:1px solid var(--bone-faint);padding-bottom:3px}
+@media (max-width:860px) and (orientation:portrait){.preview{display:none!important}}
 
-/* Rain canvas for intro */
-    #rainCanvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-    #splash .splash-inner {
-      position: relative;
-      z-index: 2;
-    }
-
-        /* glitch states */
-    .gl1 { opacity: 0.2 !important; }
-    .gl2 { opacity: 0.05 !important; }
-    .gl3 { opacity: 1 !important; }
-
-    /* Language selection row */
-    #lang-row.lang-row-single {
-      margin-bottom: 1.6rem;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 3rem;
-      font-size: 14px;
-      color: rgba(245,245,245,0.75);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-    }
-    #lang-row .lang-option {
-      cursor: pointer;
-      padding: 0.15rem 0.5rem;
-      border-radius: 1,0,0,0.7);
-      transition: color 0.2s ease, text-shadow 0.2s ease, opacity 0.3s ease;
-    }
-    #lang-row .lang-option .lang-text {
-      color: rgba(245,245,245,0.8);
-    }
-    #lang-row .lang-option:hover .lang-text {
-      color: #ffffff;
-      text-shadow: 0 0 8px rgba(255,255,255,0.9);
-    }
-    #lang-row .lang-option.selected .lang-text {
-      color: #ffffff;
-      text-shadow: 0 0 10px rgba(255,255,255,1);
-    }
-    #lang-row .lang-option.fade-out {
-      opacity: 0;
-    }
-    #lang-row .lang-option.blink .lang-text {
-      animation: langBlink 0.8s ease-in-out 3;
-    }
-    @keyframes langBlink {
-      0%, 100% {
-        color: #ffffff;
-        text-shadow: 0 0 6px rgba(255,255,255,0.9);
-      }
-      50% {
-        color: rgba(200,200,200,0.4);
-        text-shadow: 0 0 2px rgba(0,0,0,0.6);
-      }
-    }
-
-  </style>
+/* ── מניו ימני — נקי, 20px ── */
+.menu{width:min(300px,26vw);display:flex;flex-direction:column;justify-content:flex-start;padding:58px 48px 9vh;
+opacity:0;animation:fadeUp 1s 2.1s cubic-bezier(.4,0,.2,1) forwards;overflow-y:auto;scrollbar-width:none}
+.menu::-webkit-scrollbar{display:none}
+.menu-body{margin-bottom:6px}
+.menu-body-head{display:block;width:100%;text-align:start;font-size:12px;font-weight:400;letter-spacing:.06em;color:var(--bone-dim);
+padding:9px 0;transition:color .4s,padding .35s;position:relative}
+.menu-body-head:hover{color:var(--bone);padding-inline-start:8px}
+.menu-body.open .menu-body-head{color:var(--bone)}
+.menu-works{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}
+.menu-body.open .menu-works{max-height:52vh;overflow-y:auto;scrollbar-width:none}
+.menu-body.open .menu-works::-webkit-scrollbar{display:none}
+.menu-work{display:flex;gap:10px;align-items:baseline;padding:6px 0;
+color:var(--bone-dim);font-size:10px;letter-spacing:.06em;transition:all .3s}
+.menu-work:hover{color:var(--bone);padding-inline-start:8px}
+.mw-num{font-family:var(--mono);font-size:8px;letter-spacing:.15em;color:var(--bone-faint);min-width:32px}
+.menu-sep{height:1px;background:var(--bone-faint);opacity:.4;margin:22px 0}
+.menu-extra{display:flex;flex-direction:column;gap:8px}
+.menu-extra a{font-size:15px;color:var(--bone-faint);transition:color .4s,padding .3s}
+.menu-extra a:hover{color:var(--bone);padding-inline-start:6px}
+@media (prefers-reduced-motion:reduce){.top-nav,.brand h1,.tagline,.exh-stack,.menu{opacity:1;animation:none}}
+@media (max-width:860px) and (orientation:portrait){
+  html,body{overflow:auto}
+  .stage{flex-direction:column!important;height:auto;min-height:100%}
+  .main{padding:16vh 8vw 6vh}
+  .brand h1{font-size:clamp(52px,15vw,90px)}
+  .exh-stack{position:static;margin-top:7vh}
+  .menu{width:100%;padding:5vh 8vw 6vh}
+  .top-nav{padding:16px 20px}
+  .top-nav .nav-items{gap:20px;font-size:10px;letter-spacing:.2em}
+}
+</style>
 </head>
 <body>
-  <div id="scanlines" class="scanlines-overlay"></div>
-  <div id="vhs1" class="vhs-bar"></div>
-  <div id="vhs2" class="vhs-bar"></div>
-
-  <div id="splash">
-    <canvas id="rainCanvas"></canvas>
-    <div class="splash-inner">
-      <div id="lang-row" class="lang-row-single">
-        <div class="lang-option lang-he" data-lang="he">
-          <span class="lang-text">להמשיך בעברית?</span>
-        </div>
-        <div class="lang-option lang-en" data-lang="en">
-          <span class="lang-text">Continue in English?</span>
-        </div>
-      </div>
-      <div id="splash-name" class="splash-line">Shahaf Galil</div>
-      <div id="splash-sub" class="splash-sub">Studio / סטודיו</div>
-    </div>
+<nav class="top-nav">
+  <div class="nav-items">
+    <a href="#" class="active" data-menu-focus><span data-b="he">עבודות</span><span data-b="ar" hidden>أعمال</span><span data-b="en" hidden>WORKS</span></a>
+    <a href="about.html"><span data-b="he">אודות</span><span data-b="ar" hidden>نبذة</span><span data-b="en" hidden>ABOUT</span></a>
+    <a href="exhibitions.html"><span data-b="he">תערוכות</span><span data-b="ar" hidden>معارض</span><span data-b="en" hidden>EXHIBITIONS</span></a>
+    <a href="journal.html"><span data-b="he">יומן</span><span data-b="ar" hidden>يوميات</span><span data-b="en" hidden>JOURNAL</span></a>
+    <a href="contact.html"><span data-b="he">פנייה</span><span data-b="ar" hidden>تواصل</span><span data-b="en" hidden>CONTACT</span></a>
   </div>
+  <div class="lang-row">
+    <button data-lang="he" class="active">עברית</button>
+    <button data-lang="ar">العربية</button>
+    <button data-lang="en">EN</button>
+  </div>
+</nav>
 
-  <div id="app" class="crt-layer"></div>
+<div id="ckb" style="display:none;position:fixed;bottom:18px;right:18px;z-index:400;max-width:340px;background:var(--black-deep);border:1px solid var(--bone-faint);padding:16px 20px;font-size:12px;line-height:1.7;color:var(--bone-dim)">האתר משתמש ב-cookies לניתוח אנונימי של חוויית הצפייה. לא נאסף מידע מזהה.<div style="margin-top:10px;display:flex;gap:10px"><button onclick="ckOk()" style="font-family:var(--mono);font-size:10px;letter-spacing:.15em;background:var(--bone);color:var(--black-deep);border:none;padding:7px 14px;cursor:pointer">הבנתי</button><button onclick="ckNo()" style="font-family:var(--mono);font-size:10px;letter-spacing:.15em;background:none;color:var(--bone-dim);border:1px solid var(--bone-faint);padding:7px 14px;cursor:pointer">דחה</button></div></div>
+<script>function ckOk(){try{localStorage.setItem('cookieChoice','accepted')}catch(e){};document.getElementById('ckb').style.display='none'}
+function ckNo(){try{localStorage.setItem('cookieChoice','declined')}catch(e){};document.getElementById('ckb').style.display='none';if(window.clarity)clarity('consent',false)}
+try{if(!localStorage.getItem('cookieChoice'))setTimeout(function(){document.getElementById('ckb').style.display='block'},2000)}catch(e){}</script>
+<div class="rotate-ask" aria-hidden="true">
+  <div class="ra-icon"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="1.6"/><line x1="10.5" y1="18.5" x2="13.5" y2="18.5"/></svg></div>
+  <div class="ra-he">סובבו את המכשיר לרוחב</div>
+  <div class="ra-sub"><span>ROTATE TO LANDSCAPE</span><span lang="ar" style="font-family:'Noto Naskh Arabic',serif;text-transform:none;letter-spacing:.05em">اقلبوا الجهاز أفقياً</span></div>
+</div>
+<div class="stage">
+  <main class="main">
+    <div class="brand">
+      <h1><span data-b="he">שחף גליל</span><span data-b="ar" hidden>شهاف چليل</span><span data-b="en" hidden>Shahaf Galil</span><span class="en-name">Shahaf Galil</span></h1>
+      <p class="tagline">
+        <span data-b="he">אני בונה עולמות.</span><span data-b="ar" hidden>أبني عوالم.</span><span data-b="en" hidden>I build worlds.</span>
+        <span class="l2">أبني عوالم.</span>
+        <span class="l3">I build worlds.</span>
+      </p>
+    </div>
+    <div class="exh-stack">
+      <div class="exh-head"><span data-b="he">תערוכות</span><span data-b="ar" hidden>معارض</span><span data-b="en" hidden>Exhibitions</span></div>
+      <div class="exh-line" data-start="2026-07-09" data-end="2026-08-13">
+        <span class="exh-info"><span data-b="he">"מרחבים זמניים" · בפנוכו · תל אביב</span><span data-b="ar" hidden>מרחבים זמניים · בפנוכו</span><span data-b="en" hidden>Temporary Spaces · Bifnocho · Tel Aviv</span></span>
+        <span class="exh-count"></span>
+        <a class="exh-rsvp" href="https://www.prtfl.co.il/archives/255669" target="_blank" rel="noopener"><span data-b="he">פרטים ←</span><span data-b="ar" hidden>تفاصيل ←</span><span data-b="en" hidden>Details →</span></a>
+        <a class="exh-rsvp" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%9E%D7%A8%D7%97%D7%91%D7%99%D7%9D%20%D7%96%D7%9E%D7%A0%D7%99%D7%99%D7%9D%20%C2%B7%20%D7%91%D7%A4%D7%A0%D7%95%D7%9B%D7%95&dates=20260709/20260814&location=%D7%91%D7%A4%D7%A0%D7%95%D7%9B%D7%95%2C%20%D7%90%D7%99%D7%AA%D7%9E%D7%A8%20%D7%91%D7%9F%20%D7%90%D7%91%22%D7%99%209%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91" target="_blank" rel="noopener"><span data-b="he">הוסף ליומן ⊕</span><span data-b="ar" hidden>أضف إلى التقويم ⊕</span><span data-b="en" hidden>Add to calendar ⊕</span></a>
+      </div>
+      <div class="exh-line" data-start="2026-07-24" data-end="2026-08-06">
+        <span class="exh-info"><span data-b="he">"תערוכת הבוגרים" · בצלאל, קמפוס מנדל · ירושלים</span><span data-b="ar" hidden>תערוכת הבוגרים · בצלאל, קמפוס מנדל</span><span data-b="en" hidden>Graduate Exhibition · Bezalel, Mandel Campus · Jerusalem</span></span>
+        <span class="exh-count"></span>
+        <a class="exh-rsvp" href="https://www.bezalel.ac.il/events/664929" target="_blank" rel="noopener"><span data-b="he">פרטים ←</span><span data-b="ar" hidden>تفاصيل ←</span><span data-b="en" hidden>Details →</span></a>
+        <a class="exh-rsvp" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%AA%D7%A2%D7%A8%D7%95%D7%9B%D7%AA%20%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%99%D7%9D%20%D7%A9%D7%9C%20%D7%91%D7%A6%D7%9C%D7%90%D7%9C%20%E2%80%94%20%D7%A4%D7%AA%D7%99%D7%97%D7%94&dates=20260724T120000/20260724T170000&ctz=Asia/Jerusalem&location=%D7%91%D7%A6%D7%9C%D7%90%D7%9C%2C%20%D7%A7%D7%9E%D7%A4%D7%95%D7%A1%20%D7%9E%D7%A0%D7%93%D7%9C%2C%20%D7%A8%D7%97'%20%D7%96%D7%9E%D7%95%D7%A8%D7%94%201%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D" target="_blank" rel="noopener"><span data-b="he">הוסף ליומן ⊕</span><span data-b="ar" hidden>أضف إلى التقويم ⊕</span><span data-b="en" hidden>Add to calendar ⊕</span></a>
+      </div>
+      <div class="exh-line exh-cta">
+        <a class="exh-rsvp" href="mailto:shahafgalil@gmail.com?subject=%D7%94%D7%95%D7%93%D7%99%D7%A2%D7%95%20%D7%9C%D7%99%20%D7%A2%D7%9C%20%D7%AA%D7%A2%D7%A8%D7%95%D7%9B%D7%95%D7%AA%20%D7%97%D7%93%D7%A9%D7%95%D7%AA&body=%D7%A9%D7%9D%3A%20%0A%D7%A2%D7%99%D7%A8%3A%20%0A"><span data-b="he">הודיעו לי על תערוכות חדשות ←</span><span data-b="ar" hidden>أخبروني عن معارض جديدة ←</span><span data-b="en" hidden>Tell me about new exhibitions →</span></a>
+      </div></div>
+    
+    <div class="preview" data-preview="forged-trees">
+      <div class="pv-top"><span class="pv-head">עצים מעוקמים</span><a class="pv-link" href="body-forged-trees.html">דף פרוייקט ←</a><button class="pv-close" aria-label="סגור">✕</button></div>
+      <div class="pv-wall">בגבעה הצרפתית בירושלים, שכונת ילדותי, גדלים עצים שהרוח עיקמה לאורך שנים. הסצנות מבוימות ומצולמות בלילה ברחובות השכונה, בתאורה בנויה, ומודפסות בפיגמנט ובפלטינה פלדיום בקנה מידה גדול.</div>
+      <div class="pv-grid">
+        <a class="pv-tile" data-wk="shutters" href="works/shutters.html">
+          <span class="pv-img"><img src="assets/shutters-real-1c.jpg" alt="תריסים" loading="lazy"></span>
+          <span class="pv-name">תריסים <i>Shutters</i></span>
+          <span class="pv-meta">220×160 ס״מ · פיגמנט / פלטינה־פלדיום</span>
+          <span class="pv-desc">נער יחף רוכן על קרשי תריסים שבורים למרגלות מדרגות אבן, בלילה גשום. פנס רחוב מאיר מלמעלה, קבוצה עומדת בראש המדרגות.</span>
+        </a><a class="pv-tile" data-wk="peppers" href="works/peppers.html">
+          <span class="pv-img"><img src="assets/peppers-real-1.jpg" alt="פלפלים" loading="lazy"></span>
+          <span class="pv-name">פלפלים <i>Peppers</i></span>
+          <span class="pv-meta">220×160 ס״מ · פיגמנט / פלטינה־פלדיום</span>
+          <span class="pv-desc">אישה מושיטה פלפל לילדה ברגע ביתי בגבעה הצרפתית. האור נופל על הפרי העובר בין הידיים.</span>
+        </a><a class="pv-tile" data-wk="trails" href="works/trails.html">
+          <span class="pv-img"><img src="assets/trails-real.jpg" alt="שבילים" loading="lazy"></span>
+          <span class="pv-name">שבילים <i>Trails</i></span>
+          <span class="pv-meta">220×160 ס״מ · פיגמנט / פלטינה־פלדיום</span>
+          <span class="pv-desc">שביל עפר בלילה. דמות בודדת חצי נבלעת בין הענפים, וקבוצה מוארת עומדת על הרכס שמעל.</span>
+        </a><a class="pv-tile" data-wk="suit" href="works/suit.html">
+          <span class="pv-img"><img src="assets/suit-real.jpg" alt="חליפה" loading="lazy"></span>
+          <span class="pv-name">חליפה <i>Suit</i></span>
+          <span class="pv-meta">220×160 ס״מ · פיגמנט / פלטינה־פלדיום</span>
+          <span class="pv-desc">גשם. דמות חשופת חזה עומדת מול קבוצה בקפוצ'ונים כהים. על הקרקע מונחים בשורה פריטי הלבוש שהוסרו.</span>
+        </a><a class="pv-tile" data-wk="bicycles" href="works/bicycles.html">
+          <span class="pv-img"><img src="assets/bicycles-real.jpg" alt="אופניים" loading="lazy"></span>
+          <span class="pv-name">אופניים <i>Bicycles</i></span>
+          <span class="pv-meta">220×160 ס״מ · פיגמנט / פלטינה־פלדיום</span>
+          <span class="pv-desc">כביש רחב בלילה, גשם שוטף. כל הדמויות מביטות ימינה. רכב עומד באמצע הכביש, מושב הנהג ריק.</span>
+        </a>
+      </div>
+    </div>
+    <div class="preview" data-preview="library">
+      <div class="pv-top"><span class="pv-head">ספרייה לאומית ישנה</span><a class="pv-link" href="body-library.html">דף פרוייקט ←</a><button class="pv-close" aria-label="סגור">✕</button></div>
+      <div class="pv-wall">הספרייה הלאומית הישנה בירושלים, חלל עצום שנועד לידע ונותר ריק מספרים. חודשים של עבודה בתוך המבנה, סצנות מבוימות באור בנוי בין האולמות והארכיונים.</div>
+      <div class="pv-grid">
+        <a class="pv-tile" data-wk="broken-circle" href="works/broken-circle.html">
+          <span class="pv-img"><img src="assets/broken-circle-tile.jpg" alt="מעגל שבור" loading="lazy"></span>
+          <span class="pv-name">מעגל שבור <i>Broken Circle</i></span>
+          <span class="pv-meta">165×110 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">אולם הקריאה של הספרייה הישנה. דמויות נעות במעגל בקרני אור, ספר פתוח ביד כל אחת. יד אחת ריקה.</span>
+        </a><a class="pv-tile" data-wk="forbidden-apple" href="works/forbidden-apple.html">
+          <span class="pv-img"><img src="assets/forbidden-apple-tile.jpg" alt="תפוח אסור" loading="lazy"></span>
+          <span class="pv-name">תפוח אסור <i>Forbidden Apple</i></span>
+          <span class="pv-meta">165×110 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">בין מדפי הארכיון האנלוגי עומדות שתי דמויות. משהו מושט מיד ליד באור צהוב נמוך.</span>
+        </a>
+      </div>
+    </div>
+    <div class="preview" data-preview="hakimi">
+      <div class="pv-top"><span class="pv-head">יוסי חכמי</span><a class="pv-link" href="body-hakimi.html">דף פרוייקט ←</a><button class="pv-close" aria-label="סגור">✕</button></div>
+      <div class="pv-wall">מפעל הטקסטיל הנטוש של יוסי חכמי בבית שאן, ריק כבר שלושים שנה. הסדרה צולמה בתוך המבנה, סצנות מבוימות עם קבוצת דמויות באור בנוי, על הבטחה שלא קוימה.</div>
+      <div class="pv-grid">
+        <a class="pv-tile" data-wk="pitch" href="works/pitch.html">
+          <span class="pv-img"><img src="assets/pitch-tile.jpg" alt="פיטש" loading="lazy"></span>
+          <span class="pv-name">פיטש <i>Pitch</i></span>
+          <span class="pv-meta">146×110 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">מבט מלמעלה על מעגל אנשים סגור, באדמה חשופה בשולי מבנה נטוש. אחד כורע במרכז ומציג.</span>
+        </a><a class="pv-tile" data-wk="meetup" href="works/meetup.html">
+          <span class="pv-img"><img src="assets/meetup-tile.jpg" alt="מיטאפ" loading="lazy"></span>
+          <span class="pv-name">מיטאפ <i>Meetup</i></span>
+          <span class="pv-meta">146×110 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">דמות עומדת במרכז מערבולת של עשן ואור בתוך חלל תעשייתי. סביבה, מעבר למערבולת, ריק.</span>
+        </a><a class="pv-tile" data-wk="deal" href="works/deal.html">
+          <span class="pv-img"><img src="assets/deal-tile.jpg" alt="דיל" loading="lazy"></span>
+          <span class="pv-name">דיל <i>Deal</i></span>
+          <span class="pv-meta">146×110 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">לחיצת יד בתוך ענן אבק זהוב. משני הצדדים שתי שורות של עומדים, האור מגיע מאחור.</span>
+        </a><a class="pv-tile" data-wk="build" href="works/build.html">
+          <span class="pv-img"><img src="assets/build-tile.jpg" alt="בילד" loading="lazy"></span>
+          <span class="pv-name">בילד <i>Build</i></span>
+          <span class="pv-meta">146×110 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">גרם מדרגות בטון חשוף בתוך שלד בניין. אלומת אור חותכת את החלל, המדרגות נעצרות באוויר.</span>
+        </a><a class="pv-tile" data-wk="exit" href="works/exit.html">
+          <span class="pv-img"><img src="assets/exit-tile.jpg" alt="אקזיט" loading="lazy"></span>
+          <span class="pv-name">אקזיט <i>Exit</i></span>
+          <span class="pv-meta">146×110 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">דמות הולכת קדימה אל שער סורגים שאור פורץ ממנו. מאחוריה, בחושך, עומדת קבוצה.</span>
+        </a><a class="pv-tile" data-wk="closing" href="works/closing.html">
+          <span class="pv-img"><img src="assets/closing-tile.jpg" alt="קלוזינג" loading="lazy"></span>
+          <span class="pv-name">קלוזינג <i>Closing</i></span>
+          <span class="pv-meta">146×110 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">כלוב ברזל בתוך אולם המפעל. קבוצה מצטופפת סביב מקור אור קטן בחלל החשוך.</span>
+        </a>
+      </div>
+    </div>
+    <div class="preview" data-preview="twelve">
+      <div class="pv-top"><span class="pv-head">12</span><a class="pv-link" href="body-twelve.html">דף פרוייקט ←</a><button class="pv-close" aria-label="סגור">✕</button></div>
+      <div class="pv-wall">התרחשות לילית תל אביבית בגשם, דימוי לכל שעה בין שקיעה לזריחה. שתי סדרות של 11 דימויים מבוימים המתכנסות לדימוי סיום אחד, מנקודת מבטם של שני צדדים של הפרעת זהות דיסוציאטיבית.</div>
+      <div class="pv-grid">
+        <a class="pv-tile" data-wk="h1900" href="works/h1900.html">
+          <span class="pv-img"><img src="assets/h1900-a.jpg" alt="19:00" loading="lazy"></span>
+          <span class="pv-name">19:00 <i>19:00</i></span>
+          <span class="pv-meta">90×60 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">דירה בשעת שקיעה. דמות עומדת בחלון ומביטה על העיר, המיטה מאחוריה לא מסודרת.</span>
+        </a><a class="pv-tile" data-wk="h2000" href="works/h2000.html">
+          <span class="pv-img"><img src="assets/h2000-a.jpg" alt="20:00" loading="lazy"></span>
+          <span class="pv-name">20:00 <i>20:00</i></span>
+          <span class="pv-meta">90×60 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">בתוך רכב חונה. היד על ההגה, הראש מוסב הצידה אל היושב ליד.</span>
+        </a><a class="pv-tile" data-wk="h2100" href="works/h2100.html">
+          <span class="pv-img"><img src="assets/h2100-a.jpg" alt="21:00" loading="lazy"></span>
+          <span class="pv-name">21:00 <i>21:00</i></span>
+          <span class="pv-meta">90×60 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">שולי כביש מהיר בלילה. דלת רכב פתוחה, דמות יוצאת ממושב הנוסע, שניים עומדים ממול.</span>
+        </a><a class="pv-tile" data-wk="h2200" href="works/h2200.html">
+          <span class="pv-img"><img src="assets/h2200-a.jpg" alt="22:00" loading="lazy"></span>
+          <span class="pv-name">22:00 <i>22:00</i></span>
+          <span class="pv-meta">90×60 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">מתחת לגשר, גשם. דמות הולכת לאורך רכב לבן שפנסיו מאירים את הדרך.</span>
+        </a><a class="pv-tile" data-wk="h2300" href="works/h2300.html">
+          <span class="pv-img"><img src="assets/h2300-a.jpg" alt="23:00" loading="lazy"></span>
+          <span class="pv-name">23:00 <i>23:00</i></span>
+          <span class="pv-meta">90×60 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">גג חניון בלילה. דמות עומדת מול קיר מואר, גורדי השחקים של תל אביב ברקע.</span>
+        </a><a class="pv-tile" data-wk="h0000" href="works/h0000.html">
+          <span class="pv-img"><img src="assets/h0000-a.jpg" alt="00:00" loading="lazy"></span>
+          <span class="pv-name">00:00 <i>00:00</i></span>
+          <span class="pv-meta">90×60 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">מגרש מכולות בקצה העיר, חצות. שתי דמויות נפגשות, מזוודה עוברת מיד ליד.</span>
+        </a><a class="pv-tile" data-wk="h0100" href="works/h0100.html">
+          <span class="pv-img"><img src="assets/h0100-a.jpg" alt="01:00" loading="lazy"></span>
+          <span class="pv-name">01:00 <i>01:00</i></span>
+          <span class="pv-meta">90×60 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">מרתף עמוס וחשוך. דמות עומדת עם מזוודה תחת אור תקרה, בקדמת הפריים מישהו יושב.</span>
+        </a><a class="pv-tile" data-wk="h0200" href="works/h0200.html">
+          <span class="pv-img"><img src="assets/h0200-a.jpg" alt="02:00" loading="lazy"></span>
+          <span class="pv-name">02:00 <i>02:00</i></span>
+          <span class="pv-meta">90×60 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">יציאה מהמרתף עם שתי מזוודות. הגוף פונה קדימה, המבט לא. היושבים מאחור לא קמים.</span>
+        </a><a class="pv-tile" data-wk="h0300" href="works/h0300.html">
+          <span class="pv-img"><img src="assets/h0300-a.jpg" alt="03:00" loading="lazy"></span>
+          <span class="pv-name">03:00 <i>03:00</i></span>
+          <span class="pv-meta">90×60 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">רחוב עירוני ריק בלילה, ליד רכב לבן. אורות רחוקים ורטיבות על הכביש.</span>
+        </a><a class="pv-tile" data-wk="h0500" href="works/h0500.html">
+          <span class="pv-img"><img src="assets/h0500-a.jpg" alt="05:00" loading="lazy"></span>
+          <span class="pv-name">05:00 <i>05:00</i></span>
+          <span class="pv-meta">90×60 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">מרפסת מעל העיר לפנות בוקר. המזוודות מונחות בצד, המבט אל גורדי השחקים הנבנים.</span>
+        </a><a class="pv-tile" data-wk="h0700" href="works/h0700.html">
+          <span class="pv-img"><img src="assets/h0700-a.jpg" alt="07:00" loading="lazy"></span>
+          <span class="pv-name">07:00 <i>07:00</i></span>
+          <span class="pv-meta">90×60 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">אור ראשון של זריחה על מרפסת ריקה. המזוודות עדיין שם.</span>
+        </a>
+      </div>
+    </div>
+    <div class="preview" data-preview="selected">
+      <div class="pv-top"><span class="pv-head">נבחרות</span><a class="pv-link" href="body-selected.html">דף פרוייקט ←</a><button class="pv-close" aria-label="סגור">✕</button></div>
+      <div class="pv-wall">עבודות נבחרות מגופי העבודה השונים, לצד עבודות עצמאיות. כולן סצנות מבוימות בתאורה בנויה, מודפסות בקנה מידה גדול.</div>
+      <div class="pv-grid">
+        <a class="pv-tile" data-wk="shutters" href="works/shutters.html">
+          <span class="pv-img"><img src="assets/shutters-real-1c.jpg" alt="תריסים" loading="lazy"></span>
+          <span class="pv-name">תריסים <i>Shutters</i></span>
+          <span class="pv-meta">220×160 ס״מ · פיגמנט / פלטינה־פלדיום</span>
+          <span class="pv-desc">נער יחף רוכן על קרשי תריסים שבורים למרגלות מדרגות אבן, בלילה גשום. פנס רחוב מאיר מלמעלה, קבוצה עומדת בראש המדרגות.</span>
+        </a><a class="pv-tile" data-wk="peppers" href="works/peppers.html">
+          <span class="pv-img"><img src="assets/peppers-real-1.jpg" alt="פלפלים" loading="lazy"></span>
+          <span class="pv-name">פלפלים <i>Peppers</i></span>
+          <span class="pv-meta">220×160 ס״מ · פיגמנט / פלטינה־פלדיום</span>
+          <span class="pv-desc">אישה מושיטה פלפל לילדה ברגע ביתי בגבעה הצרפתית. האור נופל על הפרי העובר בין הידיים.</span>
+        </a><a class="pv-tile" data-wk="swan-lake" href="works/swan-lake.html">
+          <span class="pv-img"><img src="assets/swan-lake-tile.jpg" alt="אגם הברבורים" loading="lazy"></span>
+          <span class="pv-name">אגם הברבורים <i>Swan Lake</i></span>
+          <span class="pv-meta">280×110 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">דמות שרועה על שפת אגם כהה. ברבור גדול ניצב מעליה, כנפיו פרושות, אור בוקע מאחוריו.</span>
+        </a><a class="pv-tile" data-wk="necklace" href="works/necklace.html">
+          <span class="pv-img"><img src="assets/necklace-tile.jpg" alt="ענק" loading="lazy"></span>
+          <span class="pv-name">ענק <i>Necklace</i></span>
+          <span class="pv-meta">240×110 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">דמות עונדת ענק עומדת מול מראה ענקית בחלל יוקרתי שטוף אור. במראה, התכשיט נראה אחרת.</span>
+        </a><a class="pv-tile" data-wk="pitch" href="works/pitch.html">
+          <span class="pv-img"><img src="assets/pitch-tile.jpg" alt="פיטש" loading="lazy"></span>
+          <span class="pv-name">פיטש <i>Pitch</i></span>
+          <span class="pv-meta">146×110 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">מבט מלמעלה על מעגל אנשים סגור, באדמה חשופה בשולי מבנה נטוש. אחד כורע במרכז ומציג.</span>
+        </a><a class="pv-tile" data-wk="broken-circle" href="works/broken-circle.html">
+          <span class="pv-img"><img src="assets/broken-circle-tile.jpg" alt="מעגל שבור" loading="lazy"></span>
+          <span class="pv-name">מעגל שבור <i>Broken Circle</i></span>
+          <span class="pv-meta">165×110 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">אולם הקריאה של הספרייה הישנה. דמויות נעות במעגל בקרני אור, ספר פתוח ביד כל אחת. יד אחת ריקה.</span>
+        </a><a class="pv-tile" data-wk="h0700" href="works/h0700.html">
+          <span class="pv-img"><img src="assets/h0700-a.jpg" alt="07:00" loading="lazy"></span>
+          <span class="pv-name">07:00 <i>07:00</i></span>
+          <span class="pv-meta">90×60 ס״מ · הדפסת פיגמנט</span>
+          <span class="pv-desc">אור ראשון של זריחה על מרפסת ריקה. המזוודות עדיין שם.</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <aside class="menu" id="works">
+    
+    <div class="menu-body" data-body="forged-trees">
+      <button class="menu-body-head">
+        <span data-b="he">עצים מעוקמים</span><span data-b="ar" hidden>أشجار معوجّة</span><span data-b="en" hidden>Forged Trees</span>
+      </button>
+      <div class="menu-works">
+        <a href="body-forged-trees.html" class="menu-work menu-all"><span class="mw-num">··</span><span data-b="he">דף פרוייקט</span><span data-b="ar" hidden>صفحة المشروع</span><span data-b="en" hidden>Project page</span></a>
+        <a href="works/shutters.html" class="menu-work" data-wk="shutters">
+          <span class="mw-num">01</span>
+          <span data-b="he">תריסים</span><span data-b="ar" hidden>مصاريع</span><span data-b="en" hidden>Shutters</span>
+        </a>
+        <a href="works/peppers.html" class="menu-work" data-wk="peppers">
+          <span class="mw-num">02</span>
+          <span data-b="he">פלפלים</span><span data-b="ar" hidden>فلفل</span><span data-b="en" hidden>Peppers</span>
+        </a>
+        <a href="works/trails.html" class="menu-work" data-wk="trails">
+          <span class="mw-num">03</span>
+          <span data-b="he">שבילים</span><span data-b="ar" hidden>دروب</span><span data-b="en" hidden>Trails</span>
+        </a>
+        <a href="works/suit.html" class="menu-work" data-wk="suit">
+          <span class="mw-num">04</span>
+          <span data-b="he">חליפה</span><span data-b="ar" hidden>بدلة</span><span data-b="en" hidden>Suit</span>
+        </a>
+        <a href="works/bicycles.html" class="menu-work" data-wk="bicycles">
+          <span class="mw-num">05</span>
+          <span data-b="he">אופניים</span><span data-b="ar" hidden>دراجات</span><span data-b="en" hidden>Bicycles</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="menu-body" data-body="library">
+      <button class="menu-body-head">
+        <span data-b="he">ספרייה</span><span data-b="ar" hidden>مكتبة</span><span data-b="en" hidden>Library</span>
+      </button>
+      <div class="menu-works">
+        <a href="body-library.html" class="menu-work menu-all"><span class="mw-num">··</span><span data-b="he">דף פרוייקט</span><span data-b="ar" hidden>صفحة المشروع</span><span data-b="en" hidden>Project page</span></a>
+        <a href="works/broken-circle.html" class="menu-work" data-wk="broken-circle">
+          <span class="mw-num">01</span>
+          <span data-b="he">מעגל שבור</span><span data-b="ar" hidden>دائرة مكسورة</span><span data-b="en" hidden>Broken Circle</span>
+        </a>
+        <a href="works/forbidden-apple.html" class="menu-work" data-wk="forbidden-apple">
+          <span class="mw-num">02</span>
+          <span data-b="he">תפוח אסור</span><span data-b="ar" hidden>تفاحة محرّمة</span><span data-b="en" hidden>Forbidden Apple</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="menu-body" data-body="hakimi">
+      <button class="menu-body-head">
+        <span data-b="he">חכמי</span><span data-b="ar" hidden>حكيمي</span><span data-b="en" hidden>Hakimi</span>
+      </button>
+      <div class="menu-works">
+        <a href="body-hakimi.html" class="menu-work menu-all"><span class="mw-num">··</span><span data-b="he">דף פרוייקט</span><span data-b="ar" hidden>صفحة المشروع</span><span data-b="en" hidden>Project page</span></a>
+        <a href="works/pitch.html" class="menu-work" data-wk="pitch">
+          <span class="mw-num">01</span>
+          <span data-b="he">פיטש</span><span data-b="ar" hidden>פיטש</span><span data-b="en" hidden>Pitch</span>
+        </a>
+        <a href="works/meetup.html" class="menu-work" data-wk="meetup">
+          <span class="mw-num">02</span>
+          <span data-b="he">מיטאפ</span><span data-b="ar" hidden>מיטאפ</span><span data-b="en" hidden>Meetup</span>
+        </a>
+        <a href="works/deal.html" class="menu-work" data-wk="deal">
+          <span class="mw-num">03</span>
+          <span data-b="he">דיל</span><span data-b="ar" hidden>דיל</span><span data-b="en" hidden>Deal</span>
+        </a>
+        <a href="works/build.html" class="menu-work" data-wk="build">
+          <span class="mw-num">04</span>
+          <span data-b="he">בילד</span><span data-b="ar" hidden>בילד</span><span data-b="en" hidden>Build</span>
+        </a>
+        <a href="works/exit.html" class="menu-work" data-wk="exit">
+          <span class="mw-num">05</span>
+          <span data-b="he">אקזיט</span><span data-b="ar" hidden>אקזיט</span><span data-b="en" hidden>Exit</span>
+        </a>
+        <a href="works/closing.html" class="menu-work" data-wk="closing">
+          <span class="mw-num">06</span>
+          <span data-b="he">קלוזינג</span><span data-b="ar" hidden>קלוזינג</span><span data-b="en" hidden>Closing</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="menu-body" data-body="twelve">
+      <button class="menu-body-head">
+        <span data-b="he">12</span><span data-b="ar" hidden>12</span><span data-b="en" hidden>12</span>
+      </button>
+      <div class="menu-works">
+        <a href="body-twelve.html" class="menu-work menu-all"><span class="mw-num">··</span><span data-b="he">דף פרוייקט</span><span data-b="ar" hidden>صفحة المشروع</span><span data-b="en" hidden>Project page</span></a>
+        <a href="works/h1900.html" class="menu-work" data-wk="h1900">
+          <span class="mw-num">19:00</span>
+          <span data-b="he">19:00</span><span data-b="ar" hidden>19:00</span><span data-b="en" hidden>19:00</span>
+        </a>
+        <a href="works/h2000.html" class="menu-work" data-wk="h2000">
+          <span class="mw-num">20:00</span>
+          <span data-b="he">20:00</span><span data-b="ar" hidden>20:00</span><span data-b="en" hidden>20:00</span>
+        </a>
+        <a href="works/h2100.html" class="menu-work" data-wk="h2100">
+          <span class="mw-num">21:00</span>
+          <span data-b="he">21:00</span><span data-b="ar" hidden>21:00</span><span data-b="en" hidden>21:00</span>
+        </a>
+        <a href="works/h2200.html" class="menu-work" data-wk="h2200">
+          <span class="mw-num">22:00</span>
+          <span data-b="he">22:00</span><span data-b="ar" hidden>22:00</span><span data-b="en" hidden>22:00</span>
+        </a>
+        <a href="works/h2300.html" class="menu-work" data-wk="h2300">
+          <span class="mw-num">23:00</span>
+          <span data-b="he">23:00</span><span data-b="ar" hidden>23:00</span><span data-b="en" hidden>23:00</span>
+        </a>
+        <a href="works/h0000.html" class="menu-work" data-wk="h0000">
+          <span class="mw-num">00:00</span>
+          <span data-b="he">00:00</span><span data-b="ar" hidden>00:00</span><span data-b="en" hidden>00:00</span>
+        </a>
+        <a href="works/h0100.html" class="menu-work" data-wk="h0100">
+          <span class="mw-num">01:00</span>
+          <span data-b="he">01:00</span><span data-b="ar" hidden>01:00</span><span data-b="en" hidden>01:00</span>
+        </a>
+        <a href="works/h0200.html" class="menu-work" data-wk="h0200">
+          <span class="mw-num">02:00</span>
+          <span data-b="he">02:00</span><span data-b="ar" hidden>02:00</span><span data-b="en" hidden>02:00</span>
+        </a>
+        <a href="works/h0300.html" class="menu-work" data-wk="h0300">
+          <span class="mw-num">03:00</span>
+          <span data-b="he">03:00</span><span data-b="ar" hidden>03:00</span><span data-b="en" hidden>03:00</span>
+        </a>
+        <a href="works/h0500.html" class="menu-work" data-wk="h0500">
+          <span class="mw-num">05:00</span>
+          <span data-b="he">05:00</span><span data-b="ar" hidden>05:00</span><span data-b="en" hidden>05:00</span>
+        </a>
+        <a href="works/h0700.html" class="menu-work" data-wk="h0700">
+          <span class="mw-num">07:00</span>
+          <span data-b="he">07:00</span><span data-b="ar" hidden>07:00</span><span data-b="en" hidden>07:00</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="menu-body" data-body="selected">
+      <button class="menu-body-head">
+        <span data-b="he">נבחרות</span><span data-b="ar" hidden>مختارات</span><span data-b="en" hidden>Selected</span>
+      </button>
+      <div class="menu-works">
+        <a href="body-selected.html" class="menu-work menu-all"><span class="mw-num">··</span><span data-b="he">דף פרוייקט</span><span data-b="ar" hidden>صفحة المشروع</span><span data-b="en" hidden>Project page</span></a>
+        <a href="works/shutters.html" class="menu-work" data-wk="shutters">
+          <span class="mw-num">01</span>
+          <span data-b="he">תריסים</span><span data-b="ar" hidden>مصاريع</span><span data-b="en" hidden>Shutters</span>
+        </a>
+        <a href="works/peppers.html" class="menu-work" data-wk="peppers">
+          <span class="mw-num">02</span>
+          <span data-b="he">פלפלים</span><span data-b="ar" hidden>فلفل</span><span data-b="en" hidden>Peppers</span>
+        </a>
+        <a href="works/swan-lake.html" class="menu-work" data-wk="swan-lake">
+          <span class="mw-num">·</span>
+          <span data-b="he">אגם הברבורים</span><span data-b="ar" hidden>بحيرة البجع</span><span data-b="en" hidden>Swan Lake</span>
+        </a>
+        <a href="works/necklace.html" class="menu-work" data-wk="necklace">
+          <span class="mw-num">·</span>
+          <span data-b="he">ענק</span><span data-b="ar" hidden>قلادة</span><span data-b="en" hidden>Necklace</span>
+        </a>
+        <a href="works/pitch.html" class="menu-work" data-wk="pitch">
+          <span class="mw-num">01</span>
+          <span data-b="he">פיטש</span><span data-b="ar" hidden>פיטש</span><span data-b="en" hidden>Pitch</span>
+        </a>
+        <a href="works/broken-circle.html" class="menu-work" data-wk="broken-circle">
+          <span class="mw-num">01</span>
+          <span data-b="he">מעגל שבור</span><span data-b="ar" hidden>دائرة مكسورة</span><span data-b="en" hidden>Broken Circle</span>
+        </a>
+        <a href="works/h0700.html" class="menu-work" data-wk="h0700">
+          <span class="mw-num">07:00</span>
+          <span data-b="he">07:00</span><span data-b="ar" hidden>07:00</span><span data-b="en" hidden>07:00</span>
+        </a>
+      </div>
+    </div>
+    <div class="menu-sep"></div>
+    <div class="menu-extra">
+      <a href="statement.html"><span data-b="he">הצהרת אמן</span><span data-b="ar" hidden>بيان الفنان</span><span data-b="en" hidden>Artist Statement</span></a>
+      <a href="https://www.instagram.com/shahafgalilstudio" target="_blank" rel="noopener">Instagram ↗</a>
+    </div>
+  </aside>
+</div>
 
 <script>
-  // --- ANSI palettes (16 original + teal/orange + film LUT) ---
-  const ANSI_PALETTES = [
-    { bright:"#808080", dark:"#000000" },
-    { bright:"#ff0000", dark:"#800000" },
-    { bright:"#00ff00", dark:"#008000" },
-    { bright:"#ffff00", dark:"#808000" },
-    { bright:"#0000ff", dark:"#000080" },
-    { bright:"#ff00ff", dark:"#800080" },
-    { bright:"#00ffff", dark:"#008080" },
-    { bright:"#ffffff", dark:"#c0c0c0" },
-    { bright:"#a8a8a8", dark:"#404040" },
-    { bright:"#ff4d4d", dark:"#7a0d0d" },
-    { bright:"#66ff66", dark:"#2a7a2a" },
-    { bright:"#ffff66", dark:"#7a7a2a" },
-    { bright:"#4d4dff", dark:"#0d0d7a" },
-    { bright:"#ff4dff", dark:"#7a0d7a" },
-    { bright:"#4dffff", dark:"#0d7a7a" },
-    { bright:"#ffffff", dark:"#e5e5e5" },
-    // Teal & Orange
-    { bright:"#4deaff", dark:"#ff8c42" },
-    // Film LUT (Kodak-ish)
-    { bright:"#ffd6a5", dark:"#2a3d55" }
-  ];
-
-  function choosePalette() {
-    let idx = parseInt(localStorage.getItem("ansiPairIndex") || "0");
-    idx = (idx + 1) % ANSI_PALETTES.length;
-    localStorage.setItem("ansiPairIndex", idx);
-    return ANSI_PALETTES[idx];
-  }
-
-  const colors = choosePalette();
-  const bright = colors.bright;
-  const dark   = colors.dark;
-
-  document.body.style.color = dark;
-
-  const scanEl   = document.getElementById("scanlines");
-  const vhs2     = document.getElementById("vhs2");
-  const appEl    = document.getElementById("app");
-  const splashEl = document.getElementById("splash");
-  const splashName = document.getElementById("splash-name");
-  const splashSub  = document.getElementById("splash-sub");
-  const langRow    = document.getElementById("lang-row");
-
-  // Apply colors to splash from current palette
-  if (splashName) splashName.style.color = bright;
-  if (splashSub)  splashSub.style.color  = dark;
-
-// --- Rain intro system (splash only) ---
-  const rainCanvas = document.getElementById("rainCanvas");
-  const rainCtx = rainCanvas.getContext("2d");
-
-  const rainMaskCanvas = document.createElement("canvas");
-  const rainMaskCtx = rainMaskCanvas.getContext("2d");
-  let rainMaskData = null;
-
-  let rainDrops = [];
-  let rainSplashes = [];
-  let rainActive = true;
-  let rainShowText = false;
-  let rainMaskMode = "none";
-  let maskLang = false;
-  let maskName = false;
-  let maskSub  = false;
-
-  function hexToRgb(hex) {
-    const h = hex.replace("#", "");
-    return {
-      r: parseInt(h.substring(0, 2), 16),
-      g: parseInt(h.substring(2, 4), 16),
-      b: parseInt(h.substring(4, 6), 16),
-    };
-  }
-  const splashRGB = hexToRgb(bright);
-
-  function resizeRain() {
-    if (!rainCanvas || !rainMaskCanvas || !rainMaskCtx) return;
-
-    rainCanvas.width = window.innerWidth;
-    rainCanvas.height = window.innerHeight;
-
-    rainMaskCanvas.width = rainCanvas.width;
-    rainMaskCanvas.height = rainCanvas.height;
-
-    rainMaskCtx.clearRect(0, 0, rainMaskCanvas.width, rainMaskCanvas.height);
-
-    const canvasRect = rainCanvas.getBoundingClientRect();
-
-    // 1) mask for language row text (if visible)
-    const lr = document.getElementById("lang-row");
-    if (rainMaskMode === "lang" && lr && maskLang) {
-      const lrStyle = window.getComputedStyle(lr);
-      if (true) {
-        const spans = lr.querySelectorAll(".lang-option .lang-text");
-        spans.forEach(span => {
-          const r = span.getBoundingClientRect();
-          const cx = (r.left + r.width / 2) - canvasRect.left;
-          const cy = (r.top + r.height / 2) - canvasRect.top;
-
-          const cs = window.getComputedStyle(span);
-          const fontWeight = cs.fontWeight || "400";
-          const fontSize   = cs.fontSize   || "14px";
-          const fontFamily = cs.fontFamily || "system-ui, -apple-system, sans-serif";
-
-          rainMaskCtx.font = fontWeight + " " + fontSize + " " + fontFamily;
-          rainMaskCtx.textAlign = "center";
-          rainMaskCtx.textBaseline = "middle";
-          rainMaskCtx.fillStyle = "white";
-
-          const text = (span.textContent || "").trim();
-          if (text) {
-            rainMaskCtx.fillText(text, cx, cy);
-          }
-        });
-      }
+document.querySelectorAll('.menu-body-head').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var item = btn.closest('.menu-body');
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.menu-body.open').forEach(function (o) { o.classList.remove('open'); });
+    if (!wasOpen) {
+      item.classList.add('open');
+      if (window.gtag) gtag('event', 'body_open', { body: item.dataset.body });
+      if (window.clarity) clarity('set', 'body_open', item.dataset.body);
     }
-
-    // 2) mask for main name text
-    if (rainMaskMode === "name" && splashName && maskName) {
-      const nameStyle = window.getComputedStyle(splashName);
-      if (true) {
-        const nameRect = splashName.getBoundingClientRect();
-        const nx = (nameRect.left + nameRect.width / 2) - canvasRect.left;
-        const ny = (nameRect.top + nameRect.height / 2) - canvasRect.top;
-
-        const cs = nameStyle;
-        const fontWeight = cs.fontWeight || "700";
-        const fontSize   = cs.fontSize   || cs.fontSize || "2.2rem";
-        const fontFamily = cs.fontFamily || "system-ui, -apple-system, sans-serif";
-
-        rainMaskCtx.font = fontWeight + " " + fontSize + " " + fontFamily;
-        rainMaskCtx.textAlign = "center";
-        rainMaskCtx.textBaseline = "middle";
-        rainMaskCtx.fillStyle = "white";
-
-        const text = (splashName.textContent || "").trim();
-        if (text) {
-          rainMaskCtx.fillText(text, nx, ny);
-        }
-      }
-    }
-
-    // 3) mask for studio sub-line
-    if (rainMaskMode === "name" && splashSub && maskSub) {
-      const subStyle = window.getComputedStyle(splashSub);
-      if (true) {
-        const subRect = splashSub.getBoundingClientRect();
-        const sx = (subRect.left + subRect.width / 2) - canvasRect.left;
-        const sy = (subRect.top + subRect.height / 2) - canvasRect.top;
-
-        const cs = subStyle;
-        const fontWeight = cs.fontWeight || "700";
-        const fontSize   = cs.fontSize   || cs.fontSize || "1.1rem";
-        const fontFamily = cs.fontFamily || "system-ui, -apple-system, sans-serif";
-
-        rainMaskCtx.font = fontWeight + " " + fontSize + " " + fontFamily;
-        rainMaskCtx.textAlign = "center";
-        rainMaskCtx.textBaseline = "middle";
-        rainMaskCtx.fillStyle = "white";
-
-        const text = (splashSub.textContent || "").trim();
-        if (text) {
-          rainMaskCtx.fillText(text, sx, sy);
-        }
-      }
-    }
-
-    const img = rainMaskCtx.getImageData(0, 0, rainMaskCanvas.width, rainMaskCanvas.height);
-    rainMaskData = img.data;
-  }
-
-window.addEventListener("resize", resizeRain);
-
-  function spawnRainDrop() {
-    if (!rainCanvas) return;
-    rainDrops.push({
-      x: Math.random() * rainCanvas.width,
-      y: -150 - Math.random() * 150, // always start above screen
-      vy: 13 + (Math.random() - 0.5) * 2,
-      vx: (Math.random() - 0.5) * 0.2,
-      len: 9, // 3–5px
-      alpha: 0.85, // fairly bright
+  });
+});
+var mf = document.querySelector('[data-menu-focus]');
+if (mf) mf.addEventListener('click', function (e) {
+  e.preventDefault();
+  var first = document.querySelector('.menu-body');
+  if (first && !document.querySelector('.menu-body.open')) first.querySelector('.menu-body-head').click();
+  document.getElementById('works').scrollIntoView({ behavior: 'smooth' });
+});
+// תצוגה מקדימה: ריחוף על גוף מחליף את שחף גליל בגריד העבודות
+(function () {
+  var brand = document.querySelector('.brand');
+  var current = null;
+  function show(key) {
+    document.querySelectorAll('.preview').forEach(function (p) {
+      var on = p.dataset.preview === key;
+      p.classList.toggle('active', on);
+      if (on && key !== current) p.scrollTop = 0;
     });
+    if (brand) brand.classList.toggle('faded', !!key);
+    current = key;
   }
-
-  function isOnText(x, y) {
-    if (!rainShowText || !rainMaskData) return false;
-    const ix = x | 0;
-    const iy = y | 0;
-    if (ix < 0 || iy < 0 || ix >= rainMaskCanvas.width || iy >= rainMaskCanvas.height) return false;
-    const idx = (iy * rainMaskCanvas.width + ix) * 4 + 3;
-    return rainMaskData[idx] > 10;
-  }
-
-  function updateRain() {
-    if (!rainCanvas) return;
-    const target = 1600;
-    while (rainDrops.length < target) spawnRainDrop();
-
-    for (let i = rainDrops.length - 1; i >= 0; i--) {
-      const d = rainDrops[i];
-      const nx = d.x + d.vx;
-      const ny = d.y + d.vy;
-
-      if (isOnText(nx, ny)) {
-        createRainSplash(nx, ny);
-        rainDrops.splice(i, 1);
-        continue;
+  // ריחוף על שם גוף פותח את תת-התפריט שלו ומציג את דף העבודות;
+  // לחיצה עדיין עובדת, וסגירה מחזירה את שחף גליל
+  document.querySelectorAll('.menu-body').forEach(function (item) {
+    item.addEventListener('mouseenter', function () {
+      if (!item.classList.contains('open')) {
+        document.querySelectorAll('.menu-body.open').forEach(function (o) { o.classList.remove('open'); });
+        item.classList.add('open');
       }
-
-      d.x = nx;
-      d.y = ny;
-
-      if (d.y > rainCanvas.height + 50) {
-        rainDrops.splice(i, 1);
-      }
-    }
-  }
-
-  function createRainSplash(x, y) {
-    const count = 3;
-    for (let i = 0; i < count; i++) {
-      const angle = (-Math.PI / 2) + (Math.random() - 0.5) * 1.7;
-      const speed = 6 + Math.random()*6.0;
-      rainSplashes.push({
-        x,
-        y,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        radius: 1,
-        life: 5,
-      });
-    }
-  }
-
-  function updateRainSplashes() {
-    for (let i = rainSplashes.length - 1; i >= 0; i--) {
-      const s = rainSplashes[i];
-      s.x += s.vx;
-      s.y += s.vy;
-      s.vy += 0.20;
-      s.life -= 1;
-      if (s.life <= 0 || s.y > rainCanvas.height + 50) {
-        rainSplashes.splice(i, 1);
-      }
-    }
-  }
-
-  function drawRain() {
-    if (!rainCanvas) return;
-    for (const d of rainDrops) {
-      rainCtx.strokeStyle = `rgba(${splashRGB.r},${splashRGB.g},${splashRGB.b},${d.alpha})`;
-      rainCtx.lineWidth = 1;
-      rainCtx.lineCap = "round";
-      rainCtx.beginPath();
-      rainCtx.moveTo(d.x, d.y - d.len);
-      rainCtx.lineTo(d.x + 1, d.y);
-      rainCtx.stroke();
-    }
-  }
-
-  function drawRainSplashes() {
-    if (!rainCanvas) return;
-    rainCtx.fillStyle = `rgba(${splashRGB.r},${splashRGB.g},${splashRGB.b},0.95)`;
-    for (const s of rainSplashes) {
-      rainCtx.beginPath();
-      rainCtx.arc(s.x, s.y, s.radius || 3, 0, Math.PI * 2);
-      rainCtx.fill();
-    }
-  }
-
-  function rainLoop() {
-    if (!rainActive) return;
-    rainCtx.clearRect(0, 0, rainCanvas.width, rainCanvas.height);
-    updateRain();
-    updateRainSplashes();
-    drawRain();
-    drawRainSplashes();
-    requestAnimationFrame(rainLoop);
-  }
-
-  resizeRain();
-  requestAnimationFrame(rainLoop);
-
-
-  
-  // Initially hide CRT layer visuals
-  scanEl.style.display = "none";
-  vhs2.style.display   = "none";
-
-  // Scanlines pattern based on bright color
-  scanEl.style.backgroundImage = "repeating-linear-gradient(0deg," +
-    bright + "55 0px," +
-    bright + "55 2px," +
-    "transparent 2px, transparent 4px)";
-
-  // VHS gradient based on bright color
-  const centerAlpha = 0.30;
-  const softness = 1.0;
-  function alphaToHex(a) {
-    const v = Math.round(a * 255);
-    return v.toString(16).padStart(2, "0");
-  }
-  const midHex   = alphaToHex(centerAlpha);
-  const edgeAlpha= centerAlpha * (0.3 + 0.4 * (1 - softness));
-  const edgeHex  = alphaToHex(edgeAlpha);
-  const vhsGradient = "linear-gradient(to bottom," +
-    bright + "00 0%," +
-    bright + edgeHex + " 20%," +
-    bright + midHex + " 50%," +
-    bright + edgeHex + " 80%," +
-    bright + "00 100%)";
-
-  vhs2.style.background = vhsGradient;
-  vhs2.style.opacity    = 0.6;
-
-  // VHS bar motion (single, slow)
-  const totalSpanVh   = 320;
-  const durationSec   = 20;
-  const speedVhPerSec = totalSpanVh / durationSec;
-  let y2 = -120;
-  let lastTs = null;
-
-  function animate(ts) {
-    if (lastTs === null) {
-      lastTs = ts;
-      requestAnimationFrame(animate);
-      return;
-    }
-    const dt = (ts - lastTs) / 1000;
-    lastTs = ts;
-    y2 += speedVhPerSec * dt;
-    vhs2.style.top = y2 + "vh";
-    if (y2 > 200) y2 = -120;
-    requestAnimationFrame(animate);
-  }
-  requestAnimationFrame(animate);
-
-  // --- Glitch helper (like your approved version) ---
-  function glitchBurst(el) {
-    setTimeout(() => { el.classList.add("gl1"); }, 40);
-    setTimeout(() => { el.classList.remove("gl1"); el.classList.add("gl2"); }, 110);
-    setTimeout(() => { el.classList.remove("gl2"); el.classList.add("gl3"); }, 170);
-    setTimeout(() => { el.classList.remove("gl3"); }, 260);
-  }
-
-  // Boot sequence timing with rain intro + language screen:
-  // 0–5s  -> rain only (no text)
-  // 5.0s  -> show language selection row with glitch + enable rain collisions
-  // after click -> hide lang row, show name + studio (second screen), then fade to site
-  setTimeout(() => {
-    if (!langRow) {
-      // Fallback: behave like original sequence (no language selection)
-      rainShowText = true;
-      splashName.style.opacity = "1";
-      glitchBurst(splashName);
-      resizeRain();
-      setTimeout(() => {
-        splashSub.style.opacity = "1";
-        glitchBurst(splashSub);
-        resizeRain();
-        setTimeout(() => {
-          splashEl.style.transition = "opacity 0.7s ease-out";
-          splashEl.style.opacity = "0";
-          setTimeout(() => {
-            rainActive = false;
-            if (rainCanvas) {
-              rainCanvas.style.display = "none";
-            }
-            splashEl.style.display = "none";
-            initMainLayout();
-          }, 900);
-        }, 3000);
-      }, 900);
-      return;
-    }
-
-    // Show language row (screen 1)
-    langRow.style.opacity = "1";
-    langRow.style.pointerEvents = "auto";
-    rainMaskMode = "lang";
-    maskLang = true;
-    rainShowText = true;
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        resizeRain();
+      show(item.dataset.body);
+    });
+  });
+  document.querySelectorAll('.menu-body-head').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.menu-body');
+      show(item.classList.contains('open') ? item.dataset.body : null);
+    });
+  });
+  // התצוגה נשארת גם אחרי עזיבת התפריט, כדי שאפשר יהיה להגיע לתמונות
+  document.querySelectorAll('.pv-close').forEach(function (b) {
+    b.addEventListener('click', function () { show(null); });
+  });
+  document.querySelectorAll('.menu-work[data-wk]').forEach(function (a) {
+    a.addEventListener('mouseenter', function () {
+      var p = document.querySelector('.preview.active'); if (!p) return;
+      p.querySelectorAll('.pv-tile').forEach(function (t) {
+        var on = t.dataset.wk === a.dataset.wk;
+        t.classList.toggle('hl', on);
+        if (on) t.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
       });
     });
-    glitchBurst(langRow);
-
-    const options = langRow.querySelectorAll(".lang-option");
-    let chosenLang = null;
-
-    options.forEach(opt => {
-      opt.addEventListener("click", () => {
-        if (chosenLang) return;
-        chosenLang = opt.dataset.lang || "en";
-
-        // visual feedback on choice
-        opt.classList.add("selected");
-        options.forEach(o => {
-          if (o !== opt) o.classList.add("fade-out");
-        });
-        opt.classList.add("blink");
-
-        setTimeout(() => {
-          // hide language row
-          langRow.style.opacity = "0";
-          langRow.style.pointerEvents = "none";
-          maskLang = false;
-          rainMaskMode = "none";
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              resizeRain();
-            });
-          });
-
-          // set name + studio based on language choice
-          if (chosenLang === "he") {
-            splashName.textContent = "שחף גליל";
-            splashSub.textContent  = "סטודיו";
-            splashName.style.direction = "rtl";
-            splashSub.style.direction  = "rtl";
-          } else {
-            splashName.textContent = "Shahaf Galil";
-            splashSub.textContent  = "Studio";
-            splashName.style.direction = "ltr";
-            splashSub.style.direction  = "ltr";
-          }
-
-          // Screen 2: show name
-          setTimeout(() => {
-            rainMaskMode = "name";
-            maskName = true;
-            maskSub = false;
-            rainShowText = true;
-            splashName.style.opacity = "1";
-            glitchBurst(splashName);
-            requestAnimationFrame(() => {
-              requestAnimationFrame(() => {
-                resizeRain();
-              });
-            });
-
-            // Then show sub line
-            setTimeout(() => {
-              splashSub.style.opacity = "1";
-              glitchBurst(splashSub);
-              maskSub = true;
-              requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                  resizeRain();
-                });
-              });
-
-              // After a few seconds, fade out splash and load site
-              setTimeout(() => {
-                splashEl.style.transition = "opacity 0.7s ease-out";
-                splashEl.style.opacity = "0";
-                setTimeout(() => {
-                  rainActive = false;
-                  if (rainCanvas) {
-                    rainCanvas.style.display = "none";
-                  }
-                  splashEl.style.display = "none";
-                  initMainLayout();
-                }, 900);
-              }, 3000);
-            }, 900);
-          }, 900);
-        }, 900);
-      });
+    a.addEventListener('mouseleave', function () {
+      var p = document.querySelector('.preview.active'); if (!p) return;
+      p.querySelectorAll('.pv-tile.hl').forEach(function (t) { t.classList.remove('hl'); });
     });
-  }, 5000);
+  });
+})();
+function setLang(lang) {
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', lang === 'en' ? 'ltr' : 'rtl');
+  document.querySelectorAll('[data-b]').forEach(function (el) { el.hidden = el.getAttribute('data-b') !== lang; });
+  document.querySelectorAll('.lang-row button').forEach(function (b) { b.classList.toggle('active', b.dataset.lang === lang); });
+  try { localStorage.setItem('lang', lang); } catch (e) {}
+}
+document.querySelectorAll('.lang-row button').forEach(function (b) {
+  b.addEventListener('click', function () { setLang(b.dataset.lang); });
+});
+try { var saved = localStorage.getItem('lang'); if (saved) setLang(saved); } catch (e) {}
 
-  // --- Main CRT layout w/ full content ---
-  function initMainLayout() {
-    scanEl.style.display = "block";
-    vhs2.style.display   = "block";
-
-    appEl.innerHTML = `
-      <div class="min-h-screen grid grid-cols-12">
-        <!-- Sidebar -->
-        <aside class="col-span-12 md:col-span-4 xl:col-span-3 p-6 md:p-8 sticky top-0 h-full md:min-h-screen">
-          <h1 class="text-3xl font-bold tracking-wider" style="color:${bright}">Shahaf Galil_</h1>
-          <p class="text-sm opacity-80" style="color:${dark}">Photography ▓ 2025</p>
-          <p class="text-xs leading-6 mt-3 opacity-80" style="color:${dark}">
-            Jerusalem-based photographer exploring staged narratives & fractured emotional structures.
-          </p>
-
-          <nav class="space-y-6 mt-10 text-xs md:text-sm">
-            <div>
-              <p class="uppercase tracking-wider text-xs opacity-80" style="color:${bright}">Projects</p>
-              <ul class="mt-2 space-y-1">
-                <!-- Active: Introduction -->
-                <li class="flex items-center">
-                  <a href="#artist-statement" class="flex items-center gap-1">
-                    <span style="color:${bright}; text-shadow:0 0 8px ${bright};">&gt;</span>
-                    <span style="color:${dark};">Introduction</span>
-                  </a>
-                </li>
-                ${["PTSD","Broken Circle","Forbidden Apple","Swan Lake","Lanjeri","12","Hachmi"]
-                  .map(t => {
-                    const id = t.replace(/\\s+/g, '-').toLowerCase();
-                    return `
-                      <li class="flex items-center">
-                        <a href="#proj-${id}" class="flex items-center gap-1">
-                          <span style="color:${dark};">&gt;</span>
-                          <span style="color:${dark};">${t}</span>
-                        </a>
-                      </li>
-                    `;
-                  }).join("")}
-              </ul>
-            </div>
-          </nav>
-        </aside>
-
-        <!-- Main content -->
-        <main class="col-span-12 md:col-span-8 xl:col-span-9 p-6 md:p-10 flex items-start justify-center">
-          <section id="artist-statement" class="max-w-3xl text-sm md:text-base leading-relaxed space-y-4 bg-black/40 border border-red-900/40 rounded-xl p-6 md:p-8 shadow-xl">
-            <h2 class="mb-4">
-              <span class="block text-xl md:text-2xl" style="color:${bright};">
-                Introduction
-              </span>
-              <span class="block text-[0.7rem] md:text-xs tracking-[0.18em] uppercase mt-1" style="color:${dark};">
-                Staged photography as narrative architecture_
-              </span>
-            </h2>
-
-            <p class="opacity-90" style="color:${dark};">
-              My work moves between staged photography and narrative construction. I begin with a clear,
-              almost self-evident impression — a scene that feels familiar, legible, even comfortable.
-              This initial clarity is intentional: it serves as an entry point, a quiet trap that invites
-              the viewer to believe they understand what they see.
-            </p>
-
-            <p class="opacity-90" style="color:${dark};">
-              But the image is built to fracture. Layer by layer, tension begins to surface: contradictions
-              between gesture and setting, between intimacy and distance, between what the frame reveals
-              and what it withholds. I construct scenes much like theatrical tableaux — meticulously arranged,
-              yet emotionally unstable — where narrative certainty gradually unravels.
-            </p>
-
-            <p class="opacity-90" style="color:${dark};">
-              For the viewer, this creates a shift from recognition to disorientation, and from disorientation
-              to a sharper awareness. The photograph becomes a site of movement: not the movement of bodies,
-              but the movement of perception. As the initial impression breaks open, the viewer is drawn into
-              an internal trajectory — a narrative arc that unfolds through doubt, suspicion, empathy, and
-              eventually a re-reading of the entire scene.
-            </p>
-
-            <p class="opacity-90" style="color:${dark};">
-              I am interested in how images accumulate meaning over time, and how emotional structures can
-              emerge not from action but from stillness. Each photograph is composed as a temporal architecture:
-              a layered moment in which memory, identity, and cultural narratives fold into one another.
-              The work often inhabits liminal spaces — both physical and psychological — where something has
-              ended but nothing fully formed has taken its place.
-            </p>
-
-            <p class="opacity-90" style="color:${dark};">
-              In this space, certainty dissolves. The viewer is asked to reconsider what they think they know,
-              to encounter the instability beneath the surface, and to sit with what remains unresolved.
-              Ultimately, the photographs aim to open a space where narrative, emotion, and perception collide —
-              revealing not a singular truth, but the tension between competing truths that coexist within
-              the same frame.
-            </p>
-          </section>
-        </main>
-      </div>
-    `;
-  }
+// ספירת ימים חיה לתערוכות
+(function () {
+  var now = new Date(); now.setHours(0, 0, 0, 0);
+  function days(iso) { return Math.round((new Date(iso + 'T00:00:00') - now) / 86400000); }
+  document.querySelectorAll('.exh-line[data-start]').forEach(function (line) {
+    var el = line.querySelector('.exh-count'); if (!el) return;
+    var toOpen = days(line.dataset.start);
+    var t = { he: '', ar: '', en: '' };
+    if (toOpen > 0) {
+      t.he = toOpen === 1 ? 'נפתחת מחר' : 'נפתחת בעוד ' + toOpen + ' ימים';
+      t.ar = toOpen === 1 ? 'يفتتح غداً' : 'يفتتح بعد ' + toOpen + ' أيام';
+      t.en = toOpen === 1 ? 'Opens tomorrow' : 'Opens in ' + toOpen + ' days';
+    } else if (line.dataset.end) {
+      var left = days(line.dataset.end);
+      if (left > 1) { t.he = 'פתוחה עכשיו · נותרו ' + left + ' ימים'; t.ar = 'مفتوح الآن · بقي ' + left + ' أيام'; t.en = 'Open now · ' + left + ' days left'; }
+      else if (left === 1) { t.he = 'יום אחרון מחר'; t.ar = 'اليوم الأخير غداً'; t.en = 'Last day tomorrow'; }
+      else if (left === 0) { t.he = 'היום האחרון'; t.ar = 'اليوم الأخير'; t.en = 'Last day today'; }
+      else { t.he = 'ננעלה'; t.ar = 'أُغلق'; t.en = 'Closed'; }
+    } else if (toOpen === 0) { t.he = 'נפתחת היום'; t.ar = 'يفتتح اليوم'; t.en = 'Opens today'; }
+    else { t.he = 'פתוחה'; t.ar = 'مفتوح'; t.en = 'Open'; }
+    el.innerHTML = '<span data-b="he">' + t.he + '</span><span data-b="ar" hidden>' + t.ar + '</span><span data-b="en" hidden>' + t.en + '</span>';
+    var lang = document.documentElement.getAttribute('lang') || 'he';
+    el.querySelectorAll('[data-b]').forEach(function (s) { s.hidden = s.getAttribute('data-b') !== lang; });
+  });
+})();
 </script>
 </body>
 </html>
