@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#050505"/><stop offset="0.65" stop-color="#0f0e0c"/><stop offset="1" stop-color="#14120f"/>
+</linearGradient>
+<radialGradient id="glow"><stop offset="0" stop-color="#c8923a" stop-opacity="0.5"/><stop offset="1" stop-color="#c8923a" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1600" height="1200" fill="url(#sky)"/>
+<circle cx="720" cy="480" r="60" fill="url(#glow)" opacity="0.5"/><circle cx="896" cy="792" r="60" fill="url(#glow)" opacity="0.5"/>
+<rect x="24" y="24" width="1552" height="1152" fill="none" stroke="#2b2823" stroke-width="2"/>
+<text x="800" y="560" text-anchor="middle" fill="#e9e3d6" font-family="serif" font-size="86" font-weight="300">20:00</text>
+<text x="800" y="640" text-anchor="middle" fill="#6e675b" font-family="monospace" font-size="30" letter-spacing="14">20:00</text>
+<text x="800" y="720" text-anchor="middle" fill="#6e675b" font-family="monospace" font-size="22" letter-spacing="6">PLACEHOLDER · הדימוי המקורי יוצב כאן</text>
+</svg>
