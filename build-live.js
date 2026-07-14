@@ -689,7 +689,7 @@ ${CONFIG.clarityId ? `<script type="text/javascript">(function(c,l,a,r,i,t,y){c[
 <style>
 /* טלפון אנכי: בקשה לסובב לרוחב */
 .rotate-ask{display:none;position:fixed;inset:0;z-index:9999;background:#050505;align-items:center;justify-content:center;flex-direction:column;gap:20px;text-align:center;padding:32px}
-@media (max-width:560px) and (orientation:portrait){.rotate-ask{display:flex}}
+/* בקשת הסיבוב בוטלה: לדפים יש פריסה אנכית מלאה */
 .rotate-ask .ra-icon{width:56px;height:56px;color:#e8e4dd;animation:raRot 2.6s ease-in-out infinite}
 .rotate-ask .ra-icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.2}
 @keyframes raRot{0%,100%{transform:rotate(0deg)}50%{transform:rotate(90deg)}}
@@ -799,7 +799,7 @@ opacity:0;animation:fadeUp .9s 2.6s forwards}
 
 /* טלפון אנכי: בקשה לסובב לרוחב */
 .rotate-ask{display:none;position:fixed;inset:0;z-index:9999;background:#050505;align-items:center;justify-content:center;flex-direction:column;gap:20px;text-align:center;padding:32px}
-@media (max-width:560px) and (orientation:portrait){.rotate-ask{display:flex}}
+/* בקשת הסיבוב בוטלה: לדפים יש פריסה אנכית מלאה */
 .rotate-ask .ra-icon{width:56px;height:56px;color:#e8e4dd;animation:raRot 2.6s ease-in-out infinite}
 .rotate-ask .ra-icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.2}
 @keyframes raRot{0%,100%{transform:rotate(0deg)}50%{transform:rotate(90deg)}}
@@ -882,7 +882,7 @@ html[dir="ltr"] .stage{flex-direction:row}
 .pv-wall{margin:0 auto 22px;max-width:820px;font-size:15px;line-height:1.9;color:#b5b0a7;text-align:center;transition:color .35s}
 .pv-wall:hover{color:#ffffff}
 .pv-link{font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--accent);border-bottom:1px solid var(--bone-faint);padding-bottom:3px}
-@media (max-width:860px) and (orientation:portrait){.preview{display:none!important}}
+
 
 /* ── מניו ימני — נקי, 20px ── */
 .menu{width:min(300px,26vw);display:flex;flex-direction:column;justify-content:flex-start;padding:58px 48px 9vh;
@@ -906,14 +906,38 @@ color:var(--bone-dim);font-size:10px;letter-spacing:.06em;transition:all .3s}
 .menu-extra a:hover{color:var(--bone);padding-inline-start:6px}
 @media (prefers-reduced-motion:reduce){.top-nav,.brand h1,.tagline,.exh-stack,.menu{opacity:1;animation:none}}
 @media (max-width:860px) and (orientation:portrait){
-  html,body{overflow:auto}
-  .stage{flex-direction:column!important;height:auto;min-height:100%}
-  .main{padding:16vh 8vw 6vh}
-  .brand h1{font-size:clamp(52px,15vw,90px)}
-  .exh-stack{position:static;margin-top:7vh}
-  .menu{width:100%;padding:5vh 8vw 6vh}
-  .top-nav{padding:16px 20px}
-  .top-nav .nav-items{gap:20px;font-size:10px;letter-spacing:.2em}
+  /* דף כניסה במובייל: מותג קטן, תפריט צ'יפים, גריד עצים מעוקמים, תערוכות למטה */
+  .rotate-ask{display:none !important}
+  html,body{height:auto;overflow:auto}
+  .stage{flex-direction:column;height:auto}
+  .main{display:contents}
+  .top-nav{position:static;order:0;opacity:1;animation:none;padding:14px 16px 4px;font-size:9px;letter-spacing:.2em;flex-wrap:wrap;gap:8px}
+  .top-nav .nav-items{gap:14px;flex-wrap:wrap}
+  .brand{order:1;text-align:center;padding:14px 16px 0}
+  .brand h1{font-size:30px;opacity:1;animation:none}
+  .brand .en-name{font-size:9px;margin-top:5px;letter-spacing:.35em}
+  .brand.faded{opacity:1;pointer-events:auto}
+  .tagline{margin:7px 0 0;font-size:13px;opacity:1;animation:none;line-height:1.5}
+  .tagline .l2,.tagline .l3{display:none}
+  .menu{order:2;position:static;width:100%;display:flex;flex-direction:row;align-items:center;gap:8px;overflow-x:auto;padding:14px 16px 4px;opacity:1;animation:none;scrollbar-width:none}
+  .menu::-webkit-scrollbar{display:none}
+  .menu-body{margin:0;flex:0 0 auto}
+  .menu-body-head{border:1px solid var(--bone-faint);padding:6px 14px;font-size:12px;white-space:nowrap;color:var(--bone-dim);transition:all .3s}
+  .menu-body-head:hover{padding-inline-start:14px}
+  .menu-body.open .menu-body-head{color:var(--black-deep);background:var(--bone);border-color:var(--bone)}
+  .menu-works,.menu-sep,.menu-extra{display:none}
+  .preview{order:3;position:static;inset:auto;display:none;opacity:1;pointer-events:auto;padding:12px 16px 4px;overflow:visible}
+  .preview.active{display:block}
+  .pv-close{display:none}
+  .pv-top{margin-bottom:10px}
+  .pv-head{font-size:14px}
+  .pv-grid{grid-template-columns:repeat(2,1fr);gap:16px 10px;padding:0}
+  .pv-name{font-size:12px;margin-top:6px}
+  .pv-name i{font-size:9px}
+  .pv-meta{font-size:8px}
+  .pv-desc{display:none}
+  .pv-wall{font-size:12.5px;line-height:1.8;margin:0 0 14px;text-align:start}
+  .exh-stack{order:4;position:static;margin:24px 16px 28px;padding-top:16px;border-top:1px solid rgba(232,228,221,.18);opacity:1;animation:none}
 }
 </style>
 </head>
@@ -937,11 +961,6 @@ ${CONFIG.clarityId ? `<div id="ckb" style="display:none;position:fixed;bottom:18
 <script>function ckOk(){try{localStorage.setItem('cookieChoice','accepted')}catch(e){};document.getElementById('ckb').style.display='none'}
 function ckNo(){try{localStorage.setItem('cookieChoice','declined')}catch(e){};document.getElementById('ckb').style.display='none';if(window.clarity)clarity('consent',false)}
 try{if(!localStorage.getItem('cookieChoice'))setTimeout(function(){document.getElementById('ckb').style.display='block'},2000)}catch(e){}</script>` : ""}
-<div class="rotate-ask" aria-hidden="true">
-  <div class="ra-icon"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="1.6"/><line x1="10.5" y1="18.5" x2="13.5" y2="18.5"/></svg></div>
-  <div class="ra-he">סובבו את המכשיר לרוחב</div>
-  <div class="ra-sub"><span>ROTATE TO LANDSCAPE</span><span lang="ar" style="font-family:'Noto Naskh Arabic',serif;text-transform:none;letter-spacing:.05em">اقلبوا الجهاز أفقياً</span></div>
-</div>
 <div class="stage">
   <main class="main">
     <div class="brand">
@@ -1032,6 +1051,19 @@ if (mf) mf.addEventListener('click', function (e) {
   document.querySelectorAll('.pv-close').forEach(function (b) {
     b.addEventListener('click', function () { show(null); });
   });
+  // מובייל אנכי: הגריד של עצים מעוקמים נפתח כברירת מחדל
+  try {
+    var mq = window.matchMedia('(max-width:860px) and (orientation:portrait)');
+    var mobileDefault = function () {
+      if (mq.matches && !document.querySelector('.preview.active')) {
+        var f = document.querySelector('.menu-body[data-body="forged-trees"]');
+        if (f) f.classList.add('open');
+        show('forged-trees');
+      }
+    };
+    mobileDefault();
+    (mq.addEventListener || mq.addListener).call(mq, 'change', mobileDefault);
+  } catch (e) {}
   document.querySelectorAll('.menu-work[data-wk]').forEach(function (a) {
     a.addEventListener('mouseenter', function () {
       var p = document.querySelector('.preview.active'); if (!p) return;
