@@ -836,6 +836,16 @@ opacity:0;animation:fadeUp .9s 2.6s forwards}
   .pv-name{font-size:11px;margin-top:5px}
   .pv-grid{gap:12px 10px}
 }
+/* ── שער כניסה (מובייל אנכי) ── */
+.gate{position:fixed;inset:0;z-index:10000;background:rgba(5,5,5,.7);display:none;flex-direction:column;padding:max(9vh,44px) 28px 30px;color:#e8e4dd}
+.gate.on{display:flex}
+.gate-exh{text-align:center;font-size:12px;color:var(--bone-dim);margin-bottom:14px;display:block}
+.gate-exh .exh-count{color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.08em}
+.gate-rows{margin-top:auto;display:flex;flex-direction:column}
+.gate-row{display:flex;justify-content:center;align-items:baseline;gap:12px;padding:19px 2px;border-top:1px solid rgba(232,228,221,.22);font-size:23px;color:#e8e4dd;text-align:center;width:100%;background:none;border-inline:none;border-bottom:none;font-family:var(--serif-heb);cursor:pointer;position:relative;z-index:2;font-weight:700}
+.gate-row .g-mark{font-family:var(--mono);font-size:15px;color:var(--bone-dim)}
+.gate-enter{margin-top:26px;border:1px solid #e8e4dd;background:#e8e4dd;color:#0a0a0a;padding:16px;font-size:23px;font-weight:700;font-family:var(--serif-heb);width:100%;text-align:center;cursor:pointer}
+@media (orientation:landscape),(min-width:861px){.gate{display:none !important}}
 /* ── במה ── */
 .stage{height:100%;display:flex;flex-direction:row-reverse}
 html[dir="ltr"] .stage{flex-direction:row}
@@ -961,6 +971,20 @@ ${CONFIG.clarityId ? `<div id="ckb" style="display:none;position:fixed;bottom:18
 <script>function ckOk(){try{localStorage.setItem('cookieChoice','accepted')}catch(e){};document.getElementById('ckb').style.display='none'}
 function ckNo(){try{localStorage.setItem('cookieChoice','declined')}catch(e){};document.getElementById('ckb').style.display='none';if(window.clarity)clarity('consent',false)}
 try{if(!localStorage.getItem('cookieChoice'))setTimeout(function(){document.getElementById('ckb').style.display='block'},2000)}catch(e){}</script>` : ""}
+<div class="gate" id="gate">
+  <div class="gate-rows">
+    <div class="gate-exh exh-line" data-start="2026-07-09" data-end="2026-08-13">
+      <span data-b="he">"מרחבים זמניים" · פנוכו, תל אביב</span><span data-b="ar" hidden>"فضاءات مؤقتة" · تل أبيب</span><span data-b="en" hidden>"Temporary Spaces" · Panuko, Tel Aviv</span>
+      <span class="exh-count"></span>
+    </div>
+    <a class="gate-row" href="${CONFIG.instagram}" target="_blank" rel="noopener"><span data-b="he">אינסטגרם</span><span data-b="ar" hidden>إنستغرام</span><span data-b="en" hidden>Instagram</span><span class="g-mark">↗</span></a>
+    <a class="gate-row" href="https://wa.me/13477888007?text=${encodeURIComponent("היי שחף,\nראיתי את עצים מעוקמים בתערוכת הגמר של בצלאל,")}" target="_blank" rel="noopener"><span data-b="he">ווטסאפ</span><span data-b="ar" hidden>واتساب</span><span data-b="en" hidden>WhatsApp</span><span class="g-mark">↗</span></a>
+    <a class="gate-row" href="mailto:${CONFIG.email}?subject=${encodeURIComponent("פנייה")}&body=${encodeURIComponent("היי שחף,\nראיתי את עצים מעוקמים בתערוכת הגמר של בצלאל,\n\n")}"><span data-b="he">פנייה</span><span data-b="ar" hidden>تواصل</span><span data-b="en" hidden>Contact</span><span class="g-mark">←</span></a>
+    <a class="gate-row" href="mailto:${CONFIG.email}?subject=${encodeURIComponent("אני רוצה הזמנה לפתיחה של התערוכות הבאות")}&body=${encodeURIComponent("היי שחף,\nראיתי את עצים מעוקמים בתערוכת הגמר של בצלאל,\nאשמח לשמוע על תערוכות נוספות\n")}"><span data-b="he">הזמנה לפתיחות</span><span data-b="ar" hidden>دعوة للافتتاحات</span><span data-b="en" hidden>Opening invitations</span><span class="g-mark">⊕</span></a>
+    <button class="gate-row" id="gateShare" type="button"><span data-b="he">שתף</span><span data-b="ar" hidden>مشاركة</span><span data-b="en" hidden>Share</span><span class="g-mark">⤴</span></button>
+    <button class="gate-enter" id="gateEnter"><span data-b="he">כניסה לאתר ←</span><span data-b="ar" hidden>دخول الموقع ←</span><span data-b="en" hidden>Enter site →</span></button>
+  </div>
+</div>
 <div class="stage">
   <main class="main">
     <div class="brand">
@@ -1063,6 +1087,47 @@ if (mf) mf.addEventListener('click', function (e) {
     };
     mobileDefault();
     (mq.addEventListener || mq.addListener).call(mq, 'change', mobileDefault);
+  } catch (e) {}
+  // שער הכניסה: עולה בכל ביקור במובייל אנכי, ולא שוב באותו סשן
+  try {
+    var gate = document.getElementById('gate');
+    var pmq = window.matchMedia('(max-width:860px) and (orientation:portrait)');
+    if (gate && pmq.matches) gate.classList.add('on');
+    var ge = document.getElementById('gateEnter');
+    if (ge) ge.addEventListener('click', function () {
+      gate.classList.remove('on');
+      if (window.clarity) clarity('event', 'gate_enter');
+    });
+    // ניווט מוקשח: גם אם ההקשה על הקישור נבלעת, מנווטים ידנית
+    if (gate) gate.addEventListener('click', function (e) {
+      var a = e.target.closest ? e.target.closest('a.gate-row') : null;
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (a.target === '_blank' || href.indexOf('mailto:') === 0) return;
+      e.preventDefault();
+      window.location.href = href;
+    });
+    var gs = document.getElementById('gateShare');
+    if (gs) gs.addEventListener('click', function () {
+      var url = 'https://galil.art/';
+      try { if (window.location.protocol.indexOf('http') === 0) url = window.location.href.split('#')[0]; } catch (e) {}
+      var done = function () {
+        var sp = gs.querySelector('[data-b]:not([hidden])') || gs.querySelector('[data-b="he"]');
+        if (sp) { var t = sp.textContent; sp.textContent = 'הקישור הועתק ✓'; setTimeout(function () { sp.textContent = t; }, 2000); }
+      };
+      var copyFallback = function () {
+        try {
+          var ta = document.createElement('textarea');
+          ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select();
+          document.execCommand('copy'); document.body.removeChild(ta); done();
+        } catch (e) { window.prompt('העתק את הקישור:', url); }
+      };
+      if (navigator.share) { navigator.share({ title: 'שחף גליל · Shahaf Galil', url: url }).catch(function () {}); }
+      else if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, copyFallback);
+      else copyFallback();
+      if (window.clarity) clarity('event', 'gate_share');
+    });
   } catch (e) {}
   document.querySelectorAll('.menu-work[data-wk]').forEach(function (a) {
     a.addEventListener('mouseenter', function () {
