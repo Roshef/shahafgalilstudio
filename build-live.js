@@ -980,7 +980,7 @@ try{if(!localStorage.getItem('cookieChoice'))setTimeout(function(){document.getE
     <a class="gate-row" href="${CONFIG.instagram}" target="_blank" rel="noopener"><span data-b="he">אינסטגרם</span><span data-b="ar" hidden>إنستغرام</span><span data-b="en" hidden>Instagram</span><span class="g-mark">↗</span></a>
     <a class="gate-row" href="https://wa.me/13477888007?text=${encodeURIComponent("היי שחף,\nראיתי את עצים מעוקמים בתערוכת הגמר של בצלאל,")}" target="_blank" rel="noopener"><span data-b="he">ווטסאפ</span><span data-b="ar" hidden>واتساب</span><span data-b="en" hidden>WhatsApp</span><span class="g-mark">↗</span></a>
     <a class="gate-row" href="mailto:${CONFIG.email}?subject=${encodeURIComponent("פנייה")}&body=${encodeURIComponent("היי שחף,\nראיתי את עצים מעוקמים בתערוכת הגמר של בצלאל,\n\n")}"><span data-b="he">פנייה</span><span data-b="ar" hidden>تواصل</span><span data-b="en" hidden>Contact</span><span class="g-mark">←</span></a>
-    <a class="gate-row" href="mailto:${CONFIG.email}?subject=${encodeURIComponent("אני רוצה הזמנה לפתיחה של התערוכות הבאות")}&body=${encodeURIComponent("היי שחף,\nראיתי את עצים מעוקמים בתערוכת הגמר של בצלאל,\nאשמח לשמוע על תערוכות נוספות\n")}"><span data-b="he">הזמנה לפתיחות</span><span data-b="ar" hidden>دعوة للافتتاحات</span><span data-b="en" hidden>Opening invitations</span><span class="g-mark">⊕</span></a>
+    <a class="gate-row" href="mailto:${CONFIG.email}?subject=${encodeURIComponent("אני רוצה הזמנה לפתיחה של התערוכות הבאות")}&body=${encodeURIComponent("היי שחף,\nראיתי את עצים מעוקמים בתערוכת הגמר של בצלאל,\nאשמח לשמוע על תערוכות נוספות\n")}"><span data-b="he">הזמנה לתערוכות</span><span data-b="ar" hidden>دعوة للمعارض</span><span data-b="en" hidden>Exhibition invitations</span><span class="g-mark">⊕</span></a>
     <button class="gate-row" id="gateShare" type="button"><span data-b="he">שתף</span><span data-b="ar" hidden>مشاركة</span><span data-b="en" hidden>Share</span><span class="g-mark">⤴</span></button>
     <button class="gate-enter" id="gateEnter"><span data-b="he">כניסה לאתר ←</span><span data-b="ar" hidden>دخول الموقع ←</span><span data-b="en" hidden>Enter site →</span></button>
   </div>
@@ -1123,7 +1123,7 @@ if (mf) mf.addEventListener('click', function (e) {
           document.execCommand('copy'); document.body.removeChild(ta); done();
         } catch (e) { window.prompt('העתק את הקישור:', url); }
       };
-      var msg = 'מוזמנים לראות את עצים מעוקמים, פרוייקט של שחף גליל מתערוכת הגמר של בצלאל';
+      var msg = 'מוזמנים לראות את עצים מעוקמים, פרוייקט של שחף גליל מתערוכת הגמר של בצלאל' + '\\n' + 'אינסטגרם: https://www.instagram.com/shahafgalilstudio';
       if (navigator.share) { navigator.share({ title: 'שחף גליל · Shahaf Galil', text: msg, url: url }).catch(function () {}); }
       else if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(msg + '\\n' + url).then(done, copyFallback);
       else copyFallback();
