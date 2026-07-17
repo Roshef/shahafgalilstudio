@@ -721,13 +721,14 @@ if (mf) mf.addEventListener('click', function (e) {
       var copyFallback = function () {
         try {
           var ta = document.createElement('textarea');
-          ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          ta.value = msg + '\n' + url; ta.style.position = 'fixed'; ta.style.opacity = '0';
           document.body.appendChild(ta); ta.select();
           document.execCommand('copy'); document.body.removeChild(ta); done();
         } catch (e) { window.prompt('העתק את הקישור:', url); }
       };
-      if (navigator.share) { navigator.share({ title: 'שחף גליל · Shahaf Galil', url: url }).catch(function () {}); }
-      else if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, copyFallback);
+      var msg = 'מוזמנים לראות את עצים מעוקמים, פרוייקט של שחף גליל מתערוכת הגמר של בצלאל';
+      if (navigator.share) { navigator.share({ title: 'שחף גליל · Shahaf Galil', text: msg, url: url }).catch(function () {}); }
+      else if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(msg + '\n' + url).then(done, copyFallback);
       else copyFallback();
       if (window.clarity) clarity('event', 'gate_share');
     });
