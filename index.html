@@ -701,10 +701,18 @@ if (mf) mf.addEventListener('click', function (e) {
       gate.classList.remove('on');
       if (window.clarity) clarity('event', 'gate_enter');
     });
-    // ניווט מוקשח: גם אם ההקשה על הקישור נבלעת, מנווטים ידנית
+    // ניווט מוקשח + מעקב: כל הקשה על שורה נרשמת ב-Clarity
     if (gate) gate.addEventListener('click', function (e) {
       var a = e.target.closest ? e.target.closest('a.gate-row') : null;
       if (!a) return;
+      try {
+        var h = a.getAttribute('href') || '';
+        var tag = h.indexOf('wa.me') > -1 ? 'gate_whatsapp'
+          : h.indexOf('instagram') > -1 ? 'gate_instagram'
+          : h.indexOf('subject=%D7%A4%D7%A0%D7%99%D7%99%D7%94') > -1 ? 'gate_contact'
+          : h.indexOf('mailto:') === 0 ? 'gate_invite' : 'gate_link';
+        if (window.clarity) { clarity('event', tag); clarity('set', 'gate_click', tag); }
+      } catch (err) {}
       var href = a.getAttribute('href') || '';
       if (a.target === '_blank' || href.indexOf('mailto:') === 0) return;
       e.preventDefault();
